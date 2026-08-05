@@ -1,19 +1,19 @@
 :root {
-  --purple-950: #1a0b2e;
-  --purple-900: #2a1245;
-  --purple-800: #3b1b61;
-  --purple-700: #52288a;
-  --purple-600: #6d3ab0;
-  --purple-500: #8b5cf6;
-  --purple-300: #c4b5fd;
-  --purple-100: #ede9fe;
-  --purple-50: #f7f4ff;
-  --gold: #d4af6a;
-  --ink: #241b31;
-  --ink-soft: #5c5468;
-  --paper: #fffdfa;
+  /* Palette matched to The Purple Chair Salon & Spa (tpcsalonspa.com) */
+  --sage: #a7b39b;
+  --sage-deep: #96a289;
+  --sage-tint: #eef0e9;
+  --lavender: #9e8aaa;
+  --lavender-deep: #86718f;
+  --lavender-tint: #e9e3ed;
+  --gold: #c9ac6f;
+  --gold-soft: #e9dcbc;
+  --brown: #5f3922;
+  --ink: #303636;
+  --ink-soft: #5f6660;
+  --paper: #fdfcf8;
   --radius: 14px;
-  --shadow: 0 10px 40px rgba(58, 27, 97, 0.12);
+  --shadow: 0 10px 40px rgba(48, 54, 54, 0.1);
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -41,13 +41,13 @@ h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 500;
   line-height: 1.15;
-  color: var(--purple-950);
+  color: var(--ink);
 }
 
 h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5em; }
 h3 { font-size: 1.75rem; margin-bottom: 0.4em; }
-h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--purple-900); }
+h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--ink); }
 
 .center { text-align: center; }
 
@@ -56,17 +56,14 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--purple-600);
+  color: var(--lavender-deep);
   margin-bottom: 1rem;
 }
 
 .eyebrow.center { text-align: center; }
 
 .accent {
-  background: linear-gradient(120deg, var(--purple-600), var(--purple-500) 60%, var(--gold));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--gold-soft);
   font-style: italic;
 }
 
@@ -95,20 +92,23 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 .btn:hover { transform: translateY(-2px); }
 
 .btn-solid {
-  background: linear-gradient(120deg, var(--purple-700), var(--purple-500));
+  background: var(--lavender);
   color: #fff;
-  box-shadow: 0 6px 20px rgba(109, 58, 176, 0.35);
+  box-shadow: 0 6px 20px rgba(158, 138, 170, 0.4);
 }
 
-.btn-solid:hover { box-shadow: 0 10px 28px rgba(109, 58, 176, 0.45); }
+.btn-solid:hover {
+  background: var(--lavender-deep);
+  box-shadow: 0 10px 28px rgba(134, 113, 143, 0.45);
+}
 
 .btn-ghost {
-  border-color: var(--purple-300);
-  color: var(--purple-100);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.18); }
 
 .btn-large { padding: 0.95rem 2.2rem; font-size: 1rem; }
 .btn-small { padding: 0.5rem 1.3rem; font-size: 0.88rem; }
@@ -119,9 +119,9 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(26, 11, 46, 0.92);
+  background: rgba(253, 252, 248, 0.94);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(196, 181, 253, 0.12);
+  border-bottom: 1px solid rgba(48, 54, 54, 0.08);
 }
 
 .nav {
@@ -144,7 +144,7 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+  background: var(--lavender);
   color: #fff;
   font-family: var(--font-display);
   font-size: 1.35rem;
@@ -155,13 +155,13 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--ink);
   letter-spacing: 0.02em;
 }
 
 .brand-name em {
   font-weight: 400;
-  color: var(--purple-300);
+  color: var(--lavender-deep);
 }
 
 .nav-links {
@@ -171,14 +171,16 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 }
 
 .nav-links a {
-  color: var(--purple-100);
+  color: var(--ink);
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 400;
   transition: color 0.15s ease;
 }
 
-.nav-links a:hover { color: #fff; }
+.nav-links a:hover { color: var(--lavender-deep); }
+
+.nav-links a.btn-solid { color: #fff; }
 
 .nav-toggle {
   display: none;
@@ -193,17 +195,17 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 .nav-toggle span {
   width: 22px;
   height: 2px;
-  background: #fff;
+  background: var(--ink);
   border-radius: 2px;
 }
 
 /* ---------- Hero ---------- */
 .hero {
   background:
-    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(139, 92, 246, 0.28), transparent),
-    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(212, 175, 106, 0.12), transparent),
-    linear-gradient(160deg, var(--purple-950) 0%, var(--purple-900) 55%, var(--purple-800) 100%);
-  color: var(--purple-100);
+    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(253, 252, 248, 0.14), transparent),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(158, 138, 170, 0.18), transparent),
+    linear-gradient(160deg, var(--sage) 0%, var(--sage-deep) 100%);
+  color: #fff;
   padding: 7rem 0 5.5rem;
   position: relative;
   overflow: hidden;
@@ -213,11 +215,11 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 
 .hero h1 { color: #fff; margin-bottom: 1.4rem; }
 
-.hero .eyebrow { color: var(--gold); }
+.hero .eyebrow { color: var(--gold-soft); }
 
 .lede {
   font-size: 1.15rem;
-  color: var(--purple-100);
+  color: #f4f6f0;
   max-width: 620px;
   margin-bottom: 2.4rem;
 }
@@ -244,20 +246,20 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
   font-family: var(--font-display);
   font-size: 2.1rem;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--gold-soft);
 }
 
 .stat-label {
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--purple-300);
+  color: #eef0e9;
 }
 
 /* ---------- Sections ---------- */
 .section { padding: 5.5rem 0; }
 
-.section-tinted { background: var(--purple-50); }
+.section-tinted { background: var(--sage-tint); }
 
 /* ---------- Method cards ---------- */
 .cards {
@@ -269,7 +271,7 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 
 .card {
   background: #fff;
-  border: 1px solid var(--purple-100);
+  border: 1px solid #e6e4d9;
   border-radius: var(--radius);
   padding: 2.5rem 2.2rem;
   box-shadow: var(--shadow);
@@ -278,12 +280,12 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 50px rgba(58, 27, 97, 0.18);
+  box-shadow: 0 16px 50px rgba(48, 54, 54, 0.16);
 }
 
 .card-icon {
   font-size: 1.8rem;
-  color: var(--purple-500);
+  color: var(--lavender);
   margin-bottom: 1rem;
 }
 
@@ -319,7 +321,7 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 
 .benefit {
   background: #fff;
-  border: 1px solid var(--purple-100);
+  border: 1px solid #e0e2d8;
   border-radius: var(--radius);
   padding: 1.8rem;
 }
@@ -344,7 +346,7 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+  background: var(--lavender);
   color: #fff;
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -357,18 +359,18 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 /* ---------- Signup ---------- */
 .section-signup {
   background:
-    radial-gradient(ellipse 70% 60% at 85% 10%, rgba(139, 92, 246, 0.2), transparent),
-    linear-gradient(160deg, var(--purple-950), var(--purple-900));
-  color: var(--purple-100);
+    radial-gradient(ellipse 70% 60% at 85% 10%, rgba(158, 138, 170, 0.16), transparent),
+    linear-gradient(160deg, var(--sage-deep), var(--sage));
+  color: #fff;
 }
 
 .section-signup h2 { color: #fff; }
 
-.section-signup .eyebrow { color: var(--gold); }
+.section-signup .eyebrow { color: var(--gold-soft); }
 
-.section-signup .section-lede { color: var(--purple-100); }
+.section-signup .section-lede { color: #f4f6f0; }
 
-.section-signup .feature-list li { color: var(--purple-100); }
+.section-signup .feature-list li { color: #f4f6f0; }
 
 .signup-grid {
   display: grid;
@@ -381,7 +383,7 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
   background: #fff;
   border-radius: var(--radius);
   padding: 2.4rem;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 24px 70px rgba(48, 54, 54, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -397,7 +399,7 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 .form-field label {
   font-size: 0.82rem;
   font-weight: 500;
-  color: var(--purple-900);
+  color: var(--ink);
   margin-bottom: 0.35rem;
   letter-spacing: 0.02em;
 }
@@ -408,9 +410,9 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
   font-family: var(--font-body);
   font-size: 0.95rem;
   padding: 0.7rem 0.9rem;
-  border: 1.5px solid #e2dcee;
+  border: 1.5px solid #ddd9cc;
   border-radius: 8px;
-  background: var(--purple-50);
+  background: #faf9f4;
   color: var(--ink);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   width: 100%;
@@ -420,8 +422,8 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--p
 .form-field select:focus,
 .form-field textarea:focus {
   outline: none;
-  border-color: var(--purple-500);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18);
+  border-color: var(--lavender);
+  box-shadow: 0 0 0 3px rgba(158, 138, 170, 0.22);
   background: #fff;
 }
 
@@ -454,7 +456,7 @@ textarea { resize: vertical; }
 
 .form-success[hidden] { display: none; }
 
-.form-success h3 { color: var(--purple-900); }
+.form-success h3 { color: var(--ink); }
 
 .form-success p { color: var(--ink-soft); max-width: 380px; }
 
@@ -464,7 +466,7 @@ textarea { resize: vertical; }
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+  background: var(--lavender);
   color: #fff;
   font-size: 1.8rem;
   margin-bottom: 1.2rem;
@@ -477,10 +479,14 @@ textarea { resize: vertical; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--purple-950);
-  color: var(--purple-300);
+  background: var(--ink);
+  color: #c8cdc4;
   padding: 3.5rem 0 2.5rem;
 }
+
+.site-footer .brand-name { color: #fff; }
+
+.site-footer .brand-name em { color: var(--lavender-tint); }
 
 .footer-inner {
   display: flex;
@@ -500,7 +506,7 @@ textarea { resize: vertical; }
 }
 
 .footer-links a {
-  color: var(--purple-100);
+  color: #eef0e9;
   text-decoration: none;
   font-size: 0.88rem;
 }
@@ -522,10 +528,10 @@ textarea { resize: vertical; }
     left: 0;
     right: 0;
     flex-direction: column;
-    background: var(--purple-950);
+    background: var(--paper);
     padding: 1.5rem 24px 2rem;
     gap: 1.2rem;
-    border-bottom: 1px solid rgba(196, 181, 253, 0.15);
+    border-bottom: 1px solid rgba(48, 54, 54, 0.1);
   }
 
   .nav-links.open { display: flex; }
