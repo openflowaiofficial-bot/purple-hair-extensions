@@ -212,6 +212,7 @@ h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.35em; color: var(--i
   width: min(300px, 70vw);
   height: auto;
   margin-bottom: 2.2rem;
+  mix-blend-mode: multiply;
 }
 
 .hero h1 { color: var(--ink); margin-bottom: 1.4rem; }
