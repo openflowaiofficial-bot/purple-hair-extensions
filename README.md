@@ -1,6 +1,6 @@
-# Purple Hair Extensions
+# The Purple Crown Extensions
 
-Marketing and partner-signup website for **Purple Hair Extensions** — a luxury, fully
+Marketing and partner-signup website for **The Purple Crown Extensions (TPC)** — a luxury, fully
 customizable hair extension solution (mesh integration and wefts) offered exclusively
 to salons and independent stylists.
 
@@ -9,8 +9,9 @@ to salons and independent stylists.
 Plain static HTML / CSS / JavaScript — no build step required.
 
 - `index.html` — single-page site: hero, methods, benefits, process, partner application form
-- `styles.css` — styling (Cormorant Garamond + Inter, purple/gold luxury palette)
+- `styles.css` — styling (Cormorant Garamond + Inter; clean white + royal purple palette)
 - `script.js` — mobile nav + client-side form validation and success state
+- `logo.jpg` / `logo-mark.jpg` — TPC brand logo (full and compact header versions)
 
 ## Run locally
 
