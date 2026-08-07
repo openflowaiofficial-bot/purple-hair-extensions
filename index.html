@@ -3,271 +3,437 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Purple Crown Extensions — Luxury Extensions for Salons &amp; Stylists</title>
-  <meta name="description" content="Partner with The Purple Crown Extensions: luxury, fully customizable mesh integration and weft hair extension solutions for salons and independent stylists." />
+  <title>The Purple Crown Extensions — Custom Luxury Extensions for Salons &amp; Stylists</title>
+  <meta name="description" content="Trade-only mesh integration systems and hand-tied wefts, built to one client's measurements and color. 100% Remy human hair. Apply for a partner account." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>
 <body>
 
-  <header class="site-header" id="top">
-    <nav class="nav container">
-      <a class="brand" href="#top">
-        <img class="brand-logo" src="https://raw.githubusercontent.com/openflowaiofficial-bot/purple-hair-extensions/master/logo-mark.jpg" alt="TPC — The Purple Crown Extensions" />
-        <span class="brand-name">The Purple Crown <em>Extensions</em></span>
-      </a>
-      <div class="nav-links">
-        <a href="#methods">Methods</a>
-        <a href="#why">Why Purple</a>
-        <a href="#how">How It Works</a>
-        <a href="#signup" class="btn btn-small btn-solid">Become a Partner</a>
-      </div>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-  </header>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <img class="hero-logo" src="https://raw.githubusercontent.com/openflowaiofficial-bot/purple-hair-extensions/master/logo.jpg" alt="TPC — The Purple Crown Extensions" />
-        <p class="eyebrow">For Salons &amp; Independent Stylists</p>
-        <h1>Luxury hair extensions,<br /><span class="accent">customized to every client.</span></h1>
-        <p class="lede">
-          The Purple Crown partners exclusively with professionals. Offer your clients
-          fully customizable <strong>mesh integration systems</strong> and premium
-          <strong>hand-tied &amp; machine wefts</strong> — crafted from ethically sourced,
-          100% Remy human hair.
-        </p>
-        <div class="hero-cta">
-          <a href="#signup" class="btn btn-solid btn-large">Apply for Partnership</a>
-          <a href="#methods" class="btn btn-ghost btn-large">Explore Our Methods</a>
-        </div>
-        <ul class="hero-stats">
-          <li><span class="stat-num">100%</span><span class="stat-label">Remy Human Hair</span></li>
-          <li><span class="stat-num">40+</span><span class="stat-label">Shades &amp; Custom Color</span></li>
-          <li><span class="stat-num">Pro</span><span class="stat-label">Exclusive — Trade Only</span></li>
+<header class="masthead">
+  <div class="trade-rail">
+    <div class="wrap trade-rail-inner">
+      <span>Trade only &middot; Licensed salons &amp; stylists</span>
+      <span>Never sold to the public</span>
+    </div>
+  </div>
+  <div class="wrap masthead-bar">
+    <a class="crest" href="index.html">
+      <img class="crest-mark" src="crest.svg" alt="" width="38" height="38" />
+      <span class="crest-name">The Purple Crown<em>Extensions</em></span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Primary">
+      <div class="nav-item">
+        <button class="nav-toggle-sub" aria-expanded="false" aria-controls="methods-menu">
+          Methods <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="submenu" id="methods-menu" data-open="false">
+          <li>
+            <a href="mesh-integration.html">
+              <span class="submenu-title">Mesh Integration</span>
+              <span class="submenu-note">Thinning &amp; fragile hair</span>
+            </a>
+          </li>
+          <li>
+            <a href="wefts.html">
+              <span class="submenu-title">Hand-Tied &amp; Machine Wefts</span>
+              <span class="submenu-note">Length, density, dimension</span>
+            </a>
+          </li>
         </ul>
       </div>
-    </section>
+      <a class="nav-link" href="customization.html">Color Lab</a>
+      <a class="nav-link" href="education.html">Education</a>
+      <a class="nav-link" href="about.html">The House</a>
+      <a class="btn btn-gold btn-sm" href="partner.html">Apply</a>
+    </nav>
 
-    <!-- METHODS -->
-    <section class="section" id="methods">
-      <div class="container">
-        <p class="eyebrow center">Our Solutions</p>
-        <h2 class="center">Two methods. Endless customization.</h2>
-        <p class="section-lede center">
-          Every order is built to your specification — length, density, texture, and color
-          blended to the strand. Choose the system that fits your client.
-        </p>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">◈</div>
-            <h3>Mesh Integration</h3>
-            <p>
-              A breathable, ultra-fine mesh system integrated with the client's natural hair —
-              ideal for fine, thinning, or fragile hair. No tension, no adhesive, full scalp
-              comfort with a seamless, undetectable finish.
-            </p>
-            <ul class="feature-list">
-              <li>Custom-built to head measurements</li>
-              <li>Ideal for volume loss &amp; thinning hair</li>
-              <li>6–8 week maintenance cycle</li>
-              <li>Certification training included</li>
-            </ul>
-          </article>
+<main id="main">
 
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">≋</div>
-            <h3>Premium Wefts</h3>
-            <p>
-              Hand-tied and machine wefts in luxurious double-drawn Remy hair. Flexible
-              installation — beaded rows, sew-in, or hybrid methods — with flat, lightweight
-              seams that lie flush to the head.
-            </p>
-            <ul class="feature-list">
-              <li>Hand-tied &amp; machine weft options</li>
-              <li>14"–26" lengths, double-drawn density</li>
-              <li>Custom color blending &amp; rooted shades</li>
-              <li>Reusable up to 12 months</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY -->
-    <section class="section section-tinted" id="why">
-      <div class="container">
-        <p class="eyebrow center">Why The Purple Crown</p>
-        <h2 class="center">Built for professionals, not the mass market.</h2>
-        <div class="benefits">
-          <div class="benefit">
-            <h4>Trade-Exclusive Pricing</h4>
-            <p>Wholesale margins designed so your extension service becomes your most profitable chair time.</p>
-          </div>
-          <div class="benefit">
-            <h4>Custom Color Lab</h4>
-            <p>Send us a swatch or a photo — our colorists blend rooted, dimensional shades matched to your client.</p>
-          </div>
-          <div class="benefit">
-            <h4>Education &amp; Certification</h4>
-            <p>Hands-on and virtual training for mesh integration and weft installation, with ongoing masterclasses.</p>
-          </div>
-          <div class="benefit">
-            <h4>Dedicated Partner Support</h4>
-            <p>A real account manager, priority restocks, and marketing assets to help you sell the service.</p>
-          </div>
-          <div class="benefit">
-            <h4>Ethically Sourced</h4>
-            <p>Fully traceable, ethically sourced 100% Remy human hair. Cuticle-intact, aligned, and long-lasting.</p>
-          </div>
-          <div class="benefit">
-            <h4>Client Referrals</h4>
-            <p>Certified partners are listed in our salon locator — we send extension clients in your area to you.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="section" id="how">
-      <div class="container">
-        <p class="eyebrow center">How It Works</p>
-        <h2 class="center">From application to installation.</h2>
-        <ol class="steps">
-          <li class="step">
-            <span class="step-num">1</span>
-            <h4>Apply</h4>
-            <p>Tell us about your salon or independent practice using the form below.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">2</span>
-            <h4>Get Verified</h4>
-            <p>We confirm your professional credentials — approval typically within 2 business days.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">3</span>
-            <h4>Train &amp; Certify</h4>
-            <p>Complete method certification for mesh integration, wefts, or both.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">4</span>
-            <h4>Order &amp; Install</h4>
-            <p>Unlock trade pricing, the custom color lab, and priority partner support.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- SIGNUP -->
-    <section class="section section-signup" id="signup">
-      <div class="container signup-grid">
-        <div class="signup-copy">
-          <p class="eyebrow">Partner Application</p>
-          <h2>Join The Purple Crown partner network.</h2>
-          <p class="section-lede">
-            Partnership is open to licensed salons and independent stylists.
-            Apply below — our team will be in touch within two business days.
+  <!-- HERO ---------------------------------------------------------------- -->
+  <section class="hero">
+    <svg class="strand-field" aria-hidden="true"></svg>
+    <div class="wrap hero-inner">
+      <div class="hero-docket">
+        <div>
+          <!-- Not the trade-only line: the permanent masthead rail carries it
+               215px above this, and the footer base carries it again. The
+               eyebrow slot names the two products instead, which nothing else
+               in the hero does. -->
+          <span class="label">Mesh integration &amp; hand-tied wefts</span>
+          <h1 class="display-xl">Every order is <span class="italic">one client's</span> order.</h1>
+          <p class="lede">
+            We do not sell hair off a shelf. Every mesh integration system and every weft
+            leaves our lab cut, tied, and colored to one head of hair — measured by you,
+            matched to a swatch you send us, in 100% Remy human hair.
           </p>
-          <ul class="feature-list">
-            <li>No minimum order to apply</li>
-            <li>Trade pricing from day one of certification</li>
-            <li>Cancel anytime — no lock-in contracts</li>
-          </ul>
+          <div class="btn-row">
+            <a class="btn btn-gold" href="partner.html">Apply for a partner account</a>
+            <a class="btn btn-outline" href="#methods">See the two methods</a>
+          </div>
         </div>
 
-        <form class="signup-form" id="partner-form" novalidate>
-          <div class="form-row">
-            <div class="form-field">
-              <label for="name">Full name *</label>
-              <input type="text" id="name" name="name" autocomplete="name" required />
-            </div>
-            <div class="form-field">
-              <label for="email">Work email *</label>
-              <input type="email" id="email" name="email" autocomplete="email" required />
-            </div>
+        <!-- One real build sheet, shown rather than asserted. -->
+        <aside class="order-stub" aria-label="An example build sheet">
+          <div class="stub-head">
+            <span class="stub-mark">TPC</span>
+            <span class="stub-no">Build sheet 2026 / 0412</span>
           </div>
-
-          <div class="form-row">
-            <div class="form-field">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" />
+          <dl class="stub-rows">
+            <div class="stub-row">
+              <dt>Client</dt>
+              <dd>Filed under her name, not an order number</dd>
             </div>
-            <div class="form-field">
-              <label for="business">Salon / business name</label>
-              <input type="text" id="business" name="business" autocomplete="organization" />
+            <div class="stub-row">
+              <dt>Method</dt>
+              <dd>Hand-tied weft &times; 4 rows</dd>
             </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-field">
-              <label for="type">I am a… *</label>
-              <select id="type" name="type" required>
-                <option value="" disabled selected>Select one</option>
-                <option value="salon">Salon owner / manager</option>
-                <option value="stylist">Independent stylist</option>
-                <option value="chain">Multi-location salon group</option>
-                <option value="educator">Educator / academy</option>
-              </select>
+            <div class="stub-row">
+              <dt>Length</dt>
+              <dd>18&Prime;, graduated to 20&Prime; through the back</dd>
             </div>
-            <div class="form-field">
-              <label for="method">Interested in *</label>
-              <select id="method" name="method" required>
-                <option value="" disabled selected>Select one</option>
-                <option value="mesh">Mesh integration</option>
-                <option value="weft">Wefts</option>
-                <option value="both">Both methods</option>
-                <option value="unsure">Not sure yet</option>
-              </select>
+            <div class="stub-row">
+              <dt>Density</dt>
+              <dd>62 g per row</dd>
             </div>
-          </div>
-
-          <div class="form-field">
-            <label for="location">City &amp; state / region</label>
-            <input type="text" id="location" name="location" />
-          </div>
-
-          <div class="form-field">
-            <label for="message">Tell us about your extension experience</label>
-            <textarea id="message" name="message" rows="4" placeholder="Years of experience, methods you currently offer, typical client base…"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-solid btn-large btn-block">Submit Application</button>
-          <p class="form-note">By applying you agree to be contacted about the Purple partner program. We never share your details.</p>
-
-          <div class="form-success" id="form-success" hidden>
-            <div class="success-icon">✓</div>
-            <h3>Application received!</h3>
-            <p>Thank you for applying to The Purple Crown partner network. Our team will review your application and reach out within two business days.</p>
-          </div>
-        </form>
+            <div class="stub-row">
+              <dt>Shade</dt>
+              <dd>4/18 — level 4 root melted to champagne</dd>
+            </div>
+            <div class="stub-row">
+              <dt>Matched to</dt>
+              <dd>Swatch received from the salon, 04 / 12</dd>
+            </div>
+          </dl>
+        </aside>
       </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="brand" href="#top">
-        <span class="brand-name">The Purple Crown <em>Extensions</em></span>
-      </a>
-      <p class="footer-tag">Luxury customizable hair extensions. Exclusively for professionals.</p>
-      <nav class="footer-links">
-        <a href="#methods">Methods</a>
-        <a href="#why">Why Purple</a>
-        <a href="#how">How It Works</a>
-        <a href="#signup">Become a Partner</a>
-      </nav>
-      <p class="copyright">© 2026 The Purple Crown Extensions. All rights reserved.</p>
+      <dl class="ledger">
+        <!-- Four facts about the hair. Cell 1 used to restate its own figure
+             ("6 axes / axes set on every order") and cell 4 parked a sales
+             metric in a band that otherwise describes the product. -->
+        <div class="ledger-cell">
+          <dt class="ledger-term">Color &middot; length &middot; density &middot; texture &middot; width &middot; finish</dt>
+          <dd class="ledger-figure">6 axes</dd>
+        </div>
+        <div class="ledger-cell">
+          <dt class="ledger-term">Remy human hair, cuticle aligned</dt>
+          <dd class="ledger-figure">100%</dd>
+        </div>
+        <div class="ledger-cell">
+          <dt class="ledger-term">In stock before custom blending</dt>
+          <dd class="ledger-figure">40 shades</dd>
+        </div>
+        <div class="ledger-cell">
+          <dt class="ledger-term">Service life with correct maintenance</dt>
+          <dd class="ledger-figure">12 months</dd>
+        </div>
+      </dl>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js"></script>
+  <!-- METHODS ------------------------------------------------------------- -->
+  <section class="section on-aubergine" id="methods">
+    <div class="wrap">
+      <div class="center">
+        <span class="label">Two systems</span>
+        <h2 class="display-l">One is for adding hair.<br />One is for replacing what's gone.</h2>
+        <p class="lede">
+          Most houses sell you wefts and call it a catalogue. A client with real thinning
+          cannot carry a weft — the tension goes straight into fragile hair. So we build both,
+          and we will tell you which one your client actually needs.
+        </p>
+      </div>
+
+      <div class="cards cards-2 mt-block-lg">
+        <article class="method-card reveal">
+          <!-- PHOTO SLOT: mesh integration, crown placement, 3/4 view -->
+          <div class="plate plate-wide">
+            <span class="plate-caption">Mesh integration — crown placement, week six</span>
+          </div>
+          <div class="method-body">
+            <span class="spec">Method 01</span>
+            <h3 class="display-m">Mesh Integration</h3>
+            <p>
+              A breathable mesh is fitted over the thinning area. Your client's own hair is
+              pulled through it, and hair is hand-tied to the mesh — not to her hair. No
+              adhesive, no tension on fragile strands, no shaving.
+            </p>
+            <ul class="ticks">
+              <li>For moderate to advanced thinning and early loss</li>
+              <li>Built to head measurements you take in the chair</li>
+              <li>HD lace shades matched to the client's scalp</li>
+              <li>6–8 week maintenance cycle</li>
+            </ul>
+            <a class="link" href="mesh-integration.html">
+              How the system is built <span class="link-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="method-card reveal">
+          <!-- PHOTO SLOT: hand-tied weft row, flat seam, close crop -->
+          <div class="plate plate-wide">
+            <span class="plate-caption">Hand-tied weft — beaded row, seam flush to the head</span>
+          </div>
+          <div class="method-body">
+            <span class="spec">Method 02</span>
+            <h3 class="display-m">Hand-Tied &amp; Machine Wefts</h3>
+            <p>
+              Double-drawn Remy in flat, lightweight rows. Hand-tied where the seam has to
+              disappear, machine-tied where the client needs density and a weft she can cut.
+              Install beaded, sewn, or hybrid.
+            </p>
+            <ul class="ticks">
+              <li>For clients with healthy hair who want length or volume</li>
+              <li>14&Prime;–26&Prime;, double-drawn from root to tip</li>
+              <li>Rooted and custom-blended shades, cut to order</li>
+              <li>Reusable up to twelve months with correct maintenance</li>
+            </ul>
+            <a class="link" href="wefts.html">
+              Weft specifications <span class="link-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR LAB ----------------------------------------------------------- -->
+  <section class="section on-light">
+    <div class="wrap split split-wide-right">
+      <!-- PHOTO SLOT: color lab bench — swatches, tint bowl, dyed samples -->
+      <div class="plate plate-tall reveal">
+        <span class="plate-caption">Color lab — matching a client cutting against stock</span>
+      </div>
+      <div class="split-copy">
+        <span class="label">The color lab</span>
+        <h2 class="display-l">Send a cutting. We match it and send a sample back.</h2>
+        <div class="prose">
+          <p class="lede">
+            Forty shades in stock covers most of the chair. It does not cover the client who
+            walked in with a color you spent three appointments building.
+          </p>
+          <p>
+            For those, mail us a cutting or a photo in daylight. Our colorists formulate,
+            dye, and return a <strong>physical sample for your approval</strong> before the
+            full order runs. Rooted melts, dimensional blends, and babylights are formulated
+            the same way — as a shade, not as an add-on.
+          </p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-outline" href="customization.html">Open the shade ring</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ----------------------------------------------------------------- -->
+  <section class="section on-aubergine">
+    <div class="wrap">
+      <div class="center">
+        <span class="label">Why partner with the house</span>
+        <h2 class="display-l">Made for the chair, not the marketplace.</h2>
+      </div>
+
+      <div class="cards mt-block">
+        <article class="card reveal">
+          <span class="card-index">PRICING</span>
+          <h3 class="display-s">You will not find us cheaper online</h3>
+          <p>
+            One wholesale sheet, published to you and not undercut on a marketplace. Your
+            extension service stays the most profitable hour in the chair.
+          </p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">TRAINING</span>
+          <h3 class="display-s">Certified before your first client order ships</h3>
+          <p>
+            Hands-on and virtual training for both methods, then ongoing masterclasses. You
+            are certified on the system before your first client order ships.
+          </p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">SERVICE</span>
+          <h3 class="display-s">One person, who knows your regulars</h3>
+          <p>
+            One person who knows your salon, your stock, and your regulars. Not a shared
+            inbox and not a chatbot.
+          </p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">SOURCING</span>
+          <h3 class="display-s">We will tell you which head the bundle came from</h3>
+          <p>
+            Ethically sourced, single-donor where the order allows, cuticle intact and
+            aligned. We will tell you where a bundle came from if you ask.
+          </p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">DEMAND</span>
+          <h3 class="display-s">Enquiries in your area go to your chair</h3>
+          <p>
+            Certified partners are listed in the house locator. Extension enquiries in your
+            area are routed to your chair, not to a retail cart.
+          </p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">EXCLUSIVITY</span>
+          <h3 class="display-s">There is no consumer storefront to lose her to</h3>
+          <p>
+            No consumer storefront, no clip-in line, no direct-to-client channel. The only
+            way to buy this hair is to sit in a partner's chair.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS ------------------------------------------------------------- -->
+  <section class="section on-light">
+    <div class="wrap">
+      <div class="center">
+        <span class="label">From application to install</span>
+        <h2 class="display-l">Four stages, in order.</h2>
+      </div>
+
+      <ol class="process seam-rule">
+        <li class="stage">
+          <div>
+            <h3 class="stage-title">Apply</h3>
+            <p class="stage-note">You — 10 minutes</p>
+          </div>
+          <p>
+            Tell us about your salon or independent practice, your license, and which method
+            you want to be certified on.
+          </p>
+        </li>
+        <li class="stage">
+          <div>
+            <h3 class="stage-title">Verification</h3>
+            <p class="stage-note">Us — about 2 business days</p>
+          </div>
+          <p>
+            We confirm your professional credentials and check that we are not already
+            saturated in your area. If we are, we will say so plainly.
+          </p>
+        </li>
+        <li class="stage">
+          <div>
+            <h3 class="stage-title">Certification</h3>
+            <p class="stage-note">Together — 1 to 2 days per method</p>
+          </div>
+          <p>
+            Hands-on or virtual training on mesh integration, wefts, or both, on a
+            mannequin and then on a model.
+          </p>
+        </li>
+        <li class="stage">
+          <div>
+            <h3 class="stage-title">Your first order</h3>
+            <p class="stage-note">You — trade pricing from day one</p>
+          </div>
+          <p>
+            Trade pricing, the color lab, the locator listing, and your account manager all
+            open the day you certify.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE ---------------------------------------------------------- -->
+  <section class="section-tight section on-bone2">
+    <div class="wrap">
+      <figure class="pull">
+        <hr class="seam seam-narrow" />
+        <blockquote>
+          A weft is a woven row. Somebody's hands tied ours, one strand at a time,
+          for a client they will never meet.
+        </blockquote>
+        <figcaption>Tying floor — the rule we hire against</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- INVITATION ---------------------------------------------------------- -->
+  <section class="section invitation">
+    <div class="wrap invitation-inner">
+      <span class="label">Partner applications</span>
+      <h2 class="display-l">Partnership is by application.</h2>
+      <p class="lede">
+        Open to licensed salons, independent stylists, multi-location groups, and academies.
+        No minimum order to apply, and no lock-in once you are in.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="partner.html">Begin your application</a>
+        <a class="btn btn-outline" href="education.html">See the certification path</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <div class="colophon-grid">
+      <div>
+        <!-- The house's own wordmark. The masthead keeps the drawn gold crest;
+             the colophon is where a mark signs off, so this is where the real
+             artwork belongs rather than sitting unused in the directory. -->
+        <a class="crest" href="index.html">
+          <img class="colophon-logo" src="logo-light.png"
+               alt="The Purple Crown Extensions" width="680" height="544" />
+        </a>
+        <p class="colophon-blurb">
+          Custom mesh integration and hand-tied wefts, built to order for licensed salons
+          and stylists.
+        </p>
+      </div>
+      <div>
+        <h3>Methods</h3>
+        <ul>
+          <li><a href="mesh-integration.html">Mesh Integration</a></li>
+          <li><a href="wefts.html">Hand-Tied &amp; Machine Wefts</a></li>
+          <li><a href="customization.html">Color Lab</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Partners</h3>
+        <ul>
+          <li><a href="partner.html">Apply for an account</a></li>
+          <li><a href="education.html">Certification</a></li>
+          <li><a href="partner.html#questions">Common questions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>The house</h3>
+        <ul>
+          <li><a href="about.html">Our standard</a></li>
+          <li><a href="about.html#sourcing">Sourcing</a></li>
+          <li><a href="mailto:partners@thepurplecrown.com">partners@thepurplecrown.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon-base">
+      <span>&copy; 2026 The Purple Crown Extensions</span>
+      <span>Trade only — never sold to the public</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
 </body>
 </html>
