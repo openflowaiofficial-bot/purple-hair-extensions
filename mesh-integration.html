@@ -193,7 +193,10 @@
   <section class="section on-light">
     <div class="wrap split split-wide-right">
       <!-- PHOTO SLOT: mesh base flat on the bench, showing lace and tie density -->
-      <div class="plate plate-tall">
+      <!-- data-plate="mesh": the only plate on the mesh page used to draw a
+           falling hair curtain under a caption about a net, so half the
+           product line had no drawing of itself on any of the seven pages. -->
+      <div class="plate plate-tall" data-plate="mesh">
         <span class="plate-caption">Mesh base, pre-fit — graduated tie density at the perimeter</span>
       </div>
       <div>
@@ -275,12 +278,18 @@
   <div class="wrap">
     <div class="colophon-grid">
       <div>
-        <!-- The house's own wordmark. The masthead keeps the drawn gold crest;
-             the colophon is where a mark signs off, so this is where the real
-             artwork belongs rather than sitting unused in the directory. -->
-        <a class="crest" href="index.html">
-          <img class="colophon-logo" src="logo-light.png"
-               alt="The Purple Crown Extensions" width="680" height="544" />
+        <!-- ONE HOUSE, ONE MARK.
+             Every page used to carry two different crowns: the masthead's
+             crest.svg — drawn gold linework, one weight, one colour — and here
+             at the bottom logo-light.png, a raster bevel-and-gem purple 3D
+             crown with its top clipped off inside the artwork itself. It was
+             the one genuinely cheap piece of dimension on the site, and it sat
+             directly beneath a hand-built shade ring signing off the work. The
+             colophon is where a mark signs, so it signs with the house's actual
+             mark, at 56px, set with the same type lockup as the masthead. -->
+        <a class="crest colophon-crest" href="index.html">
+          <img class="crest-mark" src="crest.svg" alt="" width="56" height="56" />
+          <span class="crest-name">The Purple Crown<em>Extensions</em></span>
         </a>
         <p class="colophon-blurb">
           Custom mesh integration and hand-tied wefts, built to order for licensed salons

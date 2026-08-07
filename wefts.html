@@ -92,7 +92,7 @@
       <div class="cards cards-2 mt-block">
         <article class="method-card">
           <!-- PHOTO SLOT: hand-tied weft seam macro, showing thin flat return -->
-          <div class="plate plate-wide">
+          <div class="plate plate-wide" data-plate="weft">
             <span class="plate-caption">Hand-tied seam — 1.2 mm return, lies flush</span>
           </div>
           <div class="method-body">
@@ -114,7 +114,18 @@
 
         <article class="method-card">
           <!-- PHOTO SLOT: machine weft cut mid-row showing sealed edge -->
-          <div class="plate plate-wide">
+          <!-- "weft-machine", NOT "weft". These two plates are the entire
+               visual argument under "Hand-tied hides. Machine-tied holds." and
+               both used to carry data-plate="weft" — the same generator, the
+               same knot fringe, the same seam, differing only by the seed taken
+               off the caption text. Side by side at 1440 they were the same
+               drawing twice, while their captions promised "1.2 mm return, lies
+               flush" against "cut and sealed mid-row, no shed".
+               The machine branch draws what a machine weft actually is: no knot
+               returns above the stitch, uniform machine-pitched origins, a
+               denser straighter curtain, and a thick sealed band with two runs
+               of stitching instead of the house's hand-tied descending ticks. -->
+          <div class="plate plate-wide" data-plate="weft-machine">
             <span class="plate-caption">Machine weft — cut and sealed mid-row, no shed</span>
           </div>
           <div class="method-body">
@@ -187,7 +198,11 @@
         </ul>
       </div>
       <!-- PHOTO SLOT: two bundles side by side, ends comparison, hard light -->
-      <div class="plate plate-tall">
+      <!-- "ends", not "weft". This carried the weft generator, so it painted a
+           stitched seam and a return fringe straight across a plate that is
+           about HEMS — a horizon line through the one drawing a stylist reads
+           looking for a difference that was not in it. -->
+      <div class="plate plate-tall" data-plate="ends">
         <span class="plate-caption">Ends comparison — double-drawn, left; single-drawn, right</span>
       </div>
     </div>
@@ -227,12 +242,18 @@
   <div class="wrap">
     <div class="colophon-grid">
       <div>
-        <!-- The house's own wordmark. The masthead keeps the drawn gold crest;
-             the colophon is where a mark signs off, so this is where the real
-             artwork belongs rather than sitting unused in the directory. -->
-        <a class="crest" href="index.html">
-          <img class="colophon-logo" src="logo-light.png"
-               alt="The Purple Crown Extensions" width="680" height="544" />
+        <!-- ONE HOUSE, ONE MARK.
+             Every page used to carry two different crowns: the masthead's
+             crest.svg — drawn gold linework, one weight, one colour — and here
+             at the bottom logo-light.png, a raster bevel-and-gem purple 3D
+             crown with its top clipped off inside the artwork itself. It was
+             the one genuinely cheap piece of dimension on the site, and it sat
+             directly beneath a hand-built shade ring signing off the work. The
+             colophon is where a mark signs, so it signs with the house's actual
+             mark, at 56px, set with the same type lockup as the masthead. -->
+        <a class="crest colophon-crest" href="index.html">
+          <img class="crest-mark" src="crest.svg" alt="" width="56" height="56" />
+          <span class="crest-name">The Purple Crown<em>Extensions</em></span>
         </a>
         <p class="colophon-blurb">
           Custom mesh integration and hand-tied wefts, built to order for licensed salons

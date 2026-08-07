@@ -83,41 +83,75 @@
       <div class="center mb-block">
         <span class="label">The house ring</span>
         <h2 class="display-l">Pick a blade. Read the shade.</h2>
+        <!-- Cut to one line. The object below it is the point of this section
+             and it was landing last: 513px of eyebrow, headline and lede sat
+             above a fan that then had to fight for the fold. The two sentences
+             that went were the working-subset arithmetic and a pointer at the
+             last blade — both of which the ring itself says better. -->
         <p class="lede">
-          The same ring your account manager brings to a consultation. Fourteen blades in
-          five families — the working subset of forty stock shades. The last blade is the
-          one most of our volume actually runs on.
+          The same ring your account manager brings to a consultation — the working
+          subset of forty stock shades.
         </p>
       </div>
 
       <div class="ring-module">
         <div class="ring-stage">
           <!-- Only radios inside the radiogroup. The hub is the rivet, not a
-               choice, and its code duplicates what .ring-readout-family already
-               announces through the live region; the noscript block is not a
-               swatch either, so it belongs to the stage. -->
+               choice, so it is aria-hidden.
+
+               CUT: <span class="ring-hub-code">18</span>, the shade number
+               printed on the rivet. A rivet is a mechanical fastener; nothing
+               is printed on one. The number was already on screen 40px to the
+               right as "Blonde — no. 18", and this comment used to acknowledge
+               the duplication while keeping it. It was load-bearing in the
+               worst way: it is why the disc had to be 21% wide — four times a
+               real rivet, burying the blade roots, which are the only place the
+               lamina stack can be seen as a stack — and it is what bought the
+               --hub-dx / --hub-dy compensation pair, two hand-derived offsets
+               re-derived by hand at every breakpoint. Cutting one numeral cut
+               all of it.
+
+               The fallback copy is NOT in a <noscript>. That fires only when
+               scripting is disabled, never when this file 404s or is blocked —
+               and the blades are all built by JS. See .ring-noscript. -->
           <div class="ring" role="radiogroup" aria-label="Shade ring — select a shade to read its specification">
-            <div class="ring-hub" aria-hidden="true">
-              <span class="ring-hub-code">18</span>
-            </div>
+            <div class="ring-hub" aria-hidden="true"></div>
           </div>
-          <noscript>
-            <span class="ring-noscript">
-              The shade ring needs JavaScript. The full forty-shade chart ships in the
-              welcome kit — your account manager brings the physical ring to consultation.
-            </span>
-          </noscript>
+          <p class="ring-noscript">
+            The shade ring needs JavaScript. The full forty-shade chart ships in the
+            welcome kit — your account manager brings the physical ring to consultation.
+          </p>
         </div>
+
+        <!-- THE TOUCH CONTROL. Empty here and filled by main.js from the same
+             SHADES array, in the same loop, driving the same select() — so the
+             fan and this row are two views of one selection and cannot
+             disagree. CSS shows it only below 860px, where a fanned blade's
+             widest reachable run is about 18px and cannot hold a 24x24 target;
+             above that it is display:none and never reaches the accessibility
+             tree, so a desktop reader meets exactly one radiogroup.
+
+             It carries its own role and label rather than borrowing the fan's,
+             because below 860 both are on screen and a screen-reader user is
+             entitled to know which one they are in. -->
+        <div class="ring-chips" role="radiogroup"
+             aria-label="Shade list — the same fourteen shades as a list"></div>
 
         <div>
           <p class="spec">Selected shade</p>
-          <div class="ring-readout" aria-live="polite">
+          <!-- Display, not announcement. This was the live region, and paint()
+               writes it on every mouseenter — so one pointer sweep across the
+               fan queued fourteen announcements and ended on a shade that was
+               not the selected one. Only select(), the commit path, writes the
+               live span below. -->
+          <div class="ring-readout">
             <p class="ring-readout-family">Blonde — no. 18</p>
             <h3 class="ring-readout-name">Champagne</h3>
             <p class="ring-readout-note">
               Beige blonde with the yellow pulled out. Our highest-volume blonde.
             </p>
           </div>
+          <span class="vh ring-live" role="status" aria-live="polite"></span>
           <div class="btn-row">
             <a class="btn btn-outline" href="partner.html">Request a physical ring</a>
           </div>
@@ -332,12 +366,18 @@
   <div class="wrap">
     <div class="colophon-grid">
       <div>
-        <!-- The house's own wordmark. The masthead keeps the drawn gold crest;
-             the colophon is where a mark signs off, so this is where the real
-             artwork belongs rather than sitting unused in the directory. -->
-        <a class="crest" href="index.html">
-          <img class="colophon-logo" src="logo-light.png"
-               alt="The Purple Crown Extensions" width="680" height="544" />
+        <!-- ONE HOUSE, ONE MARK.
+             Every page used to carry two different crowns: the masthead's
+             crest.svg — drawn gold linework, one weight, one colour — and here
+             at the bottom logo-light.png, a raster bevel-and-gem purple 3D
+             crown with its top clipped off inside the artwork itself. It was
+             the one genuinely cheap piece of dimension on the site, and it sat
+             directly beneath a hand-built shade ring signing off the work. The
+             colophon is where a mark signs, so it signs with the house's actual
+             mark, at 56px, set with the same type lockup as the masthead. -->
+        <a class="crest colophon-crest" href="index.html">
+          <img class="crest-mark" src="crest.svg" alt="" width="56" height="56" />
+          <span class="crest-name">The Purple Crown<em>Extensions</em></span>
         </a>
         <p class="colophon-blurb">
           Custom mesh integration and hand-tied wefts, built to order for licensed salons

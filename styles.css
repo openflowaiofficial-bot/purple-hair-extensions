@@ -70,6 +70,23 @@
 
   /* Motion */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* ---- The lamp ---------------------------------------------------------
+     ONE key light, upper-left, declared once and obeyed by every raised
+     surface on the site. Any element that reads as lifted casts with
+     --lift-shadow and catches --lift-edge on the edge facing the lamp.
+
+     RULING: --light-angle is the KEY light. The hero's radial at 50% -10%
+     is AMBIENT crown glow and is deliberately NOT re-expressed here — an
+     ambient dome and a key light are different lights and the hero needs
+     both. Do not move one to the other's position.
+     --------------------------------------------------------------------- */
+  --light-angle: 135deg;
+  --lift-shadow: 10px 12px 28px -12px rgba(6, 3, 10, 0.7);
+  --lift-edge:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset -1px 0 0 rgba(255, 255, 255, 0.05);
+  --lift-edge-soft: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* --- Ground: dark (the default) ------------------------------------------ */
@@ -819,6 +836,9 @@ a {
 /* --------------------------------------------------------------------------
    8. Hero — the strand field and the trade docket
    -------------------------------------------------------------------------- */
+/* The radial is the AMBIENT crown glow and stays exactly where it is at
+   50% -10%. It is not the key light and must not be moved to --light-angle:
+   a dome and a lamp are two different lights and this hero wants both. */
 .hero {
   position: relative;
   padding-block: clamp(3.6rem, 9vw, 7rem) clamp(4rem, 9vw, 7.5rem);
@@ -828,16 +848,89 @@ a {
     var(--noir);
 }
 
-.strand-field {
+/* Three depth planes instead of one flat curtain, so the headline sits INSIDE
+   a volume rather than on top of a texture. The total filament budget does not
+   grow — the same 54 strands are split across the three planes. */
+/* THE FIELD IS HELD OFF THE COPY AT EVERY WIDTH, NOT JUST ON A PHONE.
+   The mask that does this was scoped to max-width:860 only, so the exact fault
+   its own comment documented was still live at 1440: filaments crossed "hair
+   off a shelf", "cut, tied," and "swatch you send us", and a bright gold strand
+   ran vertically straight through the middle of the SEE THE TWO METHODS button
+   and split it in two. The near plane sits at 0.82 opacity with nothing holding
+   it back. This is the decoration drawing attention to the website instead of
+   to the product, on the one surface that has to convert.
+
+   The horizontal ramp puts the field in the right of the hero, behind and
+   around the build sheet, and takes it off the left column where the headline,
+   the lede and both CTAs live.
+
+   THE 56% IS MEASURED, NOT PICKED. At 1440 the copy column ends at x=756; on a
+   100deg gradient line across a 1440-wide box that point sits at t=0.52, so the
+   mask has to stay fully transparent past it or a filament is still crossing
+   type — a first attempt that ramped from 34% left a 15/255 delta on the
+   headline, which verify-round.mjs measures in pixels and now holds at <= 6.
+   Transparent to 56%, up by 88%: the field lives from about x=816 rightward,
+   which is the build sheet's column and the air above it.
+
+   Yes, that means most of the field sits behind an opaque panel. That is the
+   trade and it is the right one — a hero prop that sells nothing does not get
+   to compete with the one headline and the two CTAs that do. What survives is
+   atmosphere in the top-right and across the ledger band, which is all this
+   effect was ever for.
+
+   Safe here and nowhere else — the hero's 3D context was deleted, so this
+   element has no preserve-3d for a mask to flatten. See .strand-plane. */
+.strand-scene {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    100deg,
+    transparent 0 56%,
+    rgba(0, 0, 0, 0.45) 72%,
+    #000 88%
+  );
+}
+
+/* THE Z IS GONE, DELIBERATELY, AND THIS IS THE HONEST VERSION.
+   The three planes used to sit at translateZ(-260 / -90 / +40) under
+   perspective: 900 with compensating scales of 1.289 / 1.1 / 0.956. Run the
+   arithmetic and the apparent size comes out 1.0001, 1.0000 and 1.0005: the Z
+   was exactly and deliberately neutralised, so at rest the three planes were
+   pixel-identical to three flat planes. The only thing the 3D contributed was
+   foreshortening the scroll drift — 80 -> 62, -40 -> -36, -140 -> -147 — which
+   are three numbers you can simply type, and now are.
+
+   So the perspective, the preserve-3d context and the landmine rules that came
+   with them ("must never gain overflow, filter, opacity or a mask") bought
+   nothing that blur, opacity and translate were not already doing. Identical
+   render, one fewer 3D context on the site, and the shade ring becomes the ONLY
+   place on seven pages with a perspective at all. That is the point: the whole
+   depth budget is spent in the one place the object is in the reader's hands. */
+.strand-plane {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  opacity: 0.62;
 }
 
-.strand-field path {
+.strand-plane[data-depth="back"] {
+  filter: blur(1.1px);
+  opacity: 0.34;
+  --drift: 62px;
+}
+
+.strand-plane[data-depth="mid"] {
+  opacity: 0.62;
+  --drift: -36px;
+}
+
+.strand-plane[data-depth="near"] {
+  opacity: 0.82;
+  --drift: -147px;
+}
+
+.strand-plane path {
   fill: none;
   stroke-linecap: round;
 }
@@ -845,6 +938,66 @@ a {
 @keyframes strand-draw {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+/* Parallax with zero JS and zero requestAnimationFrame — the planes drift at
+   three different rates against the scroll, entirely off the main thread.
+
+   `translate` is used as a PROPERTY, not a transform function, precisely so
+   each plane's translateZ()+scale() transform survives untouched.
+
+   RULING: where animation-timeline is unsupported this block simply never
+   applies and the hero renders static, correctly layered and perfectly good.
+   There is deliberately NO scroll-listener fallback. That is the intended
+   degradation, and it is what keeps this site at zero rAF. */
+@keyframes strand-drift {
+  to {
+    translate: 0 var(--drift);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .strand-plane {
+    animation: strand-drift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strand-plane {
+    animation: none !important;
+    translate: none !important;
+  }
+}
+
+/* Under 861px: one plane, and the field becomes a CROWN BAND rather than a
+   curtain. At 390px the lateral drift is a fraction of width, so the whole fan
+   was ±78px across a hero over 1100px tall — the filaments were parallel
+   vertical lines running at full contrast straight through the lede, the gold
+   APPLY button and the outline CTA, with a gold filament crossing the words
+   "cut, tied, and colored". main.js shortens the strands to the top fifth and
+   opens the fan; the mask finishes the job by fading the field out before it
+   can reach a word of copy, and the opacity comes down to a texture.
+
+   REPLACES the desktop horizontal ramp rather than composing with it. Multiple
+   mask layers composite as `add` — a union, not an intersection — so declaring
+   both would have made the mask LARGER than either, which is the opposite of
+   what either is for. Single column here means there is no right-hand column to
+   push the field into, so the constraint that matters is vertical: the field
+   becomes a crown band above the copy and stops. */
+@media (max-width: 860px) {
+  .strand-scene {
+    mask-image: linear-gradient(to bottom, #000 0 10%, transparent 26%);
+  }
+
+  .strand-plane {
+    filter: none;
+    opacity: 0.34;
+    /* A lone plane drifting against nothing reads as a bug, not as depth. */
+    animation: none;
+    translate: none;
   }
 }
 
@@ -866,10 +1019,24 @@ a {
   margin-top: 1.9rem;
 }
 
+/* The stub now reads as a card LYING ON the strand field rather than a
+   rectangle drawn over it: the house lamp's shadow beneath it, and the same
+   lamp catching its top and right edges.
+
+   DELIBERATE REFUSAL: this does not go on a Z plane, and neither does any
+   other raised surface on the site. At translateZ(30px) under perspective:900
+   an element scales 1.034 — Chrome rasterises that cleanly, WebKit can
+   rasterise at 1x and upscale, which softens exactly the IBM Plex Mono spec
+   type this stub exists to make readable. A physically consistent shadow buys
+   about 90% of the depth at 0% of the text-quality risk. The same reasoning
+   kills tilt-on-hover everywhere on this site. */
 .order-stub {
-  background: rgba(18, 12, 24, 0.62);
+  background:
+    linear-gradient(var(--light-angle), rgba(255, 255, 255, 0.045), transparent 42%),
+    linear-gradient(rgba(18, 12, 24, 0.62), rgba(18, 12, 24, 0.62));
   border: 1px solid var(--line-gold);
   padding: 1.4rem 1.5rem 1.6rem;
+  box-shadow: var(--lift-shadow), var(--lift-edge);
 }
 
 .stub-head {
@@ -960,7 +1127,9 @@ a {
    the hero's 0.62 alpha exists to let the strand field through behind it. */
 .on-light .order-stub,
 .on-bone2 .order-stub {
-  background: var(--noir);
+  background:
+    linear-gradient(var(--light-angle), rgba(255, 255, 255, 0.045), transparent 42%),
+    linear-gradient(var(--noir), var(--noir));
 }
 
 /* Page hero (interior pages). The corner radial was a gradient filling space
@@ -1117,6 +1286,10 @@ a {
   display: grid;
   place-items: center;
   border: 1px solid var(--line-gold);
+  /* Half the stub's strength, the same lamp. Enough that the plates pick up a
+     top edge and read as deliberate material rather than as reserved space.
+     Like the stub, a plate never goes on a Z plane. */
+  box-shadow: var(--lift-edge-soft);
   background:
     repeating-linear-gradient(
       92deg,
@@ -1132,8 +1305,12 @@ a {
    pitch: one hairline in six at 0.15. (Two passes at a 4px and 9px pitch and
    0.28 alpha were tried first and read as corduroy, not as hair — a texture
    dense enough to see individually stops reading as strand.) */
+/* The dark-value inset vanishes entirely on a light ground — the same failure
+   the comment above documents for the old gradient. On bone the lamp's top
+   edge has to be drawn in white, not in a lightened dark. */
 .on-light .plate,
 .on-bone2 .plate {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   border-color: rgba(90, 70, 110, 0.34);
   background:
     repeating-linear-gradient(
@@ -1147,6 +1324,32 @@ a {
 .on-light .plate,
 .on-bone2 .plate {
   --fg-accent: var(--gold-deep);
+}
+
+/* THE STRIPE IS DEAD WEIGHT ONCE A CANVAS HAS DRAWN.
+   repeating-linear-gradient is a BACKGROUND, so it paints beneath the
+   positioned canvas and shows straight through every gap in the drawn field:
+   a perfectly regular, dead-straight 6px vertical grid sitting under an
+   irregular hand-drawn one. Two unrelated textures at two different scales
+   fighting inside the same rectangle reads as a print or halftone artifact —
+   graph paper someone drew on — which is precisely the "failed image load"
+   read the plate exists to avoid.
+
+   main.js writes data-plate-w only at the END of drawPlate, so the stripe
+   survives for the no-JS state, for a blocked script, and for the window
+   between the canvas being inserted and being painted. */
+.plate[data-plate-w] {
+  background-image: linear-gradient(
+    155deg,
+    var(--plum-raised),
+    var(--aubergine) 45%,
+    var(--noir) 100%
+  );
+}
+
+.on-light .plate[data-plate-w],
+.on-bone2 .plate[data-plate-w] {
+  background-image: linear-gradient(155deg, #ece7f0, #cbbdd6 45%, #9b85ad 100%);
 }
 
 .plate-tall {
@@ -1165,6 +1368,24 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* The drawn filament mass. main.js inserts this canvas as the plate's first
+   child on the plate's first intersection — never on load — and draws into it
+   ONCE. The CSS gradient and filament texture above stay underneath it.
+
+   A plate stands in for a PHOTOGRAPH, and a photograph is still. There is no
+   sheen pseudo, no blend mode, no scroll-driven anything and no rAF in here.
+   The one moving light on this site is the one the ring implies, and that one
+   does not actually move either.
+
+   No z-index: .plate-caption carries z-index:2 and has to stay above this. */
+.plate-render {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .plate-caption {
@@ -1442,104 +1663,583 @@ a {
 /* --------------------------------------------------------------------------
    15. The shade ring — functional swatch fan
    --------------------------------------------------------------------------
-   Geometry: the blades carry their angle as --a and CSS scales the whole span
-   with --span-scale, so the fan narrows on small screens without JS. At
-   SPAN 116 the extreme blades sit at 58° from vertical: they still read as a
+   Geometry: main.js writes each blade's angle as --a and CSS never rescales it.
+   There used to be a --span-scale multiplier here and this comment used to
+   promise that "CSS scales this down again on small screens" — it was declared
+   as 1 in both places it existed, so it never scaled anything, and pulling it
+   would have rotated the geometry while leaving the light where it was, since
+   --face0, --sx and --sy are all computed from the UNSCALED angle. Both the
+   lever and the claim are gone. SPAN in main.js is the one place the fan
+   narrows, because it is the one place that moves geometry and light together.
+
+   At SPAN 116 the extreme blades sit at 58° from vertical: they still read as a
    ring rather than a peacock tail, every tip clears the hub, and the arc stays
    inside .ring-stage at every width.
    -------------------------------------------------------------------------- */
-/* The fan is the page's hero moment and it was rendering about 415px wide in
-   a 528px column inside a section over 1000px deep — a small object in a lot
-   of empty ground. The stage takes the wider track and the blades fill it. */
+/* THE SIGNATURE OBJECT IS NOW THE SIZE OF THE CLAIM IT MAKES.
+   The whole depth budget of seven pages went into the fan, and it was rendering
+   496x373px inside a section 1066px tall — physically smaller than the headline
+   above it, occupying about 12% of its own section, with 180px of dead ground
+   underneath. Restraint means spending boldness in ONE place; it does not mean
+   whispering there. The stage takes the dominant track and the readout column
+   takes what it actually needs, which is a name, a family and three lines. */
 .ring-module {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.35fr 0.65fr;
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: center;
 }
 
+/* --------------------------------------------------------------------------
+   THE OBJECT
+   --------------------------------------------------------------------------
+   The whole depth budget of this site is spent here, because this is the only
+   place on seven pages where the thing being sold is literally in the reader's
+   hands at the moment of the sale. Fourteen laminae stack on a rivet in TRUE Z.
+
+   Thickness is derived, not picked — and it is now derived AT EVERY WIDTH
+   rather than at one. A real swatch is 20mm x 1.2mm, so t = 0.06 * blade width,
+   and a blade is 8.4% of the stage: t = 0.504% of the stage's inline size. That
+   is exactly what 0.504cqi means, so --t reads the stage through a container
+   query and stays physically correct as the stage goes fluid.
+
+   It used to be a hard 3px stepping to 1.5px at 860. 3px was right at 1440 and
+   nowhere else: at 941 the correct value is 2.3px (30% too thick) and one pixel
+   lower it stepped to 1.5px (35% too thin). The derivation the whole object
+   rests on was exact at a single viewport.
+
+   container-type: inline-size is safe HERE specifically: .ring-stage already
+   carries `perspective` (so it is already a containing block), its size comes
+   from width + aspect-ratio rather than from its contents, and it is NOT the
+   preserve-3d element — .ring is. Containment on the perspective parent does
+   not flatten the child's 3D context. Verified live: the stack still measures
+   fourteen distinct Z positions.
+
+   THREE THINGS WILL SILENTLY FLATTEN THIS SCENE BACK TO A DRAWING, with no
+   error anywhere:
+     - any z-index inside the preserve-3d context (the browser sorts by z-index
+       BEFORE z-position, so one stray `z-index: 1` collapses the stack)
+     - `filter` on .blade or any ancestor (establishes a containing block and
+       flattens the blade's own 3D children in WebKit)
+     - `mix-blend-mode` anywhere inside .ring (creates a stacking context)
+   All three are banned in here. Brightness is a light term, not a filter.
+   -------------------------------------------------------------------------- */
 .ring-stage {
   position: relative;
   width: 100%;
-  max-width: 660px;
+  max-width: 820px;
   margin-inline: auto;
-  aspect-ratio: 1 / 0.86;
+  /* Lets --t derive from the stage's real width. See the note above. */
+  container-type: inline-size;
+  /* Was 1 / 0.86, and it reserved more height than the object ever used: with
+     --pivot at 19% and a 58% blade, the centre tip reached only 77% of the
+     stage, leaving a permanent ~120px void on desktop and a near screen-height
+     scroll gap on a phone between the lede and the first blade tip. The stage
+     is now cut to the object and the blade grows into it. */
+  aspect-ratio: 1 / 0.78;
+  /* --pivot lives on the STAGE, not the ring, because the vanishing point has
+     to be the rivet. Custom properties inherit, so the blades' `bottom` still
+     resolves against it. */
+  --pivot: 19%;
+  /* CUT: --hub-dx / --hub-dy. They were the screen-space compensation for
+     projecting the rivet's centre out of the 3D context, and they existed only
+     to park a two-digit shade code on the disc — a number already printed
+     inches to the right as "BLONDE — NO. 18", and acknowledged in the markup as
+     a duplicate. Two hand-derived magic offsets, re-derived by hand at every
+     breakpoint, bought by a redundant readout. Cutting the readout cut both. */
+  perspective: 1400px;
+  perspective-origin: 50% calc(100% - var(--pivot));
 }
 
 /* The rivet sits low in the frame so the fan opens upward, the way a stylist
-   holds a ring. Blades and hub share one pivot. */
+   holds a ring. Blades and hub share one pivot.
+
+   The rest pose is 6deg of tilt and 4deg of yaw. The asymmetric yaw is the
+   whole difference between a photograph and a diagram — and because it is a
+   static transform rather than an animation, it survives reduced-motion
+   completely intact. Nothing here moves; the depth is geometry, not motion. */
 .ring {
   position: relative;
   width: 100%;
   height: 100%;
-  --pivot: 19%;
-  --span-scale: 1;
+  /* CUT: --span-scale. It was declared 1 on this rule and re-declared 1 in the
+     860 block, so it was always exactly 1, yet it multiplied into four .blade
+     transforms AND into --lit. Meanwhile --face0, --sx and --sy are computed in
+     main.js from the UNSCALED angle. Set it to anything but 1 and the geometry
+     rotates while the light stays put: the one-lamp claim breaks silently, with
+     no error anywhere. A lever that cannot be pulled without breaking the object
+     is not a lever. If the fan ever does need to narrow, SPAN in main.js is the
+     honest place — one number that drives geometry and light together. */
+  --t: calc(0.504cqi);
+  --n: 14;
+  --z-front: calc(var(--n, 14) * var(--t) + 30px);
+  transform-style: preserve-3d;
+  transform-origin: 50% calc(100% - var(--pivot));
+  transform: rotateX(6deg) rotateY(-4deg);
 }
 
+/* REINSTATED, and the argument for cutting it was wrong on both counts.
+   The rivet head sits at Z ~= --z-front + 10; the top lamina tops out at
+   --n * --t. A shadow sitting just above the top lamina IS the away-from-the-
+   viewer cast — it is the contact shadow of the head DOWN onto the stack, which
+   is the only direction a rivet head can cast. The old rule put it there
+   correctly. The second objection (invisible, because the hub covered its
+   centre) was an argument for OFFSETTING it along the lamp vector, not for
+   deleting it — and with the rivet cut from 21% to 13% there is now bare
+   lamina around the disc for it to fall on.
+
+   Without it the blades terminated dead at the disc edge with zero contact
+   darkening anywhere on the upper rim, which is the specific reason the hub
+   read as a sticker dropped onto a drawing rather than a part pressed through
+   fourteen sheets. Offset by (+6, +6) — the same screen-space lamp vector the
+   blades' own --sx/--sy are rotated from. */
+.ring::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: var(--pivot);
+  width: 17%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, 50%) translateZ(calc(var(--n) * var(--t) + 1px))
+    translate(6px, 6px);
+  background: radial-gradient(circle, rgba(9, 5, 13, 0.55) 0 40%, transparent 72%);
+}
+
+/* Registering --face is what lets it TRANSITION. Unregistered custom
+   properties change discretely, so the blade's 1.25x brightness step landed in
+   one frame while its geometry glided over 340ms — it popped, then moved. A
+   browser without @property ignores this block entirely and the transition
+   entry on .blade becomes a no-op, so it is a pure enhancement. */
+@property --face {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+/* ONE LIGHT, FOURTEEN SURFACES.
+   An element rotated by A that draws an internal gradient at local angle G
+   presents that gradient on screen at G+A. So to hold the lamp fixed in screen
+   space, each blade draws its own gradient at (--light-angle - its own angle).
+   Two identical pigments at opposite ends of the arc then genuinely look like
+   different material, which is the one thing no amount of flat fill can fake.
+
+   --face is the facing term. JS writes --face0 (inline custom properties beat
+   any stylesheet rule, so JS must never write --face itself); CSS reads it
+   through --face and the hover/selected states override --face. Every one of
+   these has a CSS default, so a partial JS failure degrades to a lit-but-
+   unmodulated blade rather than an invisible one. */
 .blade {
   position: absolute;
-  z-index: 1;
   left: 50%;
   bottom: var(--pivot);
   width: 8.4%;
-  height: 58%;
+  /* Grew with the stage: the tightened aspect-ratio gave back the reserved
+     void above the fan, and the blade takes it rather than leaving a gap. */
+  height: 61%;
+  --face: var(--face0, 1);
+  --lit: calc(var(--light-angle) - var(--a, 0deg));
   transform-origin: 50% 100%;
-  transform: translateX(-50%) rotate(calc(var(--a, 0deg) * var(--span-scale)));
-  border: 1px solid rgba(18, 12, 24, 0.55);
-  border-radius: 40% 40% 6% 6% / 22% 22% 4% 4%;
+  transform: translateX(-50%) rotate(var(--a, 0deg))
+    translateZ(calc(var(--i, 0) * var(--t)));
+  /* CUT: `border: 1px solid rgba(18,12,24,0.55)`. It contradicted the object's
+     own thesis. Every gradient here derives its angle from --light-angle, and
+     then each blade was wrapped in a lamp-INDEPENDENT dark stroke on all four
+     sides regardless of which side the light was on. At 4x that keyline is what
+     made the fan read as vector illustration rather than as a photographed
+     object, and it was also the second of two concentric 1px strokes on a
+     rotated box with a compound radius — while the comment below declared "ONE
+     EDGE TREATMENT". The edge is now lit, and it is lit by the same lamp as
+     everything else. See the box-shadow. */
+  /* THE ARCS MEET. At 40%/22% on a blade rendering ~69px wide, the two top
+     corner arcs came to about 55px against 69px of width, leaving ~14px of
+     dead-flat top between them: fourteen guitar picks with faceted shoulders,
+     and it is the silhouette of the one object the whole site is built around.
+     At 50% the arcs meet exactly and the tip becomes a dome. The vertical
+     radius rises with it so the dome stays elongated rather than going circular. */
+  border-radius: 50% 50% 6% 6% / 24% 24% 4% 4%;
   padding: 0;
   cursor: pointer;
-  /* A hairline edge so the near-black shades (1B Raven) separate from the
-     aubergine panel. Fourteen drop shadows stacked into a mud blob. */
-  outline: 1px solid rgba(227, 207, 166, 0.35);
-  outline-offset: -1px;
-  transition: height 0.32s var(--ease), filter 0.32s var(--ease);
+  /* --pigment must ALWAYS be an <image>, never a bare hex: a background-color
+     is only legal in the FINAL layer of the shorthand, and the lighting layer
+     sits above it. main.js emits a gradient for both shade types. */
+  /* BOTH ENDS OF THE LAMP SCALE. The highlight terms always scaled with
+     --face; the shadow terms were hard constants. At the arc extremes --face
+     floors at 0.35, so blade 0 met a 9.8% white against a 32% black: #191317
+     rendered ~#110d10 and #2a1d19 ~#1d1411, about twelve levels apart, and
+     1B Raven, 2 Espresso and 4 Chestnut collapsed into one undifferentiated
+     black mass at every width — separated only by their hairline. A swatch
+     ring whose darkest four shades cannot be told apart has failed at the only
+     job it has, and this is the object the whole depth budget was spent on.
+
+     --shade-d is the second term, written per blade by main.js from the
+     pigment's own luminance, because a level-1 black cannot carry the shading
+     a level-18 blonde can. Blade 0's dark end goes from 0.320 to 0.035. */
+  background:
+    linear-gradient(
+      var(--lit),
+      rgba(255, 255, 255, calc(0.28 * var(--face))) 0%,
+      rgba(255, 255, 255, calc(0.08 * var(--face))) 30%,
+      rgba(255, 255, 255, 0) 52%,
+      rgba(0, 0, 0, calc(0.14 * var(--face) * var(--shade-d, 0.7))) 74%,
+      rgba(0, 0, 0, calc(0.32 * var(--face) * var(--shade-d, 0.7))) 100%
+    ),
+    /* Fibre grain: fine hairlines running ALONG the blade, not across it.
+       Hair sheen runs with the fibre and is broken up; a broad cross-grain
+       gloss is the signature of moulded plastic, which is what these blades
+       were reading as. A background image, never a filter — see the ban above. */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.038) 0 1px,
+      transparent 1px 5px
+    ),
+    /* AMBIENT. A key lamp alone lets the darkest pigment fall BELOW the
+       luminance of the panel it sits on: 1B Raven sampled ~#1b161a against an
+       aubergine ground of #24152e, so the ladder terminated in a hole at the
+       left end of the arc — the blade read as a gap in the fan rather than as
+       the darkest shade in the catalogue. --shade-d fixed the separation
+       BETWEEN blades 0-3; it could not lift blade 0 off the ground, because
+       nothing in the model was lifting anything.
+       A flat 5% ambient fill is the physically right answer and it is
+       systemic: it applies to all fourteen pigments equally, it is
+       lamp-independent (ambient light has no direction, which is what makes it
+       ambient), and it guarantees no pigment can ever render below the panel.
+       Above the pigment, below the key. */
+    linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)),
+    var(--pigment, linear-gradient(#000, #000));
+  /* ONE EDGE TREATMENT, AND IT LIVES IN THE BLADE'S OWN LAYER.
+     There used to be two: a 1px border and a 1px outline at outline-offset
+     -1px, occupying the same physical pixel on a rotated box with a compound
+     40%/22% radius. `outline` paints as a separate operation from the
+     element's layer, so on a high-curvature rotated edge — catastrophically on
+     the selected blade, which also tips on rotateX — it rasterised as a
+     stippled, torn contour, and that is the dotted gold visible along every
+     blade tip at 1440, 700 and 390px. The untransformed hub's 1px gold circle
+     renders perfectly smooth in the same frame, on the same rasteriser, so
+     this was not software-rasteriser noise.
+
+     An INSET box-shadow follows border-radius and rasterises inside the
+     transformed layer, against the fill rather than as a separate stroked
+     rounded path. It also frees `outline` to mean focus and nothing else.
+
+     THE EDGE IS NOW LIT, NOT DRAWN. It used to be a flat gold hairline on all
+     four sides plus a flat dark border on all four sides — two lamp-independent
+     strokes on an object whose entire claim is that one lamp governs every
+     surface. main.js already rotates the screen lamp into each blade's local
+     frame to produce --sx/--sy, so it now also emits --ex/--ey: the same
+     vector at unit length. The blade gets a LIT top edge and a DARK under-edge
+     from the one lamp, which is precisely what 1.2mm of laminate looks like
+     from the side — and 1.2mm is the thickness this object exists to encode.
+     Blades at the top of the arc catch the light on their upper edge; blades at
+     the extremes catch it on their flank. That is the whole difference between
+     a photographed object and a drawn one.
+
+     The third shadow is the screen-space vector (6.4, 6.4) rotated into each
+     blade's local frame by JS, so all fourteen fall the same way ON SCREEN and
+     the fan draws the stepped ridge a real ring has. */
+  box-shadow:
+    inset var(--ex, 0px) var(--ey, 0px) 0 1px rgba(240, 226, 196, 0.45),
+    inset calc(-1 * var(--ex, 0px)) calc(-1 * var(--ey, 0px)) 0 1px
+      rgba(9, 5, 13, 0.55),
+    var(--sx, 0px) var(--sy, 0px) 9px -3px rgba(9, 5, 13, 0.62);
+  transition: transform 0.34s var(--ease), box-shadow 0.34s var(--ease);
 }
 
+/* --face joins the transition SEPARATELY, behind a support test, so a parser
+   that will not take a custom property as a transition-property cannot take
+   the transform transition down with it in the same shorthand.
+
+   Why it is here at all: --face is an unregistered custom property by default
+   and therefore changes discretely, so the 1.25x brightness step on hover and
+   selection landed in one frame while the blade glided forward over 340ms —
+   it popped, then moved. Registered and transitioned, light and geometry
+   travel together, which is the entire claim this object makes. */
+@supports (transition-property: --face) {
+  .blade {
+    transition-property: transform, box-shadow, --face;
+    transition-duration: 0.34s;
+    transition-timing-function: var(--ease);
+  }
+}
+
+/* The specular sweep. Stays fixed in screen space with the rest of the lamp —
+   so blades at the top of the arc catch a highlight and blades at the extremes
+   go matte. The 0.4px lift is deliberate: coplanar surfaces z-fight.
+
+   NARROWED. It used to run 0.34 to 0.46 white across a 20% span — a broad,
+   soft, high-contrast diagonal gloss band, which is the signature of a moulded
+   plastic surface. With the dome-top silhouette these blades read as makeup
+   applicators or a hardware-store paint-chip fan rather than as hair swatches,
+   and the lighting model underneath was far too good to spend on the wrong
+   material. Hair sheen is narrow and broken; the grain layer on .blade does
+   the breaking. */
+.blade::before {
+  content: "";
+  position: absolute;
+  inset: 5% 0 14%;
+  border-radius: inherit;
+  pointer-events: none;
+  transform: translateZ(0.4px);
+  opacity: calc(var(--face) * 0.55);
+  background: linear-gradient(
+    var(--lit),
+    transparent 41%,
+    rgba(255, 255, 255, 0.22) 46%,
+    rgba(255, 255, 255, 0.3) 48%,
+    transparent 53%
+  );
+}
+
+/* Hover is the same physical act as selection at a third of the amplitude, so
+   preview and commit read as one gesture. Nothing grows. */
+.blade:hover {
+  transform: translateX(-50%) rotate(var(--a, 0deg))
+    translateZ(calc(var(--i, 0) * var(--t) + 14px));
+}
+
+/* CUT: will-change used to sit on .blade[aria-checked="true"], where it could
+   never help. It was applied BY the selected state, so it arrived in the same
+   style change as the transform it was meant to prepare, and a selected
+   blade's transform never changes again — so it pinned one permanent
+   composite layer for the life of the page and bought nothing.
+
+   A hint scoped to `.ring:hover .blade` was considered and rejected: it is
+   fourteen layers for the duration of a hover, `will-change: transform` is
+   spec'd to behave as if a transform were present (which is a containing
+   block and a stacking context inside a preserve-3d scene carrying a 0.4px
+   ::before), and there is nothing here to optimise — the site runs zero rAF.
+
+   AND THE "ALREADY FREE" CLAIM WAS ONLY HALF TRUE, so it is corrected rather
+   than repeated. The TRANSFORM half of the blade's transition is genuinely a
+   compositor animation. The --face half is not: --face is a registered custom
+   property that feeds this blade's own background gradient, so the 1.25x
+   brightening on hover and selection repaints the blade's full background for
+   340ms instead of compositing it. Measured honestly that is two or three
+   ~51x290px element repaints at a time during a pointer sweep, on desktop,
+   which is where hover exists at all — not a performance problem, but not free
+   either, and this file does not get to describe it as free.
+
+   It could be made free: a second pseudo-element at translateZ(0.5px) carrying
+   the highlight increment, transitioning OPACITY instead of --face, and the
+   pigment layer would stop repainting entirely. That was weighed and declined.
+   It adds a third stacked surface inside the one preserve-3d scene on the site
+   (alongside a 0.4px ::before that already exists to avoid coplanar z-fighting)
+   to buy back a repaint nobody can perceive. Restraint cuts both ways: not
+   every true finding is worth the risk of acting on, and the honest response to
+   a comment that oversells is to correct the comment. */
+
+/* Selection is thumbing one swatch forward against a client's hair: the blade
+   lifts to an ABSOLUTE front Z and tips toward the viewer, hinged at the rivet
+   (transform-origin is already 50% 100%).
+
+   The Z must be absolute. Relative Z leaves blade 0 sitting behind blade 13
+   the moment you select it.
+
+   THE TIP IS TAPERED BY THE BLADE'S OWN ANGLE. rotateX is composed AFTER
+   rotate(--a), so it hinges in the blade's LOCAL frame: at the arc extremes
+   (±58deg) a flat -7deg swung the tip across the FRONT of the object rather
+   than toward the viewer. Press Home and blade 0 became a 300x215px near-black
+   paddle lying diagonally across the fan, occluding six other blades — the
+   darkest shade in the ladder turning into a silhouette at the exact moment
+   the user asked to look at it. --face0 is already a cos^2.2 term of that same
+   angle, so it costs nothing to spend here: the centre blades tip exactly as
+   they did, and the extremes stop sweeping.
+
+   This rule must follow :hover — both are (0,2,0), so hovering the selected
+   blade would otherwise drop it back down. */
+.blade[aria-checked="true"] {
+  transform: translateX(-50%) rotate(var(--a, 0deg))
+    translateZ(var(--z-front)) rotateX(calc(-7deg * var(--face0, 1)));
+  /* Inset, like the resting hairline, for the same reason: a 0-blur spread
+     ring is a separate stroked rounded path on a rotated, tipped box and it
+     rasterised as torn as the outline did — so at 100% you could not tell
+     which blade was selected except that one was taller. */
+  box-shadow:
+    inset 0 0 0 2px var(--gold-soft),
+    0 10px 26px -8px rgba(9, 5, 13, 0.72);
+}
+
+/* Pigment never changes on any state. Only light does. That is the point. */
 .blade:hover,
 .blade[aria-checked="true"] {
-  height: 64%;
-  filter: brightness(1.14);
-  z-index: 2;
+  --face: calc(var(--face0, 1) * 1.25);
 }
 
-/* box-shadow, not outline — outline at (0,2,0) beat :focus-visible at (0,1,0)
-   and the fan had no keyboard focus indicator at all. */
-.blade[aria-checked="true"] {
-  box-shadow: 0 0 0 2px var(--gold-soft);
-}
+/* FOCUS IS DRAWN THE WAY SELECTION IS DRAWN: INSIDE THE LAYER.
+   This sheet already establishes, at length, that `outline` paints as a
+   separate stroked path OUTSIDE the transformed layer, and that on a rotated
+   box with a compound radius it tears. That is exactly why the resting edge
+   gave its outline up for an inset shadow. Focus — the one state on the
+   signature control that MUST be crisp — was then left on the banned
+   technique. It is now drawn the same way as everything else on this object.
 
+   (Round 1 blamed the visible tearing on the software rasteriser and round 2
+   proved the harness's --disable-gpu was dropping paint outright. Both were
+   true of the SCREENSHOTS; neither makes `outline` the right tool on a rotated
+   compound-radius box. The harness is fixed and so is this.)
+
+   FOCUS AND SELECTION DIFFER IN HUE, NOT IN TWO PIXELS OF OFFSET. The ring
+   opens pre-selected on blade 6, so the first thing a keyboard user does — Tab
+   in — used to produce two concentric gold rings 2px apart. Bone is
+   unmistakable against gold at any size, and it sits at the silhouette edge
+   where a focus ring belongs, with the gold selection ring just inside it.
+
+   This has to sit after [aria-checked] — both are (0,2,0) and the later wins. */
 .blade:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-  z-index: 3;
+  outline: none;
+  box-shadow:
+    inset 0 0 0 3px var(--bone),
+    var(--sx, 0px) var(--sy, 0px) 9px -3px rgba(9, 5, 13, 0.62);
 }
 
+.blade[aria-checked="true"]:focus-visible {
+  box-shadow:
+    inset 0 0 0 3px var(--bone),
+    inset 0 0 0 6px var(--gold-soft),
+    0 10px 26px -8px rgba(9, 5, 13, 0.72);
+}
+
+/* CUT: `.blade:focus-visible:not([aria-checked="true"])`, which lifted a
+   focused-but-unselected blade to --z-front + 4px, and a comment claiming this
+   is what keeps Home and End visible for keyboard users. The rule could never
+   match. Focus only ever reaches a blade through select(i, true), which sets
+   aria-checked on that same element in the same call, and the roving tabindex
+   means Tab lands on the selected blade too. There is no reachable state where
+   a blade is :focus-visible and not [aria-checked]. The Home/End protection it
+   took credit for is delivered by .blade[aria-checked="true"] above, which
+   already lifts to an absolute front Z.
+
+   If focus and selection should genuinely separate — the stronger radiogroup
+   pattern — that is aria-activedescendant, and then a rule like this becomes
+   true and earns its place. It is not true today, so it is gone. */
+
+/* FORCED COLORS: THE PIGMENT IS THE INFORMATION.
+   Every state on this control — the resting lit edge, the 2px gold selection
+   ring, the bone focus ring, the directional lamp shadow — is a box-shadow,
+   and CSS Color Adjust forces box-shadow to `none` in forced-colors mode. In
+   Windows High Contrast all four vanished in the same frame and the ring became
+   fourteen shapes with no visible answer to the only question it exists to
+   answer. Worse, Chrome does not force background-image, so the blades KEPT
+   their pigments: it looked fine and reported nothing.
+
+   For a colour-swatch control the pigment and its rings are the content, not
+   decoration, so opting the blade out of forced colours is the correct call
+   rather than a workaround. This is the one place on the site that does it. */
+@media (forced-colors: active) {
+  .blade {
+    forced-color-adjust: none;
+  }
+}
+
+/* The rivet head sits proud of EVERYTHING — machined face, a lit top edge and
+   a dark under-edge, under the same lamp as the rest of the object.
+
+   It clears --z-front, not just the stack. Two reasons, and they agree. It is
+   what the object does: blades pivot UNDER the rivet head, so a blade thumbed
+   forward passes beneath it rather than over it. And it is what the interface
+   needs: the hub code is a readout, and the first build of this put the
+   selected blade in front of it, which greyed out the one number the ring
+   exists to report. */
 .ring-hub {
   position: absolute;
-  z-index: 4;
   left: 50%;
   bottom: var(--pivot);
-  transform: translate(-50%, 50%);
-  width: 21%;
+  transform: translate(-50%, 50%) translateZ(calc(var(--z-front) + 10px));
+  /* 13%, DOWN FROM 21%. It was a doorknob, not a rivet: a 131px disc against a
+     ~300px blade is a ratio of 0.44, where a real swatch-ring rivet is about
+     0.10. It swallowed the first third of every blade — and the blade roots are
+     the ONLY place the lamina stack can ever be seen as a stack, which is the
+     entire thing the depth budget was spent on. The one element that proves this
+     is a RING rather than a fan of loose sticks was hiding the proof.
+     All fourteen roots cluster well inside this, so 13% is still geometrically
+     ample for the pivot it has to cover. */
+  width: 13%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--noir);
+  /* THE RIVET OBEYS THE LAMP NOW.
+     The whole idea of this object is one light and fourteen surfaces: every
+     blade derives its gradient angle from calc(var(--light-angle) - var(--a)).
+     The rivet — the mechanical fact that makes this a ring rather than a fan of
+     loose sticks — was lit by a hard-coded `from 210deg` that obeyed no lamp at
+     all, and it was keyed to PANEL COLOUR: aubergine and plum, where a swatch
+     ring's rivet is metal. It rendered as a hard dark vertical band straight
+     down the middle, killing the contrast of the code sitting on it, and read
+     as a UI badge dropped on top of a beautiful drawing. The one element that
+     should prove the object is real was the one element breaking the rule.
+
+     The conic is now derived from --light-angle and keyed to hardware —
+     brushed brass under the same 135deg key.
+
+     THE FACE NO LONGER SWALLOWS THE CHAMFER. The radial ran #332a21 fully
+     opaque to 46% and only faded out by 76%, so the brushed-brass conic
+     underneath survived as a ~6px arc at the rim: the turned chamfer the
+     comment promised never actually rendered, and what shipped was a flat dark
+     khaki puck. Pulled back to 24%/62%, the conic occupies a real annulus and
+     reads as machined metal, and the face is lifted out of khaki. The knurl is
+     the milled grip on the rim, keyed to the same lamp as everything else. */
+  background:
+    repeating-conic-gradient(
+      from var(--light-angle) at 50% 50%,
+      rgba(255, 255, 255, 0.03) 0 1.2deg,
+      transparent 1.2deg 2.4deg
+    ),
+    radial-gradient(circle at 50% 50%, #514637 0 24%, rgba(81, 70, 55, 0) 62%),
+    conic-gradient(
+      from calc(var(--light-angle) + 75deg) at 50% 50%,
+      #3a3026,
+      #66543a 18%,
+      #b6a179 30%,
+      #463a2a 52%,
+      #26201a 74%,
+      #7d6a49 88%,
+      #3a3026
+    );
   border: 1px solid var(--gold);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 0.5rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.6),
+    0 8px 16px -5px rgba(0, 0, 0, 0.65);
 }
 
-.ring-hub-code {
-  font-family: var(--mono);
-  font-size: clamp(0.7rem, 1.3vw, 0.9rem);
-  letter-spacing: 0.06em;
-  color: var(--gold);
+/* PROVABLE DEGRADATION. Effectively dead code on every engine shipping today,
+   and worth its four lines: on anything without preserve-3d every translateZ
+   above degrades to nothing, and this restores the exact z-index ladder the
+   flat fan used to rely on. The control never depends on 3D to be operable —
+   aria-checked's gold ring and the focus outline carry every state change. */
+@supports not (transform-style: preserve-3d) {
+  .blade {
+    z-index: 1;
+  }
+
+  .blade:hover,
+  .blade[aria-checked="true"] {
+    z-index: 2;
+  }
+
+  .blade:focus-visible {
+    z-index: 3;
+  }
+
+  .ring-hub {
+    z-index: 4;
+  }
 }
 
+/* CUT: .ring-hub-code — the shade number printed inside the rivet.
+   A rivet is a mechanical fastener. Nothing is printed on it. The number it
+   carried was already on screen 40px to its right as "BLONDE — NO. 18", and
+   the markup itself acknowledged the duplication. That one redundant numeral
+   was load-bearing in the worst way: it is why the rivet had to be 21% wide
+   (four times the right size, burying the blade roots), and it is what bought
+   the entire --hub-dx / --hub-dy compensation apparatus — two hand-derived
+   magic offsets that had to be re-derived by hand at every breakpoint, plus a
+   long argument about keeping the text out of the 3D context at 1.000x so it
+   would not soften.
+
+   Deleting the numeral deletes all of it: the oversized disc, both offsets,
+   the sibling-of-.ring positioning trick, and the JS that wrote it. The shade
+   code is reported once, in the readout, where a spec belongs. */
 .ring-readout {
   margin-top: 1.9rem;
   padding-top: 1.6rem;
@@ -1574,15 +2274,156 @@ a {
   max-width: 44ch;
 }
 
-.ring-noscript {
+/* --------------------------------------------------------------------------
+   THE TOUCH CONTROL
+   --------------------------------------------------------------------------
+   A fanned ring overlaps by definition — that is the object. On a phone that
+   makes the blades unreachable rather than merely small: the widest horizontal
+   run on an occluded blade is about 18px. So below 860 the same fourteen shades
+   get a real control underneath the picture.
+
+   These are NOT a second source of truth. main.js builds them from the same
+   SHADES array in the same loop and both call the same select(i), so the fan,
+   the chips, the readout and the live region can never disagree. Desktop never
+   sees them; the media query at the bottom of the sheet is the only thing that
+   turns them on, and they are display:none here so a desktop reader never pays
+   for fourteen extra boxes in layout.
+   -------------------------------------------------------------------------- */
+.ring-chips {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1.6rem;
+}
+
+.ring-chip {
+  /* 44px is the floor, and it is a floor on the RENDERED box, not on a number
+     the stylesheet happens to pin. Nothing overlaps these. */
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: 1px solid var(--line-gold);
+  border-radius: 2px;
+  cursor: pointer;
   font-family: var(--mono);
   font-size: 0.68rem;
-  line-height: 1.7;
   letter-spacing: 0.06em;
-  color: var(--gold);
+  color: var(--gold-soft);
+  transition: border-color 0.24s var(--ease), color 0.24s var(--ease);
+}
+
+/* The pigment travels with the chip, so the row is a legible ladder rather
+   than fourteen identical codes. Set from --pigment by main.js — the same
+   custom property the blade uses, so there is one pigment definition per
+   shade in the whole build. */
+.ring-chip::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 1px;
+  background: var(--pigment, #000);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.ring-chip[aria-checked="true"] {
+  border-color: var(--gold);
+  color: var(--bone);
+  background: rgba(198, 162, 104, 0.12);
+}
+
+.ring-chip:focus-visible {
+  outline: 2px solid var(--bone);
+  outline-offset: 2px;
+}
+
+/* The chips are flat, untransformed boxes, so `outline` is the correct tool
+   here and forced colours keep it. Only the pigment swatch needs opting out —
+   it is information, exactly as the blades' pigment is. */
+@media (forced-colors: active) {
+  .ring-chip::before {
+    forced-color-adjust: none;
+  }
+}
+
+/* THE FALLBACK IS NOT IN A <noscript>, AND THAT IS THE FIX.
+   <noscript> fires only when scripting is DISABLED. It does not fire when
+   main.js 404s, is blocked by a network or an extension, or throws before
+   initShadeRing — and .ring ships empty except for the hub, because all
+   fourteen blades are built by JS. In any of those cases the signature page
+   rendered a lone disc floating in a 660px stage with no explanation.
+
+   main.js stamps data-js on <html> before anything can throw, so the copy is
+   always in the DOM and the stylesheet decides who sees it. The 404 and
+   blocked cases are now fully covered; the throw-after-stamp case at worst
+   shows the rivet beside real copy rather than alone. */
+/* Absolutely positioned and centred INSIDE the stage's reserved box, rather
+   than collapsing the stage. main.js is a parser-blocking script at the end of
+   <body>, so data-js lands before first paint in practice — but a display
+   toggle on an overlay costs no reflow either way, where collapsing the
+   stage's aspect-ratio would be a visible layout jump if it ever did flash. */
+/* It is a SENTENCE TO A STYLIST, not a spec key. It was set at 0.68rem
+   letterspaced uppercase mono — the house's shade-code voice — which is the
+   wrong register for the one piece of copy on the page that has to apologise
+   for a missing control. Jost at body size, and it reads as prose.
+
+   The centring also used to be dead: `display: grid; place-content: center` was
+   declared and then `display: block` was re-declared eight lines later, so
+   place-content never applied and the computed value sat orphaned. One
+   declaration now, and it centres. */
+.ring-noscript {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--mist);
   text-align: center;
-  display: block;
+  max-width: 46ch;
+  margin-inline: auto;
   padding: 2rem;
+}
+
+html[data-js] .ring-noscript {
+  display: none;
+}
+
+/* Without JS there are no blades, so there is no ring and no rivet — and the
+   stage must not reserve the geometry of an object that is not there. It held
+   a 607x474px void at 1440 with three lines of copy floating in it, which also
+   pushed the readout column low and detached from its own heading.
+
+   .ring goes with them: `role="radiogroup"` and its aria-label are authored
+   into the static HTML while all fourteen role="radio" children are built by
+   main.js, so if the script 404s, is blocked, or throws before initShadeRing, a
+   screen reader would announce a named radio group containing no options — an
+   empty control the user is invited to operate. Hiding the container removes it
+   from the accessibility tree, and .ring-noscript explains the absence to
+   everyone rather than to sighted users only. */
+html:not([data-js]) .ring-stage {
+  aspect-ratio: auto;
+  min-height: 0;
+}
+
+/* .ring-chips is in the same position as .ring and goes the same way: it is
+   authored with role="radiogroup" and a label, and every one of its radios is
+   built by main.js. An empty named radio group is a control the user is invited
+   to operate and cannot. Hidden, it leaves the tree entirely and .ring-noscript
+   speaks for both. */
+html:not([data-js]) .ring,
+html:not([data-js]) .ring-hub,
+html:not([data-js]) .ring-chips {
+  display: none;
+}
+
+html:not([data-js]) .ring-noscript {
+  position: static;
 }
 
 /* --------------------------------------------------------------------------
@@ -1700,10 +2541,26 @@ a {
   align-self: start;
 }
 
+/* THE ASK GETS THE LAMP.
+   This panel was `background: var(--aubergine)` sitting on a section ground
+   that is also aubergine — sample inside it and outside it and both come back
+   srgb(36, 21, 46). The site's single conversion event was the flattest
+   surface on seven pages, invisible except for its hairline, while a
+   decorative hero prop that sells nothing carried the full lift treatment and
+   eight image plates carried half of it. The declared lamp was applied to
+   every raised surface on the site except the one the business depends on.
+
+   This is the .order-stub treatment exactly: same gradient, same shadow pair,
+   no Z transform — so it takes on none of the text-rasterisation risk that
+   .order-stub's comment refuses Z for, and the form reads as a build sheet
+   lying on a desk, which is what every other page says this house works from. */
 .form-shell {
   position: relative;
-  background: var(--aubergine);
+  background:
+    linear-gradient(var(--light-angle), rgba(255, 255, 255, 0.045), transparent 42%),
+    var(--aubergine);
   border: 1px solid var(--line-gold);
+  box-shadow: var(--lift-shadow), var(--lift-edge);
   padding: clamp(1.5rem, 3vw, 2.4rem);
   overflow: hidden;
 }
@@ -2089,12 +2946,30 @@ a {
   gap: clamp(1.8rem, 4vw, 3.4rem);
 }
 
-/* The house's real wordmark. The masthead keeps the drawn gold crest — the
-   render would fight the type system at 38px — but the client's own artwork
-   has to appear somewhere, and the colophon is where a mark signs off. */
-.colophon-logo {
-  width: 190px;
-  height: auto;
+/* CUT: .colophon-logo, and logo-light.png with it.
+   The masthead signed with crest.svg — drawn gold linework at one weight in one
+   colour, sitting inside the type system — and then the colophon signed the
+   same page with a raster bevel-and-gem purple 3D crown whose top is clipped
+   inside the artwork itself. Two different crowns on every page, and the raster
+   one was the single genuinely cheap piece of dimension on a site that spent
+   its whole depth budget hand-building a shade ring directly above it.
+
+   The argument for keeping it was that the client's own artwork "has to appear
+   somewhere". It does not have to appear where it undercuts the work. The
+   colophon is where a mark signs off, so it signs with the house mark, at 56px,
+   in the masthead's own lockup. */
+.colophon-crest .crest-mark {
+  width: 56px;
+  height: 56px;
+}
+
+/* The lockup grows with the mark — this is the signature, not the wayfinder. */
+.colophon-crest .crest-name {
+  font-size: 1.16rem;
+}
+
+.colophon-crest .crest-name em {
+  font-size: 0.86rem;
 }
 
 .colophon-blurb {
@@ -2208,11 +3083,13 @@ html[data-js] .reveal:not([data-shown="true"]) {
     grid-column: 2;
   }
 
-  .ring-stage {
-    max-width: 460px;
-    margin-inline: auto;
-    width: 100%;
-  }
+  /* .ring-stage's 460px cap MOVED OUT of this block and into the 860 one, so
+     the object changes size on the same width it changes pose. It used to
+     narrow here while --t, the yaw, the front lift and the shadow blur all held
+     full desktop amplitude down to 860 — an 80px band (and before that a 240px
+     band) running a 42px stack and a 6deg/4deg pose on a mobile-sized stage.
+     Between 861 and 940 the module is single-column and the fan now takes the
+     full width, which is the right rendering for a tablet in portrait. */
 
   .field {
     grid-template-columns: 1fr;
@@ -2306,6 +3183,82 @@ html[data-js] .reveal:not([data-shown="true"]) {
   }
 }
 
+/* THE RING CHANGES GEAR ONCE, AT ONE WIDTH.
+   It used to have three breakpoints and none of them lined up: the stage
+   narrowed to 460px at 940, the blade shadows were dropped at 860, and the
+   geometry — --t, the yaw, the blade width — only changed at 620. So the
+   621–860 band ran full desktop amplitude (42px stack, 72px front lift,
+   6deg/4deg pose) on a 460px stage with the shadows removed that carry the
+   stepped ridge between laminae. iPad portrait is 768px. That band was the
+   weakest rendering of the signature object on the site and nobody had looked
+   at it, because there is no tablet screenshot in the set.
+
+   860 is the right width to pick: it already matches drawStrandField's mobile
+   branch and the plate dpr cap in main.js, so the whole site changes gear
+   together. The blade shadow is not deleted here, only tightened — 9px of blur
+   is the genuinely expensive part, 4px is not, and without any directional
+   shadow the fan loses the ridge that proves it is a stack. */
+@media (max-width: 860px) {
+  .ring-stage {
+    /* Both the size and the pose change here now, on one number. */
+    max-width: 460px;
+    aspect-ratio: 1 / 0.86;
+    --pivot: 20%;
+    /* A shorter throw for a much smaller stage, so the foreshortening reads
+       the same relative to the object rather than to the viewport. */
+    perspective: 900px;
+  }
+
+  .ring {
+    /* --t is NOT overridden here any more. It derives from the stage's own
+       width through 0.504cqi, so a 460px stage produces 2.3px automatically and
+       the lamina stays physically correct on both sides of this breakpoint
+       instead of stepping 3px -> 1.5px across one pixel of viewport.
+       Only the LIFT and the pose come down: the Z stack itself is
+       compositor-only and costs nothing, so the scene is not flattened on
+       mobile. The yaw goes entirely — on a narrow stage an asymmetric 4 degrees
+       stops reading as a viewpoint and starts reading as a layout error. */
+    --z-front: calc(var(--n, 14) * var(--t) + 18px);
+    transform: rotateX(4deg);
+  }
+
+  .blade {
+    width: 9.5%;
+    height: 55%;
+    box-shadow:
+      inset var(--ex, 0px) var(--ey, 0px) 0 1px rgba(240, 226, 196, 0.45),
+      inset calc(-1 * var(--ex, 0px)) calc(-1 * var(--ey, 0px)) 0 1px
+        rgba(9, 5, 13, 0.55),
+      var(--sx, 0px) var(--sy, 0px) 4px -2px rgba(9, 5, 13, 0.5);
+  }
+
+  .blade[aria-checked="true"] {
+    box-shadow: inset 0 0 0 2px var(--gold-soft);
+  }
+
+  .blade[aria-checked="true"]:focus-visible {
+    box-shadow:
+      inset 0 0 0 3px var(--bone),
+      inset 0 0 0 6px var(--gold-soft);
+  }
+
+  /* THE FAN STOPS BEING THE ONLY CONTROL.
+     Measured at 390px by walking elementFromPoint across the stage and
+     totalling reachable area per blade: blade 7 got 365 CSS px² with a widest
+     horizontal run of 18px, because the selected blade sits in front of it. It
+     cannot contain a 24x24 square at all. Blades 1-7 ran 18-27px at their
+     widest, and every blade's 24px circle intersects its neighbour's, so
+     neither WCAG 2.2 SC 2.5.8's 24x24 minimum nor its spacing exception is met.
+     Overlap is inherent to a fanned ring — it is what the object IS — so the
+     fix is not to un-fan it.
+     Below 860 the same fourteen shades also render as a row of >= 44px mono
+     chips driven by the same select(i). The fan becomes the picture; the chips
+     are the control. Both stay in sync because there is only one select(). */
+  .ring-chips {
+    display: flex;
+  }
+}
+
 @media (max-width: 620px) {
   .colophon-grid {
     grid-template-columns: 1fr;
@@ -2327,31 +3280,6 @@ html[data-js] .reveal:not([data-shown="true"]) {
 
   .cards-4 {
     grid-template-columns: 1fr;
-  }
-
-  /* Fourteen 13%-wide blades across a NARROWED 107° arc occluded each other
-     almost completely — you could count about six, and the hub sat on top of
-     the blade bases. Blade width relative to tip separation is what governs
-     legibility, and at 9.5% on the full arc it matches the desktop ratio
-     (1.27 vs 1.25) that reads cleanly. The pivot drops so the taller fan has
-     room, and the stage grows with it rather than clipping. */
-  .ring-stage {
-    aspect-ratio: 1 / 0.95;
-  }
-
-  .ring {
-    --span-scale: 1;
-    --pivot: 20%;
-  }
-
-  .blade {
-    width: 9.5%;
-    height: 52%;
-  }
-
-  .blade:hover,
-  .blade[aria-checked="true"] {
-    height: 58%;
   }
 
   /* Two ragged different-width pills under a headline looked like the layout
