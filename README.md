@@ -53,3 +53,6 @@ node check.mjs   # runtime assertions: contrast, ring semantics, form failure pa
 ## Deploy
 
 Static site on [Vercel](https://vercel.com) — no build configuration needed.
+
+The Vercel project is connected to this repo, so a push to `master` deploys to
+production. `master` is the default branch; there is no `main`.
