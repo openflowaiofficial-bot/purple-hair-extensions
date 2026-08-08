@@ -1,8 +1,10 @@
 # The Purple Crown Extensions
 
-Trade-only marketing and partner-application site for **The Purple Crown Extensions (TPC)** —
-custom mesh integration systems and hand-tied / machine wefts, sold to licensed salons and
-stylists only. Never to consumers.
+Public marketing site for **The Purple Crown Extensions** — a professional-only hair
+extension house selling to licensed stylists and salons. Never to consumers.
+
+Live: https://purple-hair-extensions.vercel.app · Intended domain:
+**www.purplecrownextensions.com**
 
 ## Stack
 
@@ -10,49 +12,57 @@ Plain static HTML / CSS / JavaScript — no build step. Open any page from disk.
 
 | File | Role |
 | --- | --- |
-| `index.html` | Home — hero build sheet, the two methods, color lab, process |
-| `mesh-integration.html` · `wefts.html` | The two products |
-| `customization.html` | The color lab and the interactive shade ring |
-| `education.html` · `about.html` | Certification, the house |
-| `partner.html` | The application — the site's only conversion goal |
-| `styles.css` | One shared stylesheet |
-| `main.js` | One shared script |
-| `crest.svg` · `favicon.svg` | Flat gold line crown, drawn to the hairline weight of the seam |
+| `index.html` | Home — the hair, the collections, the two ways in |
+| `who-we-are.html` | Brand story, sourcing heritage, commitments |
+| `become-certified.html` | Crown Your Style, class calendar, Salon Partner section |
+| `professional-login.html` | Wholesale access, what is inside an account |
+| `contact.html` | Contact form and direct routes |
+| `styles.css` · `main.js` | One shared stylesheet, one shared script |
+| `crest.svg` · `favicon.svg` | Line crown mark |
 
 ## Design system
 
-- **Palette** — noir-violet `#120c18`, aubergine `#24152e`, antique gold `#c6a268`,
-  bone `#f4f1f6`.
-- **Type** — Bodoni Moda (display), Jost (body/labels), IBM Plex Mono (specs and shade codes).
-  Bodoni's optical size is **pinned to `opsz 11`** wherever it is set large; on `auto` the
-  browser picks the 96 master and its hairlines antialias away at 1x.
-- **Signature elements** — the hero strand field, the shade ring on `customization.html`,
-  and the seam divider (a hairline with descending ticks, like a hand-tied weft row).
-- **Ground model** — colour is never picked by descendant selector. A section declares a
-  ground (`--fg-display`, `--fg-accent`, `--fg-body`, `--fg-faint`, `--rule`) and components
-  consume those tokens. Dark islands (`.plate`, `.form-shell`, `.order-stub`) re-declare the
-  dark set on themselves so they cannot inherit light-ground ink.
-- **Image slots** — there is no photography yet. `.plate` elements are deliberate drawn
-  panels with a filament texture and a TPC monogram. To swap in a photo, replace the
-  `.plate` contents with `<img class="plate-img">` at the same aspect class.
+Built to the client brief of 2026-08-07.
 
-## Form submissions
+- **Palette** — warm ivory `#f8f4ed` is the page. Near-black `#131013`, deep amethyst
+  `#5a2d6e` as a *recognisable accent* only, subtle champagne `#d6bd8a`. The site is
+  deliberately **not** mostly purple.
+- **Type** — Bodoni Moda for headlines, Jost for body. No monospace: it reads technical.
+  Bodoni's optical size is pinned to `opsz 11`; on `auto` the browser picks the 96 master
+  and its hairlines antialias away.
+- **Grounds** — a band declares its ink (`--fg`, `--fg-soft`, `--fg-mark`, `--fg-rule`)
+  and components consume it. Never pick colour by descendant selector.
+- **Restraint** — minimal borders, no rounded cards, no gradients as filler. Hierarchy
+  comes from space and scale.
 
-`partner.html` POSTs JSON to `/api/apply`. **It only shows the confirmation panel on a 2xx
-response.** Any other outcome reveals a failure state with a pre-filled `mailto:` fallback —
-the form never prints a receipt for a message that was not transmitted. Point `action` at a
-Vercel serverless function or a CRM webhook before launch.
+## Photography
 
-## Tooling
+**The site is designed around large hair photography that does not exist yet.** Every
+image position is a `.frame` — a quiet tonal field, deliberately not an outlined box.
+Search the HTML for `<!-- PHOTO:` to find each slot and what it should hold.
 
-```bash
-./render.sh      # full-page PNGs of every page into screens/ (headless Chrome, no deps)
-node check.mjs   # runtime assertions: contrast, ring semantics, form failure path, gutters
+To place a real image, drop an `<img class="shot">` inside the frame:
+
+```html
+<div class="frame frame-portrait">
+  <img class="shot" src="hair-01.jpg" alt="" />
+</div>
 ```
+
+The hero takes `<img class="hero-shot">` as the first child of `.hero`.
+
+## Not yet wired up
+
+- **Class dates are placeholders.** See the comment above the calendar in
+  `become-certified.html`. Each row becomes a bookable class — as a Shopify product with
+  the date as a variant and seats as inventory — and `REGISTER` should point at it.
+- **Professional Login** links to email. Point it at the Shopify customer login once the
+  store exists (`WIRE UP` comment in `professional-login.html`).
+- **The contact form does not send.** It validates, then hands the visitor a pre-filled
+  `mailto:` and says plainly that nothing was transmitted. It never prints a receipt for
+  a message that was not sent.
 
 ## Deploy
 
-Static site on [Vercel](https://vercel.com) — no build configuration needed.
-
-The Vercel project is connected to this repo, so a push to `master` deploys to
-production. `master` is the default branch; there is no `main`.
+Static site on [Vercel](https://vercel.com), connected to this repo — a push to `master`
+deploys to production. `master` is the default branch; there is no `main`.

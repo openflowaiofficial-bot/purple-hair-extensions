@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — The Purple Crown Extensions</title>
+  <meta name="description" content="Reach The Purple Crown Extensions about certification, salon partnership, or your professional account." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead-bar">
+    <a class="crest" href="index.html">
+      <img src="crest.svg" alt="" width="34" height="34" />
+      <span class="crest-name">The Purple Crown<em>Extensions</em></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="who-we-are.html">Who We Are</a>
+      <a class="nav-link" href="become-certified.html">Become Certified</a>
+      <a class="nav-link" href="professional-login.html">Professional Login</a>
+      <a class="nav-link" href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="opener">
+    <div class="wrap opener-grid">
+      <div>
+        <hr class="mark" />
+        <span class="eyebrow">Contact</span>
+        <h1 class="d1">Talk to the house.</h1>
+      </div>
+      <p class="lede">
+        Questions about certification, salon partnership, or an existing professional
+        account — this reaches us directly.
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split split-top split-text-left">
+
+      <div>
+        <form id="contact-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="salon">Salon or practice</label>
+              <input type="text" id="salon" name="salon" autocomplete="organization" />
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" />
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="license">License number</label>
+            <input type="text" id="license" name="license" />
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="btn btn-solid">Send message</button>
+
+          <div class="form-done" id="contact-done" hidden>
+            <h2 class="d4">One more step</h2>
+            <p class="prose" style="margin-top: 0.8rem">
+              This site does not send mail yet, so nothing has been transmitted. Use the
+              button below and your message will open in your email app, already filled
+              in, addressed to us.
+            </p>
+            <div class="btn-row">
+              <a class="btn btn-solid" id="contact-done-link" href="mailto:support@purplecrownextensions.com">
+                Open the email
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <aside>
+        <hr class="mark" />
+        <span class="eyebrow">Direct</span>
+        <h2 class="d3">Reach us</h2>
+        <div class="prose" style="margin-top: 1.3rem">
+          <p>
+            <a href="mailto:support@purplecrownextensions.com">support@purplecrownextensions.com</a>
+          </p>
+        </div>
+
+        <hr class="mark" style="margin-top: 2.8rem" />
+        <span class="eyebrow">Salon owners</span>
+        <p class="prose" style="margin-top: 0.4rem">
+          Applying for Salon Partnership? Send your salon credentials and business details
+          straight to us and we will review them personally.
+        </p>
+        <div class="btn-row">
+          <a class="link" href="become-certified.html#salon-partner">
+            Salon Partnership <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <hr class="mark" style="margin-top: 2.8rem" />
+        <span class="eyebrow">Stylists</span>
+        <p class="prose" style="margin-top: 0.4rem">
+          Looking for a class date? The calendar is kept current on the certification
+          page.
+        </p>
+        <div class="btn-row">
+          <a class="link" href="become-certified.html#classes">
+            Upcoming classes <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <div class="colophon-grid">
+      <div>
+        <a class="crest" href="index.html">
+          <span class="crest-name">The Purple Crown<em>Extensions</em></span>
+        </a>
+        <p class="colophon-blurb">
+          A professional-only hair extension house. Premium Indian Temple hair, education,
+          and wholesale access for licensed stylists and salons.
+        </p>
+      </div>
+      <div>
+        <h2>The house</h2>
+        <ul>
+          <li><a href="who-we-are.html">Who we are</a></li>
+          <li><a href="become-certified.html">Become certified</a></li>
+          <li><a href="become-certified.html#salon-partner">Salon partnership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Professionals</h2>
+        <ul>
+          <li><a href="professional-login.html">Professional login</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:support@purplecrownextensions.com">support@purplecrownextensions.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon-base">
+      <span>&copy; 2026 The Purple Crown Extensions</span>
+      <span>Professional only &middot; not sold to the public</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
