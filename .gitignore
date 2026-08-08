@@ -1,2 +1,3 @@
-# Local render output from render.sh — regenerate, don't commit.
-screens/
+# Full-resolution originals from the client's Drive. Only the web-optimised
+# derivatives in img/ are committed; re-export from the source if needed.
+img/_src_*
