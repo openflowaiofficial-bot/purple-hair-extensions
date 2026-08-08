@@ -200,9 +200,139 @@
     });
   }
 
+  /* ------------------------------------------------------------------------
+     The cuticle bench
+     Draws the house's actual claim instead of asserting it. Strands are the
+     same in both states — only the direction of their cuticle scales changes,
+     and everything that follows from that.
+     ------------------------------------------------------------------------ */
+  var BENCH_COPY = {
+    aligned: {
+      title: "Single direction, one donor",
+      body:
+        "Every cuticle runs the way it grew, so the strands lie against each " +
+        "other rather than catching. Light travels the length of the hair " +
+        "instead of scattering — which is where the shine comes from, not a coating."
+    },
+    mixed: {
+      title: "Mixed direction — what we will not sell",
+      body:
+        "Hair collected from several heads runs in opposing directions. The " +
+        "scales lock against each other, and it mats at the nape within weeks. " +
+        "Silicone hides it in the box, then washes out and takes your client's trust with it."
+    }
+  };
+
+  function initBench() {
+    var bench = document.querySelector(".bench");
+    if (!bench) return;
+
+    var stage = bench.querySelector(".bench-stage");
+    var out = bench.querySelector(".bench-readout");
+    if (!stage || !out) return;
+
+    var W = 1000;
+    var H = 360;
+    var ROWS = 26;
+    var ns = "http://www.w3.org/2000/svg";
+
+    var svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+
+    // A soft band of light lying across the strands — present only while the
+    // cuticle agrees. Gradient, not a block: a hard edge reads as a rectangle
+    // drawn over hair rather than light falling on it.
+    var defs = document.createElementNS(ns, "defs");
+    defs.innerHTML =
+      '<linearGradient id="sheenGrad" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0%" stop-color="#e8d3a8" stop-opacity="0"/>' +
+      '<stop offset="45%" stop-color="#f0e0bd" stop-opacity="0.85"/>' +
+      '<stop offset="100%" stop-color="#e8d3a8" stop-opacity="0"/>' +
+      "</linearGradient>";
+    svg.appendChild(defs);
+
+    var sheen = document.createElementNS(ns, "rect");
+    sheen.setAttribute("class", "cut-sheen");
+    sheen.setAttribute("x", "0");
+    sheen.setAttribute("y", String(H * 0.16));
+    sheen.setAttribute("width", String(W));
+    sheen.setAttribute("height", String(H * 0.5));
+    sheen.setAttribute("fill", "url(#sheenGrad)");
+    svg.appendChild(sheen);
+
+    for (var r = 0; r < ROWS; r++) {
+      var baseY = (H / (ROWS + 1)) * (r + 1);
+      var amp = 5 + (r % 3) * 2.5;
+      var phase = r * 0.62;
+
+      var g = document.createElementNS(ns, "g");
+      g.setAttribute("class", "cut-strand");
+
+      // Half the strands are the offenders once the cuticle is mixed.
+      var opposed = r % 2 === 1;
+      if (opposed) g.setAttribute("data-opposed", "true");
+
+      // Drift is what makes mixed hair read as tangled: opposing strands
+      // wander into their neighbours instead of lying parallel.
+      var drift = opposed ? (r % 4 === 1 ? 6 : -5.5) : 0;
+      g.style.setProperty("--drift", drift + "px");
+      g.style.setProperty("--flip", opposed ? "128deg" : "0deg");
+
+      var d = "M 0 " + baseY.toFixed(1);
+      for (var x = 40; x <= W; x += 40) {
+        var y = baseY + Math.sin(x / 150 + phase) * amp;
+        d += " L " + x + " " + y.toFixed(1);
+      }
+      var hair = document.createElementNS(ns, "path");
+      hair.setAttribute("class", "cut-hair");
+      hair.setAttribute("d", d);
+      g.appendChild(hair);
+
+      // The scales themselves — short ticks leaning along the strand.
+      for (var sx = 20; sx < W - 8; sx += 22) {
+        var sy = baseY + Math.sin(sx / 150 + phase) * amp;
+        var tick = document.createElementNS(ns, "line");
+        tick.setAttribute("class", "cut-scale");
+        tick.setAttribute("x1", String(sx));
+        tick.setAttribute("y1", (sy - 3.2).toFixed(1));
+        tick.setAttribute("x2", (sx + 6.2).toFixed(1));
+        tick.setAttribute("y2", (sy + 1.0).toFixed(1));
+        g.appendChild(tick);
+      }
+
+      svg.appendChild(g);
+    }
+
+    stage.appendChild(svg);
+
+    function show(state) {
+      bench.setAttribute("data-state", state);
+      var copy = BENCH_COPY[state];
+      out.querySelector("h3").textContent = copy.title;
+      out.querySelector("p").textContent = copy.body;
+      Array.prototype.forEach.call(
+        bench.querySelectorAll(".bench-btn"),
+        function (b) {
+          b.setAttribute("aria-pressed", String(b.dataset.bench === state));
+        }
+      );
+    }
+
+    Array.prototype.forEach.call(bench.querySelectorAll(".bench-btn"), function (b) {
+      b.addEventListener("click", function () {
+        show(b.dataset.bench);
+      });
+    });
+
+    show("aligned");
+  }
+
   function boot() {
     initNav();
     initStoreLinks();
+    initBench();
     initReveal();
     initContact();
   }

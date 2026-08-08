@@ -925,6 +925,142 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   13b. The cuticle bench — the signature
+   --------------------------------------------------------------------------
+   Every extension house claims quality. This one has a specific claim —
+   single-direction, one donor, never silicone-coated — and outside the trade
+   nobody knows what that means. So it is shown rather than asserted: the same
+   strands, drawn with their cuticle scales, running one way and then not.
+
+   Geometry is generated in main.js; movement is CSS transitions off two custom
+   properties per strand. No animation loop.
+   -------------------------------------------------------------------------- */
+.bench {
+  position: relative;
+}
+
+.bench-stage {
+  position: relative;
+  background: linear-gradient(178deg, var(--ivory-deep), var(--linen));
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.bench-stage svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cut-strand {
+  transition: transform 0.9s var(--ease);
+  transform: translateY(0);
+}
+
+.bench[data-state="mixed"] .cut-strand {
+  transform: translateY(var(--drift, 0px));
+}
+
+.cut-hair {
+  fill: none;
+  stroke: #6d4b34;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+}
+
+/* The scales. Angled one way when the cuticle runs true; flipped on half the
+   strands when it does not, which is the whole point of the drawing. */
+.cut-scale {
+  stroke: #4a3121;
+  stroke-width: 0.85;
+  stroke-linecap: round;
+  opacity: 0.72;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition: transform 0.9s var(--ease), stroke 0.9s var(--ease);
+}
+
+.bench[data-state="mixed"] .cut-scale {
+  transform: rotate(var(--flip, 0deg));
+}
+
+.bench[data-state="mixed"] .cut-strand[data-opposed="true"] .cut-scale {
+  stroke: var(--amethyst);
+  opacity: 0.9;
+}
+
+/* The sheen only travels when the scales agree. */
+.cut-sheen {
+  fill: var(--champagne-light);
+  opacity: 0.5;
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+.bench[data-state="mixed"] .cut-sheen {
+  opacity: 0;
+}
+
+.bench-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: clamp(1.8rem, 3vw, 2.6rem);
+  border: 1px solid var(--rule);
+  width: fit-content;
+}
+
+.bench-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  font-family: var(--body);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 0.9rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.26s var(--ease), color 0.26s var(--ease);
+}
+
+.bench-btn:last-child {
+  border-right: 0;
+}
+
+.bench-btn[aria-pressed="true"] {
+  background: var(--amethyst);
+  color: var(--ivory);
+}
+
+.bench-btn:hover[aria-pressed="false"] {
+  background: rgba(90, 45, 110, 0.07);
+  color: var(--amethyst);
+}
+
+.bench-readout {
+  margin-top: 1.5rem;
+  min-height: 5.5rem;
+  max-width: 52ch;
+}
+
+.bench-readout h3 {
+  font-family: var(--display);
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 11;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+
+.bench-readout p {
+  color: var(--fg-soft);
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------------------------------
    14. Pull quote
    -------------------------------------------------------------------------- */
 .pull {
