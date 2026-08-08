@@ -10,6 +10,43 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ------------------------------------------------------------------------
+     THE SQUARE STORE — the one line to edit.
+
+     Paste the Square Online store URL between the quotes, with no trailing
+     slash. Every link marked data-store across every page picks it up.
+
+       var STORE_URL = "https://purplecrown.square.site";
+
+     Leave it empty and those links keep whatever href they already carry, so
+     nothing on the site breaks before the store is connected.
+     ------------------------------------------------------------------------ */
+  var STORE_URL = "";
+
+  /* Where each kind of link should land inside the store. */
+  var STORE_PATHS = {
+    store: "",
+    login: "/account",
+    orders: "/account/orders"
+  };
+
+  function initStoreLinks() {
+    var links = document.querySelectorAll("[data-store]");
+    if (!links.length) return;
+
+    var base = STORE_URL.replace(/\/+$/, "");
+
+    Array.prototype.forEach.call(links, function (a) {
+      // No store yet — leave the fallback href alone.
+      if (!base) return;
+
+      var kind = a.getAttribute("data-store");
+      var path = STORE_PATHS[kind] !== undefined ? STORE_PATHS[kind] : "";
+      a.setAttribute("href", base + path);
+      a.setAttribute("rel", "noopener");
+    });
+  }
+
+  /* ------------------------------------------------------------------------
      Navigation
      ------------------------------------------------------------------------ */
   function initNav() {
@@ -155,6 +192,7 @@
 
   function boot() {
     initNav();
+    initStoreLinks();
     initReveal();
     initContact();
   }

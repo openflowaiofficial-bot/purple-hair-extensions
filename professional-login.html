@@ -61,9 +61,10 @@
           what is on its way to you.
         </p>
         <div class="btn-row">
-          <!-- WIRE UP: point at the Shopify customer login, e.g.
-               https://shop.purplecrownextensions.com/account/login -->
-          <a class="btn btn-solid" href="mailto:support@purplecrownextensions.com?subject=Professional%20account%20access">Sign in</a>
+          <!-- Points at the Square store once STORE_URL is set in main.js.
+               Until then it falls back to the support address below. -->
+          <a class="btn btn-solid" data-store="login"
+             href="mailto:support@purplecrownextensions.com?subject=Professional%20account%20access">Sign in</a>
         </div>
         <p class="form-note">
           Trouble signing in? Email
