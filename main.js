@@ -84,12 +84,22 @@
     var items = document.querySelectorAll(".reveal");
     if (!items.length) return;
 
-    if (reduceMotion || !("IntersectionObserver" in window)) {
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+
+    // Only now does the hidden state exist in CSS, so nothing can be stranded
+    // invisible if this script never runs.
+    document.documentElement.classList.add("js-reveal");
+
+    // Anything already on screen is shown on the next frame rather than
+    // animated in from nothing.
+    requestAnimationFrame(function () {
       Array.prototype.forEach.call(items, function (el) {
-        el.setAttribute("data-shown", "true");
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          el.setAttribute("data-shown", "true");
+        }
       });
-      return;
-    }
+    });
 
     var observer = new IntersectionObserver(
       function (entries) {

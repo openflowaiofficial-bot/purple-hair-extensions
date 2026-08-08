@@ -422,62 +422,110 @@ a {
   height: var(--bar-h);
 }
 
+/* The client's own mark, carried at a size that lets the crown read. */
 .crest {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
   text-decoration: none;
   flex-shrink: 0;
 }
 
 .crest img {
-  width: 34px;
-  height: 34px;
+  height: 40px;
+  width: auto;
 }
 
 .crest-name {
   font-family: var(--display);
   font-optical-sizing: none;
   font-variation-settings: "opsz" 11;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ink);
-  line-height: 1.2;
+  line-height: 1.25;
+  margin-left: 0.85rem;
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--rule);
 }
 
 .crest-name em {
   display: block;
   font-style: italic;
   font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.24em;
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
   color: var(--amethyst);
+}
+
+/* Footer carries the full wordmark instead, in the light cut. */
+.crest-foot img {
+  width: 176px;
+  height: auto;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 2.2rem;
+  gap: 2rem;
 }
 
 .nav-link {
+  position: relative;
   font-size: 0.74rem;
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink);
-  padding-block: 0.5rem;
-  border-bottom: 1px solid transparent;
-  transition: color 0.22s var(--ease), border-color 0.22s var(--ease);
+  padding-block: 0.55rem;
+  transition: color 0.22s var(--ease);
 }
 
-.nav-link:hover,
+/* The rule draws from the centre out rather than switching on, which is the
+   difference between a link that highlights and one that feels considered. */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  height: 1px;
+  background: var(--amethyst);
+  transition: left 0.32s var(--ease), right 0.32s var(--ease);
+}
+
+.nav-link:hover {
+  color: var(--amethyst);
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  left: 0;
+  right: 0;
+}
+
 .nav-link[aria-current="page"] {
   color: var(--amethyst);
-  border-bottom-color: var(--amethyst);
+}
+
+/* Professional Login is a door, not a page. Marked, but not so loud that it
+   competes with Become Certified as the primary action. */
+.nav-key {
+  padding: 0.62rem 1.15rem;
+  border: 1px solid var(--rule);
+  color: var(--amethyst);
+  transition: border-color 0.24s var(--ease), background 0.24s var(--ease);
+}
+
+.nav-key::after {
+  display: none;
+}
+
+.nav-key:hover {
+  border-color: var(--amethyst);
+  background: rgba(90, 45, 110, 0.05);
 }
 
 .burger {
@@ -688,43 +736,53 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   10. Collections — no cards, no borders. Image, name, one line.
+   10. Roster — the collections, set as an editorial list
+   --------------------------------------------------------------------------
+   Three product photographs do not exist, and three empty boxes under a
+   headline is the cheapest thing a page can do. So the collections are a list
+   beside one real image: the names carry it, which is also the more expensive
+   answer.
    -------------------------------------------------------------------------- */
-.collections {
+.roster {
+  list-style: none;
+  counter-reset: line;
+  border-top: 1px solid var(--fg-rule);
+}
+
+.roster li {
+  counter-increment: line;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(1.8rem, 3.5vw, 3rem);
-  margin-top: clamp(2.8rem, 6vw, 4.5rem);
+  grid-template-columns: 2.6rem 1fr;
+  gap: 0 clamp(0.8rem, 2vw, 1.6rem);
+  padding-block: clamp(1.5rem, 2.6vw, 2.1rem);
+  border-bottom: 1px solid var(--fg-rule);
 }
 
-.collection {
-  display: flex;
-  flex-direction: column;
+.roster li::before {
+  content: counter(line, decimal-leading-zero);
+  font-family: var(--display);
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 11;
+  font-size: 0.9rem;
+  color: var(--fg-mark);
+  padding-top: 0.55rem;
 }
 
-.collection .frame {
-  margin-bottom: 1.5rem;
-  transition: transform 0.6s var(--ease);
-}
-
-.collection:hover .frame {
-  transform: scale(1.02);
-}
-
-.collection h3 {
+.roster h3 {
   font-family: var(--display);
   font-optical-sizing: none;
   font-variation-settings: "opsz" 11;
   font-weight: 400;
-  font-size: clamp(1.32rem, 2vw, 1.65rem);
-  line-height: 1.2;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.18;
   color: var(--fg);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
 }
 
-.collection p {
+.roster p {
   font-size: 1rem;
   color: var(--fg-soft);
+  max-width: 46ch;
 }
 
 /* --------------------------------------------------------------------------
@@ -876,40 +934,55 @@ a {
 /* --------------------------------------------------------------------------
    15. Forms
    -------------------------------------------------------------------------- */
+/* An enquiry to a house that vets its partners should not look like a
+   newsletter signup. Rules only under the input, generous room, and the label
+   sits quietly above rather than shouting. */
 .field {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.1rem;
 }
 
 .field label {
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--fg-soft);
-  margin-bottom: 0.6rem;
+  color: var(--fg-faint);
+  margin-bottom: 0.5rem;
+  transition: color 0.24s var(--ease);
+}
+
+.field:focus-within label {
+  color: var(--amethyst);
 }
 
 .field input,
 .field select,
 .field textarea {
-  font-family: var(--body);
-  font-size: 1rem;
-  font-weight: 300;
+  font-family: var(--display);
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 11;
+  font-size: 1.2rem;
+  font-weight: 400;
   color: var(--ink);
   background: transparent;
   border: 0;
   border-bottom: 1px solid var(--rule);
   border-radius: 0;
-  padding: 0.7rem 0;
+  padding: 0.55rem 0 0.75rem;
   width: 100%;
-  transition: border-color 0.24s var(--ease);
+  transition: border-color 0.28s var(--ease);
 }
 
 .field textarea {
+  font-family: var(--body);
+  font-size: 1.02rem;
+  font-weight: 300;
   resize: vertical;
-  min-height: 7rem;
-  line-height: 1.65;
+  min-height: 7.5rem;
+  line-height: 1.7;
 }
 
 .field input:focus,
@@ -919,10 +992,28 @@ a {
   border-bottom-color: var(--amethyst);
 }
 
+/* A second rule that draws in under the first, so focus is felt rather than
+   just indicated. Keyboard focus still gets the global outline. */
+.field::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1px;
+  background: var(--amethyst);
+  transition: right 0.36s var(--ease);
+  pointer-events: none;
+}
+
+.field:focus-within::after {
+  right: 0;
+}
+
 .field-error {
   font-size: 0.8rem;
   color: #9c2f28;
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   min-height: 1.1rem;
 }
 
@@ -931,10 +1022,15 @@ a {
   border-bottom-color: #9c2f28;
 }
 
+.field[data-invalid="true"]::after {
+  background: #9c2f28;
+  right: 0;
+}
+
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.6rem;
+  gap: 0 clamp(1.6rem, 3vw, 2.6rem);
 }
 
 .form-note {
@@ -944,9 +1040,10 @@ a {
 }
 
 .form-done {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--amethyst);
+  margin-top: 2.4rem;
+  padding: 2rem clamp(1.5rem, 3vw, 2.4rem);
+  background: var(--ivory-deep);
+  border-left: 2px solid var(--amethyst);
 }
 
 .form-done[hidden] {
@@ -1028,13 +1125,20 @@ a {
 /* --------------------------------------------------------------------------
    17. Reveal — restrained, once
    -------------------------------------------------------------------------- */
+/* Visible by default. The hidden state is applied only once JS has flagged the
+   document, so a failed or slow script can never leave a band blank — which is
+   exactly what it did before this was inverted. */
 .reveal {
+  opacity: 1;
+}
+
+html.js-reveal .reveal {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
 }
 
-.reveal[data-shown="true"] {
+html.js-reveal .reveal[data-shown="true"] {
   opacity: 1;
   transform: none;
 }
