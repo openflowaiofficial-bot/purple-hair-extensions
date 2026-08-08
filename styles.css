@@ -13,10 +13,12 @@
    1. Tokens
    -------------------------------------------------------------------------- */
 :root {
-  /* Ground — warm, not grey. The page is ivory. */
-  --ivory: #f8f4ed;
-  --ivory-deep: #f1eae0;
-  --linen: #e7ddcf;
+  /* Ground. Warmed off white — #f8f4ed read clinical and made every empty area
+     look like a gap rather than air. A greige ground holds photography and
+     makes the page feel like paper stock. */
+  --ivory: #f3efe8;
+  --ivory-deep: #eae4da;
+  --linen: #ded4c6;
 
   /* Ink */
   --noir: #131013;
@@ -405,11 +407,28 @@ a {
 /* --------------------------------------------------------------------------
    6. Masthead
    -------------------------------------------------------------------------- */
+/* A trade rail above the nav. It does the job a cart and account row does on a
+   retail site — it tells you within a second that this is a working business
+   with rules, not a brochure. */
+.rail {
+  background: var(--noir);
+  color: rgba(243, 239, 232, 0.86);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding-block: 0.6rem;
+}
+
+.rail strong {
+  font-weight: 400;
+  color: var(--champagne-light);
+}
+
 .masthead {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(248, 244, 237, 0.93);
+  background: rgba(243, 239, 232, 0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
 }
@@ -471,12 +490,14 @@ a {
   gap: 2rem;
 }
 
+/* Sentence case, at a readable size. Tiny tracked capitals across an entire
+   nav is the single loudest tell of a template — real retail navigation is
+   just words you can read. */
 .nav-link {
   position: relative;
-  font-size: 0.74rem;
+  font-size: 0.98rem;
   font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0.005em;
   text-decoration: none;
   color: var(--ink);
   padding-block: 0.55rem;
@@ -513,9 +534,10 @@ a {
 /* Professional Login is a door, not a page. Marked, but not so loud that it
    competes with Become Certified as the primary action. */
 .nav-key {
-  padding: 0.62rem 1.15rem;
+  padding: 0.6rem 1.2rem;
   border: 1px solid var(--rule);
   color: var(--amethyst);
+  font-size: 0.9rem;
   transition: border-color 0.24s var(--ease), background 0.24s var(--ease);
 }
 
