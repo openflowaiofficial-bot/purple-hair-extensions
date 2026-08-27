@@ -1533,6 +1533,150 @@ a.shop-switch-link:hover {
   border-color: var(--amethyst);
 }
 
+/* --------------------------------------------------------------------------
+   Colour swatches
+
+   The colour row is the one place a stylist buys with her eyes, so it stops
+   being a row of words and becomes a row of hair: a disc of the real thing and
+   nothing else. The name arrives on hover, where it is not competing with the
+   colour for the same glance.
+
+   A disc alone is useless to anyone who cannot hover, so on a touch device the
+   name is printed underneath instead — the same information, carried by the
+   mechanism that device actually has. The button keeps its text in both cases,
+   so a screen reader always announces the colour.
+
+   The image arrives as --swatch from shop.js. A missing file leaves the tonal
+   field showing, exactly as a .frame does while it waits for photography, so
+   the row degrades quietly instead of breaking.
+   -------------------------------------------------------------------------- */
+.pick-row[data-pick="color"] {
+  gap: clamp(0.85rem, 1.9vw, 1.2rem);
+}
+
+.chip-swatch {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  min-height: 0;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--fg-rule);
+
+  /* The disc carries the colour; the label is left for hover, for touch, and
+     for assistive tech. Kept as real text rather than removed, so the button's
+     accessible name is still the colour. */
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+
+  /* The photograph is the FIRST layer and therefore the top one. The tonal
+     field sits under it and is only ever seen through a colour whose file has
+     not landed yet. It must never tint the hair: this house sells colour
+     accuracy, and an amethyst wash over a brown is a return waiting to happen. */
+  background-color: var(--linen);
+  background-image:
+    var(--swatch, none),
+    radial-gradient(120% 90% at 22% 16%, rgba(138, 92, 160, 0.2), transparent 62%);
+  background-size: cover, cover;
+  background-position: center, center;
+
+  transition: box-shadow 0.24s var(--ease), border-color 0.24s var(--ease);
+}
+
+.chip-swatch:hover,
+.chip-swatch:focus-visible {
+  border-color: var(--fg);
+}
+
+/* Chosen. The amethyst rings the disc rather than filling it — a fill would
+   hide the one thing the control exists to show. */
+.chip-swatch[aria-pressed="true"] {
+  color: transparent;
+  border-color: var(--ivory);
+  box-shadow: 0 0 0 2px var(--ivory), 0 0 0 4px var(--amethyst);
+
+  /* .chip[aria-pressed="true"] sets `background` — the shorthand, which blanks
+     background-image. Same specificity, so restate the image here or the
+     chosen colour is the one disc showing no hair at all. */
+  background-color: var(--linen);
+  background-image:
+    var(--swatch, none),
+    radial-gradient(120% 90% at 22% 16%, rgba(138, 92, 160, 0.2), transparent 62%);
+  background-size: cover, cover;
+  background-position: center, center;
+}
+
+/* The name. */
+.chip-swatch::after {
+  content: attr(data-color);
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(0.3rem);
+  z-index: 40;
+
+  padding: 0.42rem 0.72rem;
+  white-space: nowrap;
+
+  font-family: var(--body);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ivory);
+  background: rgba(19, 16, 19, 0.92);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease),
+    visibility 0s linear 0.2s;
+}
+
+.chip-swatch:hover::after,
+.chip-swatch:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease),
+    visibility 0s linear 0s;
+}
+
+/* No hover to give the name away, so print it. The row gains a line of height
+   for the caption and the discs keep their spacing. */
+@media (hover: none) {
+  /* The caption is wider than the disc it names, so the column gap answers to
+     the caption, not to the swatch. */
+  .pick-row[data-pick="color"] {
+    row-gap: 2.5rem;
+    column-gap: 2.2rem;
+  }
+
+  .chip-swatch::after {
+    top: calc(100% + 0.45rem);
+    bottom: auto;
+    transform: translateX(-50%);
+    width: 5.2rem;
+    padding: 0;
+    white-space: normal;
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--fg-soft);
+    background: none;
+    opacity: 1;
+    visibility: visible;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip-swatch,
+  .chip-swatch::after { transition: none; }
+}
+
 .shop-result {
   margin-top: clamp(2.4rem, 5vw, 3.6rem);
   padding-top: clamp(2.2rem, 4vw, 3rem);

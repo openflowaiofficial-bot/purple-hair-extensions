@@ -43,6 +43,19 @@
     return seen;
   }
 
+  /* A colour's swatch file is derived from its name and never listed here —
+     the catalogue stays Square's. A new colour appears with its thumbnail the
+     moment img/swatches/<slug>.jpg lands; until then the chip falls back to
+     the same quiet tonal field a .frame uses while it waits for photography.
+     "Cafe Latte" -> "cafe-latte". */
+  function swatchUrl(color) {
+    var slug = String(color).toLowerCase()
+      .replace(/[‘’']/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    return "url('img/swatches/" + slug + ".jpg')";
+  }
+
   function renderRow(field) {
     var row = root.querySelector('[data-pick="' + field + '"]');
     if (!row) return;
@@ -54,6 +67,14 @@
       b.type = 'button';
       b.className = 'chip';
       b.textContent = value;
+      // The swatch rides on a custom property rather than a child <img>, so the
+      // button keeps a single text node: its accessible name stays exactly the
+      // colour, with nothing for a screen reader to read twice.
+      if (field === 'color') {
+        b.className = 'chip chip-swatch';
+        b.setAttribute('data-color', value);
+        b.setAttribute('style', '--swatch:' + swatchUrl(value));
+      }
       b.setAttribute('aria-pressed', String(choice[field] === value));
       b.addEventListener('click', function () {
         choice[field] = (choice[field] === value) ? null : value;
