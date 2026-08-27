@@ -149,6 +149,28 @@ test('expired cookie -> 401, Square never called', async () => {
   });
 });
 
+// ---------------------------------------------- check-order pinning (gate)
+
+test('unauthenticated GET -> 401, not 405: the session gate outranks the method check', async () => {
+  await withEnv(FULL_ENV, async () => {
+    const handler = freshCheckout();
+    const res = fakeRes();
+    await handler(noCookieReq({ method: 'GET', body: { items: [{ variationId: 'VAR_A', qty: 1 }] } }), res, neverCalled());
+    assert.equal(res.code, 401);
+    assert.equal(res.body.reason, 'unauthenticated');
+  });
+});
+
+test('unauthenticated POST with empty items -> 401, not 400: the session gate outranks the empty-items check', async () => {
+  await withEnv(FULL_ENV, async () => {
+    const handler = freshCheckout();
+    const res = fakeRes();
+    await handler(noCookieReq({ body: { items: [] } }), res, neverCalled());
+    assert.equal(res.code, 401);
+    assert.equal(res.body.reason, 'unauthenticated');
+  });
+});
+
 // -------------------------------------------------------------- 4: method
 
 test('GET with a valid session -> 405 bad_request, Square never called', async () => {
@@ -208,16 +230,24 @@ test('missing body / missing items array -> 400 empty, Square never called', asy
 
 // ----------------------------------------------------------- 6: upstream
 
-test('upstream throw -> 503 upstream, error message not leaked', async () => {
-  await withEnv({ ...FULL_ENV, SQUARE_ACCESS_TOKEN: 'sq0atp-SECRETVALUE' }, async () => {
+test('upstream throw -> 503 upstream, and the thrown message (which could carry a token) is never echoed', async () => {
+  const secret = 'sq0atp-SECRETVALUE';
+  await withEnv({ ...FULL_ENV, SQUARE_ACCESS_TOKEN: secret }, async () => {
     const token = validSession();
     const handler = freshCheckout();
     const res = fakeRes();
+    // The thrown message itself embeds the token, the way a naive upstream-
+    // error wrapper (e.g. one that includes response headers) might. Only a
+    // handler that truly never echoes err.message into the response body
+    // can pass this — asserting against a message with no secret in it would
+    // be true by construction regardless of what the handler does with it.
+    const thrownMessage = 'square_http_401 body=Bearer ' + secret;
     await handler(cookieReq(token, { body: { items: [{ variationId: 'VAR_A', qty: 1 }] } }),
-      res, async () => { throw new Error('square_http_401'); });
+      res, async () => { throw new Error(thrownMessage); });
     assert.equal(res.code, 503);
     assert.equal(res.body.reason, 'upstream');
-    assert.ok(!JSON.stringify(res.body).includes('SECRETVALUE'));
+    assert.ok(!JSON.stringify(res.body).includes(secret), 'token leaked into response body');
+    assert.ok(!JSON.stringify(res.body).includes(thrownMessage), 'raw thrown message echoed into response body');
   });
 });
 
@@ -283,6 +313,31 @@ test('ignores any price the browser sends — no price crosses the wire to Squar
       { catalog_object_id: 'VAR_A', quantity: '2' },
       { catalog_object_id: 'VAR_B', quantity: '1' }
     ]);
+  });
+});
+
+test('a browser-supplied location_id is ignored — the retail location never reaches Square', async () => {
+  await withEnv(FULL_ENV, async () => {
+    const token = validSession();
+    let sent = null;
+    const handler = freshCheckout();
+    const res = fakeRes();
+    // Send a retail location_id in both the plausible places a naive
+    // handler might read it from: top-level and nested under order. Only
+    // asserting the wholesale id is present (without also asserting the
+    // retail id is absent) would pass a `req.body.location_id || LOCATION_ID`
+    // regression, since that mutant also emits L0MRDCWWBFR3Z whenever the
+    // browser doesn't send one — it must be proven by actually sending one.
+    await handler(cookieReq(token, { body: {
+      location_id: 'RETAILLOC',
+      order: { location_id: 'RETAILLOC' },
+      items: [{ variationId: 'VAR_A', qty: 1 }]
+    } }), res,
+      async (path, opts) => { sent = opts.body; return { payment_link: { url: 'https://sq/x' } }; });
+    assert.equal(res.code, 200);
+    assert.equal(sent.order.location_id, 'L0MRDCWWBFR3Z');
+    assert.equal(JSON.stringify(sent).includes('RETAILLOC'), false,
+      'a browser-supplied location_id must never appear anywhere in the outgoing Square payload');
   });
 });
 
@@ -368,8 +423,10 @@ test('a recognisable Square token value never appears in any response body acros
 
     let handler = freshCheckout();
     let res = fakeRes();
+    // Embed the secret in the thrown message itself, not just in the env var
+    // — this is what actually catches a handler that echoes err.message.
     await handler(cookieReq(token, { body: { items: [{ variationId: 'VAR_A', qty: 1 }] } }),
-      res, async () => { throw new Error('square_http_401'); });
+      res, async () => { throw new Error('square_http_401 body=Bearer ' + secret); });
     bodies.push(res);
 
     res = fakeRes();
