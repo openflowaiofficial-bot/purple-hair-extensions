@@ -1,6 +1,7 @@
 const { test } = require('node:test');
 const assert = require('node:assert');
 const { shape } = require('../api/_shape.js');
+const { validate } = require('../api/_contract.js');
 const body = require('./fixtures/square-catalog.json');
 
 test('shapes all 121 of ours', () => {
@@ -27,4 +28,23 @@ test('drops a variation with no price at our location', () => {
   const clone = JSON.parse(JSON.stringify(body));
   clone.objects[0].item_data.variations[0].item_variation_data.location_overrides = [];
   assert.equal(shape(clone, 'L0MRDCWWBFR3Z').length, 120);
+});
+
+test('derives collection, color and length for a Coffee Collection variation', () => {
+  const v = shape(body, 'L0MRDCWWBFR3Z').find(x => x.sku === 'PCE-WFT-CHL-1416');
+  assert.equal(v.collection, 'Coffee Collection');
+  assert.equal(v.color, 'Chai Latte');
+  assert.equal(v.length, '14"-16"');
+});
+
+test('derives collection, color and length for a Single Colors variation', () => {
+  const v = shape(body, 'L0MRDCWWBFR3Z').find(x => x.sku === 'PCE-WFT-AMB-2224');
+  assert.equal(v.collection, 'Single Colors');
+  assert.equal(v.color, 'Amber');
+  assert.equal(v.length, '22"-24"');
+});
+
+test('shaped output of the committed fixture passes the contract validator', () => {
+  const variations = shape(body, 'L0MRDCWWBFR3Z');
+  assert.deepEqual(validate(variations), { ok: true, problems: [] });
 });
