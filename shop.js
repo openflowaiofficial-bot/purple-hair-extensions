@@ -156,6 +156,7 @@
       note.hidden = true;
       fetch('/api/checkout', {
         method: 'POST',
+        credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: window.Cart.read(window.localStorage) })
       })

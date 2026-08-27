@@ -68,18 +68,36 @@ test('shop.js and cart.js are loaded by exactly the three shop pages', () => {
   assert.deepEqual(ALL_PAGES.filter((p) => read(p).includes('cart.js')), SHOP);
 });
 
+// Pinned to the masthead's own element rather than "the first <nav> in the
+// file". Document order is not a guarantee: anything later that happened to be
+// a <nav> — a breadcrumb, a sibling-page row — would silently become the thing
+// these two assertions measure.
+function primaryNav(page) {
+  const html = read(page);
+  const match = html.match(/<nav\b[^>]*\bid="nav"[^>]*>([\s\S]*?)<\/nav>/);
+  assert.ok(match, `${page} has no <nav id="nav"> masthead navigation`);
+  return match[1];
+}
+
 test('the nav is still exactly five links on every page', () => {
   for (const page of ALL_PAGES) {
-    const html = read(page);
-    const nav = html.split('<nav')[1].split('</nav>')[0];
-    assert.equal((nav.match(/class="nav-link/g) || []).length, 5, page);
+    assert.equal((primaryNav(page).match(/class="nav-link/g) || []).length, 5, page);
   }
 });
 
 test('no shop page marks a nav item as current', () => {
   for (const page of SHOP) {
-    const nav = read(page).split('<nav')[1].split('</nav>')[0];
-    assert.ok(!nav.includes('aria-current'), `${page} must not mark a nav link current`);
+    assert.ok(!primaryNav(page).includes('aria-current'),
+      `${page} must not mark a nav link current`);
+  }
+});
+
+test('the shop pages carry no navigation element beyond the masthead', () => {
+  // The sibling-page row inside <main> is a div, not a <nav>: it is not site
+  // navigation, and making it one would put a second candidate in front of any
+  // assertion that reaches for "the nav".
+  for (const page of SHOP) {
+    assert.equal((read(page).match(/<nav\b/g) || []).length, 1, page);
   }
 });
 
