@@ -42,3 +42,34 @@ test('quantity is clamped to a sane range', () => {
   assert.equal(Cart.read(s)[0].qty, 99);
   assert.deepEqual(Cart.setQty(s, 'VAR_A', 0), []);
 });
+
+test('add() with a non-string variationId writes nothing to raw storage', () => {
+  const badIds = [{ variationId: 'X', price: 500 }, 42, null, undefined, ['X'], ''];
+  for (const bad of badIds) {
+    const s = mem();
+    Cart.add(s, bad, 1);
+    assert.equal(s.getItem('pce_cart'), null, `add() must not write for id ${JSON.stringify(bad)}`);
+  }
+});
+
+test('add() with an object variationId never lets a price reach raw storage even alongside other rows', () => {
+  const s = mem();
+  Cart.add(s, 'VAR_A', 1);
+  const before = s.getItem('pce_cart');
+  Cart.add(s, { variationId: 'X', price: 500 }, 1);
+  const after = s.getItem('pce_cart');
+  assert.equal(after, before);
+  assert.ok(!after.includes('price'));
+  assert.ok(!after.includes('500'));
+});
+
+test('setQty() with a non-string variationId writes nothing to raw storage', () => {
+  const badIds = [{ variationId: 'X', price: 500 }, 42, null, undefined, ['X'], ''];
+  for (const bad of badIds) {
+    const s = mem();
+    Cart.add(s, 'VAR_A', 1);
+    const before = s.getItem('pce_cart');
+    Cart.setQty(s, bad, 5);
+    assert.equal(s.getItem('pce_cart'), before, `setQty() must not write for id ${JSON.stringify(bad)}`);
+  }
+});

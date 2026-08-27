@@ -35,7 +35,12 @@
     return rows;
   }
 
+  function isValidId(variationId) {
+    return typeof variationId === 'string' && variationId.length > 0;
+  }
+
   function add(storage, variationId, qty) {
+    if (!isValidId(variationId)) return read(storage);
     var rows = read(storage);
     var found = rows.filter(function (r) { return r.variationId === variationId; })[0];
     if (found) found.qty = clamp(found.qty + (qty || 1));
@@ -44,6 +49,7 @@
   }
 
   function setQty(storage, variationId, qty) {
+    if (!isValidId(variationId)) return read(storage);
     var rows = read(storage).map(function (r) {
       if (r.variationId === variationId) r.qty = clamp(qty);
       return r;
