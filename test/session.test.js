@@ -1,6 +1,17 @@
 // test/session.test.js
 const { test } = require('node:test');
 const assert = require('node:assert');
+const crypto = require('node:crypto');
+
+// Forges a token the way an attacker would if they knew the (public,
+// readable-from-this-repo) signing algorithm but not a real SESSION_SECRET:
+// they guess the key is the empty string, since that's what an unguarded
+// `process.env.SESSION_SECRET || ''` fallback would use.
+function forgeTokenWithKey(expiresAtMs, key) {
+  const body = Buffer.from(JSON.stringify({ exp: expiresAtMs })).toString('base64url');
+  const sig = crypto.createHmac('sha256', key).update(body).digest('base64url');
+  return body + '.' + sig;
+}
 
 function freshSession() {
   delete require.cache[require.resolve('../api/_session.js')];
@@ -46,7 +57,7 @@ test('configured() is true when all three vars are set', () => {
 });
 
 test('a token signed and verified under the same secret is valid', () => {
-  withEnv({ SESSION_SECRET: 'correct-horse-battery-staple' }, () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: 'correct-horse-battery-staple' }, () => {
     const { sign, verify } = freshSession();
     const token = sign(Date.now() + 60000);
     assert.equal(verify(token), true);
@@ -55,17 +66,17 @@ test('a token signed and verified under the same secret is valid', () => {
 
 test('a token signed under a different SESSION_SECRET fails verify', () => {
   let token;
-  withEnv({ SESSION_SECRET: 'secret-one' }, () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: 'secret-one' }, () => {
     token = freshSession().sign(Date.now() + 60000);
   });
-  withEnv({ SESSION_SECRET: 'secret-two' }, () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: 'secret-two' }, () => {
     const { verify } = freshSession();
     assert.equal(verify(token), false);
   });
 });
 
 test('a token with a valid signature but an expired exp fails verify', () => {
-  withEnv({ SESSION_SECRET: 'a-secret' }, () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: 'a-secret' }, () => {
     const { sign, verify } = freshSession();
     const token = sign(Date.now() - 1000);
     assert.equal(verify(token), false);
@@ -73,7 +84,7 @@ test('a token with a valid signature but an expired exp fails verify', () => {
 });
 
 test('structurally broken tokens fail verify without throwing', () => {
-  withEnv({ SESSION_SECRET: 'a-secret' }, () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: 'a-secret' }, () => {
     const { verify } = freshSession();
     const garbage = [
       'no-dot-at-all',
@@ -97,7 +108,7 @@ test('structurally broken tokens fail verify without throwing', () => {
 });
 
 test('tampering with the payload while keeping the old signature fails verify', () => {
-  withEnv({ SESSION_SECRET: 'a-secret' }, () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: 'a-secret' }, () => {
     const { sign, verify } = freshSession();
     const token = sign(Date.now() + 60000);
     const [body, sig] = token.split('.');
@@ -105,6 +116,41 @@ test('tampering with the payload while keeping the old signature fails verify', 
     const tamperedBody = Buffer.from(JSON.stringify({ exp: payload.exp + 1000000 })).toString('base64url');
     const tampered = tamperedBody + '.' + sig;
     assert.equal(verify(tampered), false);
+  });
+});
+
+test('a token with a valid body and signature but a trailing extra segment is rejected', () => {
+  // Guards the "exactly two parts" check itself: mutating that check from
+  // `!== 2` to `< 2` would let a genuinely valid token with extra data
+  // tacked on the end (a length-3 token whose first two parts are real)
+  // slip through verify(), since destructuring `[body, sig]` silently
+  // ignores anything past the second part.
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: 'a-secret' }, () => {
+    const { sign, verify } = freshSession();
+    const valid = sign(Date.now() + 60000);
+    assert.equal(verify(valid), true, 'sanity check: the base token should verify on its own');
+    const withExtraSegment = valid + '.EVILPAYLOAD';
+    assert.equal(verify(withExtraSegment), false);
+  });
+});
+
+test('verify() and hasSession() fail closed when SESSION_SECRET is unset, even against a token forged with an empty-string key', () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: undefined }, () => {
+    const { verify, hasSession, configured, COOKIE_NAME } = freshSession();
+    assert.equal(configured(), false, 'sanity check: this environment must be unconfigured');
+    const forged = forgeTokenWithKey(Date.now() + 60000, '');
+    assert.equal(verify(forged), false);
+    assert.equal(hasSession({ headers: { cookie: `${COOKIE_NAME}=${forged}` } }), false);
+  });
+});
+
+test('verify() and hasSession() fail closed when SESSION_SECRET is the empty string, even against a token forged with an empty-string key', () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: '' }, () => {
+    const { verify, hasSession, configured, COOKIE_NAME } = freshSession();
+    assert.equal(configured(), false, 'sanity check: this environment must be unconfigured');
+    const forged = forgeTokenWithKey(Date.now() + 60000, '');
+    assert.equal(verify(forged), false);
+    assert.equal(hasSession({ headers: { cookie: `${COOKIE_NAME}=${forged}` } }), false);
   });
 });
 
@@ -164,7 +210,7 @@ test('readCookie returns null when the cookie is absent or headers missing', () 
 });
 
 test('hasSession is true only with a currently-valid signed cookie', () => {
-  withEnv({ SESSION_SECRET: 'a-secret' }, () => {
+  withEnv({ SHOP_EMAIL: 'owner@example.test', SHOP_PASSWORD: 'th-r0waway-pw!', SESSION_SECRET: 'a-secret' }, () => {
     const { sign, hasSession, COOKIE_NAME } = freshSession();
     const token = sign(Date.now() + 60000);
     assert.equal(hasSession({ headers: { cookie: `${COOKIE_NAME}=${token}` } }), true);

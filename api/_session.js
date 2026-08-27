@@ -21,8 +21,16 @@ function safeEqualStrings(a, b) {
   return crypto.timingSafeEqual(da, db);
 }
 
+// Refuses to sign or check anything with a missing/empty key rather than
+// silently falling back to ''. Because the algorithm is public (this repo
+// is public), an empty-string key is a forgeable, publicly-known key —
+// not a safe default.
 function hmac(body) {
-  return crypto.createHmac('sha256', process.env.SESSION_SECRET || '').update(body).digest();
+  const secret = process.env.SESSION_SECRET;
+  if (!secret) {
+    throw new Error('SESSION_SECRET is not configured');
+  }
+  return crypto.createHmac('sha256', secret).update(body).digest();
 }
 
 function sign(expiresAtMs) {
@@ -32,6 +40,10 @@ function sign(expiresAtMs) {
 }
 
 function verify(token) {
+  // Fail closed: with any of the three vars missing there is no safe key
+  // to check a signature against, so no token can ever verify — this must
+  // not depend on every caller remembering to check configured() first.
+  if (!configured()) return false;
   try {
     if (typeof token !== 'string' || token === '') return false;
 
