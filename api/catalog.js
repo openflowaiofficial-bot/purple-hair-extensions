@@ -44,6 +44,8 @@ module.exports = async function handler(req, res, fetcher) {
     const withBase = pce.filter(v => v.item_variation_data.price_money);
     const withOverride = pce.filter(v => (v.item_variation_data.location_overrides || []).length);
     const sampleSkus = withSku.slice(0, 5).map(v => v.item_variation_data.sku);
+    const pceNames = pce.slice(0, 3).map(v => v.item_variation_data.name);
+    const pceOptCounts = pce.slice(0, 3).map(v => (v.item_variation_data.item_option_values || []).length);
     const itemNames = items.slice(0, 8).map(i => i.item_data && i.item_data.name);
     console.error('DIAG objects=' + objs.length +
       ' items=' + items.length +
@@ -54,6 +56,8 @@ module.exports = async function handler(req, res, fetcher) {
       ' pceWithAnyOverride=' + withOverride.length +
       ' locationId=' + LOCATION_ID +
       ' sampleSkus=' + JSON.stringify(sampleSkus) +
+      ' pceNames=' + JSON.stringify(pceNames) +
+      ' pceOptCounts=' + JSON.stringify(pceOptCounts) +
       ' itemNames=' + JSON.stringify(itemNames));
   } catch (e) {
     console.error('DIAG failed:', e.message);
