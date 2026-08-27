@@ -32,3 +32,39 @@ test('a Coffee 27"-29" fails', () => {
     collection: 'Coffee Collection', color: 'Chai Latte', length: '27"-29"', price: 1 }]);
   assert.match(validate(bad).problems.join(' '), /27/);
 });
+
+/* The Chocolate Truffle migration. The colour is in COFFEE and its swatch is
+   committed before Square has it, so the contract has to accept the catalogue
+   on both sides of that change — and nothing in between, or a catalogue that
+   had quietly lost variations would sail through. */
+const truffle = ['WFT', 'VOL', 'PLS'].flatMap(method =>
+  ['14"-16"', '18"-20"', '22"-24"'].map(length => ({
+    sku: `PCE-${method}-CHT-${length.replace(/\D/g, '').slice(0, 4)}`,
+    method,
+    collection: 'Coffee Collection',
+    color: 'Chocolate Truffle',
+    length,
+    price: 33500
+  })));
+
+test('Chocolate Truffle is nine variations, not some other number', () => {
+  assert.equal(truffle.length, 9);
+  assert.equal(good.length + truffle.length, 130);
+});
+
+test('Square with Chocolate Truffle added passes', () => {
+  assert.deepEqual(validate(good.concat(truffle)), { ok: true, problems: [] });
+});
+
+test('a count between the two ends still fails', () => {
+  const half = good.concat(truffle.slice(0, 4)); // 125
+  const r = validate(half);
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /125/);
+});
+
+test('Chocolate Truffle on Plus Lace is allowed, being a Coffee colour', () => {
+  const pls = truffle.filter(v => v.method === 'PLS');
+  assert.equal(pls.length, 3);
+  assert.equal(validate(good.concat(truffle)).problems.length, 0);
+});

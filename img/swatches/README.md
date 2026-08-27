@@ -15,7 +15,7 @@ A missing file is not an error. The chip falls back to the same quiet tonal
 field a `.frame` uses while it waits for photography, and the colour name stays
 printed underneath either way.
 
-## The fourteen
+## The colours
 
 Coffee Collection
 
@@ -30,6 +30,7 @@ Coffee Collection
 | Pumpkin Spice | `pumpkin-spice.jpg` |
 | Peppermint Mocha | `peppermint-mocha.jpg` |
 | Espresso Bean | `espresso-bean.jpg` |
+| Chocolate Truffle | `chocolate-truffle.jpg` — **not in Square yet**, see `api/_contract.js` |
 
 Single Colors
 
