@@ -39,7 +39,7 @@ for (const r of rows) {
     id: 'VAR_' + sku,
     item_variation_data: {
       sku,
-      name: `${color} | ${length}`,
+      name: `${color}, ${length}`,
       // Mirrors how Square actually stores this import: the wholesale price
       // is the base price for every variation, and a location_overrides
       // entry exists only for the retail location, since Square only stores

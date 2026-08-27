@@ -102,3 +102,44 @@ test('shaped output of the committed fixture passes the contract validator', () 
   const variations = shape(body, 'L0MRDCWWBFR3Z');
   assert.deepEqual(validate(variations), { ok: true, problems: [] });
 });
+
+test('accepts Square\'s comma-joined variation name', () => {
+  // Square rebuilds the name from option values with a comma, whatever the
+  // import file used. This is the shape production actually returns.
+  const one = { objects: [{ type: 'ITEM', id: 'I1', item_data: { name: 'Weft', variations: [
+    { type: 'ITEM_VARIATION', id: 'V1', item_variation_data: {
+      sku: 'PCE-WFT-AMB-2224', name: 'Amber, 22"-24"',
+      price_money: { amount: 33500, currency: 'USD' } } }] } }] };
+  const [v] = shape(one, 'L0MRDCWWBFR3Z');
+  assert.equal(v.color, 'Amber');
+  assert.equal(v.length, '22"-24"');
+  assert.equal(v.price, 33500);
+});
+
+test('still accepts the pipe-joined name our import wrote', () => {
+  const one = { objects: [{ type: 'ITEM', id: 'I1', item_data: { name: 'Weft', variations: [
+    { type: 'ITEM_VARIATION', id: 'V1', item_variation_data: {
+      sku: 'PCE-WFT-AMB-2224', name: 'Amber | 22"-24"',
+      price_money: { amount: 33500, currency: 'USD' } } }] } }] };
+  const [v] = shape(one, 'L0MRDCWWBFR3Z');
+  assert.equal(v.color, 'Amber');
+  assert.equal(v.length, '22"-24"');
+});
+
+test('a name with no delimiter at all is dropped, not half-parsed', () => {
+  const one = { objects: [{ type: 'ITEM', id: 'I1', item_data: { name: 'Weft', variations: [
+    { type: 'ITEM_VARIATION', id: 'V1', item_variation_data: {
+      sku: 'PCE-WFT-AMB-2224', name: 'Amber 22 inch',
+      price_money: { amount: 33500, currency: 'USD' } } }] } }] };
+  assert.equal(shape(one, 'L0MRDCWWBFR3Z').length, 0);
+});
+
+test('a multi-word colour survives the first-delimiter split', () => {
+  const one = { objects: [{ type: 'ITEM', id: 'I1', item_data: { name: 'Weft', variations: [
+    { type: 'ITEM_VARIATION', id: 'V1', item_variation_data: {
+      sku: 'PCE-WFT-CRM-1416', name: 'Caramel Macchiato, 14"-16"',
+      price_money: { amount: 20800, currency: 'USD' } } }] } }] };
+  const [v] = shape(one, 'L0MRDCWWBFR3Z');
+  assert.equal(v.color, 'Caramel Macchiato');
+  assert.equal(v.length, '14"-16"');
+});

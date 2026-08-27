@@ -26,7 +26,15 @@ function shape(body, locationId) {
       if (price === null) continue;
 
       const [, method] = d.sku.split('-');
-      const [color, length] = String(d.name || '').split('|').map(s => s.trim());
+      // Square rebuilds a variation's name from its option values and joins them
+      // with a comma ("Chai Latte, 14\"-16\""), regardless of the delimiter the
+      // import file used. Our own import wrote a pipe, so accept either, and
+      // split on the FIRST delimiter only: no colour or length contains one.
+      const rawName = String(d.name || '');
+      const cut = rawName.search(/[|,]/);
+      if (cut === -1) continue;
+      const color = rawName.slice(0, cut).trim();
+      const length = rawName.slice(cut + 1).trim();
       if (!color || !length) continue;
 
       out.push({

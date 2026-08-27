@@ -33,36 +33,6 @@ module.exports = async function handler(req, res, fetcher) {
     return res.status(503).json({ error: 'Catalog unavailable', reason: 'upstream' });
   }
 
-  // TEMPORARY DIAGNOSTIC — counts only, no secrets and no product data beyond
-  // SKU prefixes. Remove once the empty-catalog cause is found.
-  try {
-    const objs = (body && body.objects) || [];
-    const items = objs.filter(o => o && o.type === 'ITEM');
-    const vars = items.flatMap(i => (i.item_data && i.item_data.variations) || []);
-    const withSku = vars.filter(v => v.item_variation_data && v.item_variation_data.sku);
-    const pce = withSku.filter(v => v.item_variation_data.sku.startsWith('PCE-'));
-    const withBase = pce.filter(v => v.item_variation_data.price_money);
-    const withOverride = pce.filter(v => (v.item_variation_data.location_overrides || []).length);
-    const sampleSkus = withSku.slice(0, 5).map(v => v.item_variation_data.sku);
-    const pceNames = pce.slice(0, 3).map(v => v.item_variation_data.name);
-    const pceOptCounts = pce.slice(0, 3).map(v => (v.item_variation_data.item_option_values || []).length);
-    const itemNames = items.slice(0, 8).map(i => i.item_data && i.item_data.name);
-    console.error('DIAG objects=' + objs.length +
-      ' items=' + items.length +
-      ' variations=' + vars.length +
-      ' withSku=' + withSku.length +
-      ' pcePrefix=' + pce.length +
-      ' pceWithBasePrice=' + withBase.length +
-      ' pceWithAnyOverride=' + withOverride.length +
-      ' locationId=' + LOCATION_ID +
-      ' sampleSkus=' + JSON.stringify(sampleSkus) +
-      ' pceNames=' + JSON.stringify(pceNames) +
-      ' pceOptCounts=' + JSON.stringify(pceOptCounts) +
-      ' itemNames=' + JSON.stringify(itemNames));
-  } catch (e) {
-    console.error('DIAG failed:', e.message);
-  }
-
   const variations = shape(body, LOCATION_ID);
   const check = validate(variations);
   if (!check.ok) {
