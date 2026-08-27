@@ -113,10 +113,28 @@ test('a 401 sends the stylist to the login page and a 503 does not', () => {
   assert.ok(!failBody.includes('replace('), 'the unavailable path must not redirect');
 });
 
+// The wholesale catalogue's prices must only ever come from Square, so no page
+// and no shop script may state one. The Crown Your Style class is the single
+// deliberate exception: it is a fixed published course price behind a Square
+// payment link, not a catalogue variation, and a buyer deciding on a $1,200
+// class is entitled to see the figure before clicking through to checkout.
+// Keep this list at exactly one entry — a second one means the rule is leaking.
+const PRICE_EXCEPTIONS = { 'become-certified.html': ['$1,200'] };
+
 test('no page and no shop script contains a hard-coded price', () => {
   for (const page of ALL_PAGES.concat(['shop.js', 'login.js', 'cart.js'])) {
-    assert.ok(!/\$\d/.test(read(page)), `${page} must not hard-code a price`);
+    const allowed = PRICE_EXCEPTIONS[page] || [];
+    let body = read(page);
+    for (const ok of allowed) body = body.split(ok).join('');
+    assert.ok(!/\$\d/.test(body), `${page} must not hard-code a price`);
   }
+});
+
+test('the class price exception is a single named figure, not a loophole', () => {
+  assert.deepEqual(Object.keys(PRICE_EXCEPTIONS), ['become-certified.html']);
+  assert.equal(PRICE_EXCEPTIONS['become-certified.html'].length, 1);
+  // If Jessica changes the class price in Square, this must be updated with it.
+  assert.ok(read('become-certified.html').includes('$1,200'));
 });
 
 test('nothing in the shop uses a monospace typeface', () => {
