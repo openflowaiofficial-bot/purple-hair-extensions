@@ -1,0 +1,3679 @@
+{
+  "objects": [
+    {
+      "type": "ITEM",
+      "id": "ITEM_Weft_Single_Colors",
+      "item_data": {
+        "name": "Weft — Single Colors",
+        "variations": [
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-BRT-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-BRT-1416",
+              "name": "Brittany | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Brittany"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Brittany",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-BRT-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-BRT-1820",
+              "name": "Brittany | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Brittany"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Brittany",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-BRT-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-BRT-2224",
+              "name": "Brittany | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Brittany"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Brittany",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-BRT-2729",
+            "item_variation_data": {
+              "sku": "PCE-WFT-BRT-2729",
+              "name": "Brittany | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Brittany"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Brittany",
+            "_length": "27\"-29\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-MRG-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-MRG-1416",
+              "name": "Margo | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Margo"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Margo",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-MRG-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-MRG-1820",
+              "name": "Margo | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Margo"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Margo",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-MRG-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-MRG-2224",
+              "name": "Margo | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Margo"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Margo",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-MRG-2729",
+            "item_variation_data": {
+              "sku": "PCE-WFT-MRG-2729",
+              "name": "Margo | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Margo"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Margo",
+            "_length": "27\"-29\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-AMB-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-AMB-1416",
+              "name": "Amber | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Amber"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Amber",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-AMB-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-AMB-1820",
+              "name": "Amber | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Amber"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Amber",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-AMB-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-AMB-2224",
+              "name": "Amber | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Amber"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Amber",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-AMB-2729",
+            "item_variation_data": {
+              "sku": "PCE-WFT-AMB-2729",
+              "name": "Amber | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Amber"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Amber",
+            "_length": "27\"-29\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-JYL-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-JYL-1416",
+              "name": "Jayla | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jayla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jayla",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-JYL-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-JYL-1820",
+              "name": "Jayla | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jayla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jayla",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-JYL-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-JYL-2224",
+              "name": "Jayla | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jayla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jayla",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-JYL-2729",
+            "item_variation_data": {
+              "sku": "PCE-WFT-JYL-2729",
+              "name": "Jayla | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jayla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jayla",
+            "_length": "27\"-29\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-JDE-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-JDE-1416",
+              "name": "Jade | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jade"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jade",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-JDE-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-JDE-1820",
+              "name": "Jade | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jade"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jade",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-JDE-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-JDE-2224",
+              "name": "Jade | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jade"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jade",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-JDE-2729",
+            "item_variation_data": {
+              "sku": "PCE-WFT-JDE-2729",
+              "name": "Jade | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jade"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jade",
+            "_length": "27\"-29\""
+          }
+        ]
+      }
+    },
+    {
+      "type": "ITEM",
+      "id": "ITEM_Weft_Coffee_Collection",
+      "item_data": {
+        "name": "Weft — Coffee Collection",
+        "variations": [
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CHL-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CHL-1416",
+              "name": "Chai Latte | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CHL-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CHL-1820",
+              "name": "Chai Latte | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CHL-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CHL-2224",
+              "name": "Chai Latte | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-FRV-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-FRV-1416",
+              "name": "French Vanilla | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-FRV-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-FRV-1820",
+              "name": "French Vanilla | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-FRV-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-FRV-2224",
+              "name": "French Vanilla | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CFL-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CFL-1416",
+              "name": "Cafe Latte | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CFL-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CFL-1820",
+              "name": "Cafe Latte | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CFL-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CFL-2224",
+              "name": "Cafe Latte | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-THZ-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-THZ-1416",
+              "name": "Toasted Hazelnut | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-THZ-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-THZ-1820",
+              "name": "Toasted Hazelnut | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-THZ-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-THZ-2224",
+              "name": "Toasted Hazelnut | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CAP-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CAP-1416",
+              "name": "Cappuccino | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CAP-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CAP-1820",
+              "name": "Cappuccino | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CAP-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CAP-2224",
+              "name": "Cappuccino | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CRM-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CRM-1416",
+              "name": "Caramel Macchiato | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CRM-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CRM-1820",
+              "name": "Caramel Macchiato | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CRM-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CRM-2224",
+              "name": "Caramel Macchiato | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-PSP-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-PSP-1416",
+              "name": "Pumpkin Spice | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-PSP-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-PSP-1820",
+              "name": "Pumpkin Spice | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-PSP-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-PSP-2224",
+              "name": "Pumpkin Spice | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-PPM-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-PPM-1416",
+              "name": "Peppermint Mocha | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-PPM-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-PPM-1820",
+              "name": "Peppermint Mocha | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-PPM-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-PPM-2224",
+              "name": "Peppermint Mocha | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-ESP-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-ESP-1416",
+              "name": "Espresso Bean | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-ESP-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-ESP-1820",
+              "name": "Espresso Bean | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-ESP-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-ESP-2224",
+              "name": "Espresso Bean | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "22\"-24\""
+          }
+        ]
+      }
+    },
+    {
+      "type": "ITEM",
+      "id": "ITEM_Volume_Weft_Single_Colors",
+      "item_data": {
+        "name": "Volume Weft — Single Colors",
+        "variations": [
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-BRT-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-BRT-1416",
+              "name": "Brittany | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Brittany"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Brittany",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-BRT-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-BRT-1820",
+              "name": "Brittany | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Brittany"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Brittany",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-BRT-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-BRT-2224",
+              "name": "Brittany | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Brittany"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Brittany",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-BRT-2729",
+            "item_variation_data": {
+              "sku": "PCE-VOL-BRT-2729",
+              "name": "Brittany | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Brittany"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Brittany",
+            "_length": "27\"-29\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-MRG-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-MRG-1416",
+              "name": "Margo | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Margo"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Margo",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-MRG-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-MRG-1820",
+              "name": "Margo | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Margo"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Margo",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-MRG-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-MRG-2224",
+              "name": "Margo | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Margo"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Margo",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-MRG-2729",
+            "item_variation_data": {
+              "sku": "PCE-VOL-MRG-2729",
+              "name": "Margo | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Margo"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Margo",
+            "_length": "27\"-29\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-AMB-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-AMB-1416",
+              "name": "Amber | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Amber"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Amber",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-AMB-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-AMB-1820",
+              "name": "Amber | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Amber"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Amber",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-AMB-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-AMB-2224",
+              "name": "Amber | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Amber"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Amber",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-AMB-2729",
+            "item_variation_data": {
+              "sku": "PCE-VOL-AMB-2729",
+              "name": "Amber | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Amber"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Amber",
+            "_length": "27\"-29\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-JYL-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-JYL-1416",
+              "name": "Jayla | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jayla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jayla",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-JYL-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-JYL-1820",
+              "name": "Jayla | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jayla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jayla",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-JYL-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-JYL-2224",
+              "name": "Jayla | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jayla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jayla",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-JYL-2729",
+            "item_variation_data": {
+              "sku": "PCE-VOL-JYL-2729",
+              "name": "Jayla | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jayla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jayla",
+            "_length": "27\"-29\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-JDE-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-JDE-1416",
+              "name": "Jade | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 20800,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jade"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jade",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-JDE-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-JDE-1820",
+              "name": "Jade | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 25700,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jade"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jade",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-JDE-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-JDE-2224",
+              "name": "Jade | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 33500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jade"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jade",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-JDE-2729",
+            "item_variation_data": {
+              "sku": "PCE-VOL-JDE-2729",
+              "name": "Jade | 27\"-29\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 44100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Jade"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_27\"-29\""
+                }
+              ]
+            },
+            "_collection": "Single Colors",
+            "_color": "Jade",
+            "_length": "27\"-29\""
+          }
+        ]
+      }
+    },
+    {
+      "type": "ITEM",
+      "id": "ITEM_Volume_Weft_Coffee_Collection",
+      "item_data": {
+        "name": "Volume Weft — Coffee Collection",
+        "variations": [
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CHL-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CHL-1416",
+              "name": "Chai Latte | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CHL-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CHL-1820",
+              "name": "Chai Latte | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CHL-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CHL-2224",
+              "name": "Chai Latte | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-FRV-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-FRV-1416",
+              "name": "French Vanilla | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-FRV-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-FRV-1820",
+              "name": "French Vanilla | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-FRV-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-FRV-2224",
+              "name": "French Vanilla | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CFL-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CFL-1416",
+              "name": "Cafe Latte | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CFL-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CFL-1820",
+              "name": "Cafe Latte | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CFL-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CFL-2224",
+              "name": "Cafe Latte | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-THZ-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-THZ-1416",
+              "name": "Toasted Hazelnut | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-THZ-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-THZ-1820",
+              "name": "Toasted Hazelnut | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-THZ-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-THZ-2224",
+              "name": "Toasted Hazelnut | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CAP-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CAP-1416",
+              "name": "Cappuccino | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CAP-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CAP-1820",
+              "name": "Cappuccino | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CAP-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CAP-2224",
+              "name": "Cappuccino | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CRM-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CRM-1416",
+              "name": "Caramel Macchiato | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CRM-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CRM-1820",
+              "name": "Caramel Macchiato | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CRM-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CRM-2224",
+              "name": "Caramel Macchiato | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-PSP-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-PSP-1416",
+              "name": "Pumpkin Spice | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-PSP-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-PSP-1820",
+              "name": "Pumpkin Spice | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-PSP-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-PSP-2224",
+              "name": "Pumpkin Spice | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-PPM-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-PPM-1416",
+              "name": "Peppermint Mocha | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-PPM-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-PPM-1820",
+              "name": "Peppermint Mocha | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-PPM-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-PPM-2224",
+              "name": "Peppermint Mocha | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-ESP-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-ESP-1416",
+              "name": "Espresso Bean | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 32500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-ESP-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-ESP-1820",
+              "name": "Espresso Bean | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 37500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-ESP-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-ESP-2224",
+              "name": "Espresso Bean | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 45000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "22\"-24\""
+          }
+        ]
+      }
+    },
+    {
+      "type": "ITEM",
+      "id": "ITEM_Plus_Lace_Weft_Coffee_Collection",
+      "item_data": {
+        "name": "Plus Lace Weft — Coffee Collection",
+        "variations": [
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CHL-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CHL-1416",
+              "name": "Chai Latte | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CHL-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CHL-1820",
+              "name": "Chai Latte | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CHL-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CHL-2224",
+              "name": "Chai Latte | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chai Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chai Latte",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-FRV-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-FRV-1416",
+              "name": "French Vanilla | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-FRV-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-FRV-1820",
+              "name": "French Vanilla | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-FRV-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-FRV-2224",
+              "name": "French Vanilla | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_French Vanilla"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "French Vanilla",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CFL-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CFL-1416",
+              "name": "Cafe Latte | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CFL-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CFL-1820",
+              "name": "Cafe Latte | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CFL-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CFL-2224",
+              "name": "Cafe Latte | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cafe Latte"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cafe Latte",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-THZ-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-THZ-1416",
+              "name": "Toasted Hazelnut | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-THZ-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-THZ-1820",
+              "name": "Toasted Hazelnut | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-THZ-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-THZ-2224",
+              "name": "Toasted Hazelnut | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Toasted Hazelnut"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Toasted Hazelnut",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CAP-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CAP-1416",
+              "name": "Cappuccino | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CAP-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CAP-1820",
+              "name": "Cappuccino | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CAP-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CAP-2224",
+              "name": "Cappuccino | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Cappuccino"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Cappuccino",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CRM-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CRM-1416",
+              "name": "Caramel Macchiato | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CRM-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CRM-1820",
+              "name": "Caramel Macchiato | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CRM-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CRM-2224",
+              "name": "Caramel Macchiato | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Caramel Macchiato"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Caramel Macchiato",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-PSP-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-PSP-1416",
+              "name": "Pumpkin Spice | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-PSP-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-PSP-1820",
+              "name": "Pumpkin Spice | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-PSP-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-PSP-2224",
+              "name": "Pumpkin Spice | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Pumpkin Spice"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Pumpkin Spice",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-PPM-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-PPM-1416",
+              "name": "Peppermint Mocha | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-PPM-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-PPM-1820",
+              "name": "Peppermint Mocha | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-PPM-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-PPM-2224",
+              "name": "Peppermint Mocha | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Peppermint Mocha"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Peppermint Mocha",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-ESP-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-ESP-1416",
+              "name": "Espresso Bean | 14\"-16\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 59250,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-ESP-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-ESP-1820",
+              "name": "Espresso Bean | 18\"-20\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 67500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-ESP-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-ESP-2224",
+              "name": "Espresso Bean | 22\"-24\"",
+              "location_overrides": [
+                {
+                  "location_id": "L0MRDCWWBFR3Z",
+                  "price_money": {
+                    "amount": 78750,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Espresso Bean"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Espresso Bean",
+            "_length": "22\"-24\""
+          }
+        ]
+      }
+    }
+  ]
+}
