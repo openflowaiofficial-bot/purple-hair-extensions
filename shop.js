@@ -145,6 +145,33 @@
     toggle.setAttribute('aria-expanded', String(!body.hidden));
   });
 
+  // Registered once, here in the IIFE body — not inside refresh(), which
+  // runs on every cart change. Registering it there would re-bind the
+  // listener each time and a single click would fire N checkout requests.
+  var checkoutButton = drawer.querySelector('[data-drawer-checkout]');
+  if (checkoutButton) {
+    checkoutButton.addEventListener('click', function () {
+      var note = drawer.querySelector('[data-drawer-note]');
+      checkoutButton.disabled = true;
+      note.hidden = true;
+      fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: window.Cart.read(window.localStorage) })
+      })
+        .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, b: b }; }); })
+        .then(function (out) {
+          if (!out.ok || !out.b.url) throw new Error(out.b.reason || 'down');
+          window.location.href = out.b.url;
+        })
+        .catch(function () {
+          checkoutButton.disabled = false;
+          note.hidden = false;
+          note.textContent = 'We could not open checkout. Your order is saved — try again, or email support@purplecrownextensions.com.';
+        });
+    });
+  }
+
   function refresh() {
     var rows = window.Cart.read(window.localStorage);
     drawer.hidden = rows.length === 0;
