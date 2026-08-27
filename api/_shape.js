@@ -3,8 +3,15 @@ const { COFFEE } = require('./_contract.js');
 function priceAt(variationData, locationId) {
   const override = (variationData.location_overrides || [])
     .find(o => o.location_id === locationId);
-  const money = override && override.price_money;
-  return money && Number.isInteger(money.amount) ? money.amount : null;
+  const overrideMoney = override && override.price_money;
+  if (overrideMoney && Number.isInteger(overrideMoney.amount)) return overrideMoney.amount;
+
+  // Square only stores a location override where that location's price
+  // differs from the base price. No override for `locationId` means that
+  // location charges the base price, so fall back to it. Never fall back to
+  // another location's override.
+  const baseMoney = variationData.price_money;
+  return baseMoney && Number.isInteger(baseMoney.amount) ? baseMoney.amount : null;
 }
 
 function shape(body, locationId) {

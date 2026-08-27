@@ -12,11 +12,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-BRT-1416",
               "name": "Brittany | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -42,11 +46,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-BRT-1820",
               "name": "Brittany | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -72,11 +80,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-BRT-2224",
               "name": "Brittany | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -102,11 +114,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-BRT-2729",
               "name": "Brittany | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -132,11 +148,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-MRG-1416",
               "name": "Margo | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -162,11 +182,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-MRG-1820",
               "name": "Margo | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -192,11 +216,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-MRG-2224",
               "name": "Margo | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -222,11 +250,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-MRG-2729",
               "name": "Margo | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -252,11 +284,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-AMB-1416",
               "name": "Amber | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -282,11 +318,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-AMB-1820",
               "name": "Amber | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -312,11 +352,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-AMB-2224",
               "name": "Amber | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -342,11 +386,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-AMB-2729",
               "name": "Amber | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -372,11 +420,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-JYL-1416",
               "name": "Jayla | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -402,11 +454,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-JYL-1820",
               "name": "Jayla | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -432,11 +488,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-JYL-2224",
               "name": "Jayla | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -462,11 +522,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-JYL-2729",
               "name": "Jayla | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -492,11 +556,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-JDE-1416",
               "name": "Jade | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -522,11 +590,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-JDE-1820",
               "name": "Jade | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -552,11 +624,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-JDE-2224",
               "name": "Jade | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -582,11 +658,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-JDE-2729",
               "name": "Jade | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -621,11 +701,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CHL-1416",
               "name": "Chai Latte | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -651,11 +735,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CHL-1820",
               "name": "Chai Latte | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -681,11 +769,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CHL-2224",
               "name": "Chai Latte | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -711,11 +803,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-FRV-1416",
               "name": "French Vanilla | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -741,11 +837,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-FRV-1820",
               "name": "French Vanilla | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -771,11 +871,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-FRV-2224",
               "name": "French Vanilla | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -801,11 +905,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CFL-1416",
               "name": "Cafe Latte | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -831,11 +939,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CFL-1820",
               "name": "Cafe Latte | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -861,11 +973,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CFL-2224",
               "name": "Cafe Latte | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -891,11 +1007,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-THZ-1416",
               "name": "Toasted Hazelnut | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -921,11 +1041,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-THZ-1820",
               "name": "Toasted Hazelnut | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -951,11 +1075,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-THZ-2224",
               "name": "Toasted Hazelnut | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -981,11 +1109,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CAP-1416",
               "name": "Cappuccino | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -1011,11 +1143,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CAP-1820",
               "name": "Cappuccino | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -1041,11 +1177,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CAP-2224",
               "name": "Cappuccino | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -1071,11 +1211,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CRM-1416",
               "name": "Caramel Macchiato | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -1101,11 +1245,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CRM-1820",
               "name": "Caramel Macchiato | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -1131,11 +1279,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-CRM-2224",
               "name": "Caramel Macchiato | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -1161,11 +1313,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-PSP-1416",
               "name": "Pumpkin Spice | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -1191,11 +1347,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-PSP-1820",
               "name": "Pumpkin Spice | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -1221,11 +1381,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-PSP-2224",
               "name": "Pumpkin Spice | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -1251,11 +1415,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-PPM-1416",
               "name": "Peppermint Mocha | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -1281,11 +1449,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-PPM-1820",
               "name": "Peppermint Mocha | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -1311,11 +1483,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-PPM-2224",
               "name": "Peppermint Mocha | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -1341,11 +1517,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-ESP-1416",
               "name": "Espresso Bean | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -1371,11 +1551,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-ESP-1820",
               "name": "Espresso Bean | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -1401,11 +1585,15 @@
             "item_variation_data": {
               "sku": "PCE-WFT-ESP-2224",
               "name": "Espresso Bean | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -1440,11 +1628,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-BRT-1416",
               "name": "Brittany | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -1470,11 +1662,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-BRT-1820",
               "name": "Brittany | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -1500,11 +1696,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-BRT-2224",
               "name": "Brittany | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -1530,11 +1730,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-BRT-2729",
               "name": "Brittany | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -1560,11 +1764,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-MRG-1416",
               "name": "Margo | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -1590,11 +1798,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-MRG-1820",
               "name": "Margo | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -1620,11 +1832,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-MRG-2224",
               "name": "Margo | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -1650,11 +1866,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-MRG-2729",
               "name": "Margo | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -1680,11 +1900,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-AMB-1416",
               "name": "Amber | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -1710,11 +1934,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-AMB-1820",
               "name": "Amber | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -1740,11 +1968,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-AMB-2224",
               "name": "Amber | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -1770,11 +2002,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-AMB-2729",
               "name": "Amber | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -1800,11 +2036,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-JYL-1416",
               "name": "Jayla | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -1830,11 +2070,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-JYL-1820",
               "name": "Jayla | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -1860,11 +2104,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-JYL-2224",
               "name": "Jayla | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -1890,11 +2138,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-JYL-2729",
               "name": "Jayla | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -1920,11 +2172,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-JDE-1416",
               "name": "Jade | 14\"-16\"",
+              "price_money": {
+                "amount": 20800,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 20800,
+                    "amount": 55000,
                     "currency": "USD"
                   }
                 }
@@ -1950,11 +2206,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-JDE-1820",
               "name": "Jade | 18\"-20\"",
+              "price_money": {
+                "amount": 25700,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 25700,
+                    "amount": 63200,
                     "currency": "USD"
                   }
                 }
@@ -1980,11 +2240,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-JDE-2224",
               "name": "Jade | 22\"-24\"",
+              "price_money": {
+                "amount": 33500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 33500,
+                    "amount": 75000,
                     "currency": "USD"
                   }
                 }
@@ -2010,11 +2274,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-JDE-2729",
               "name": "Jade | 27\"-29\"",
+              "price_money": {
+                "amount": 44100,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 44100,
+                    "amount": 87500,
                     "currency": "USD"
                   }
                 }
@@ -2049,11 +2317,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CHL-1416",
               "name": "Chai Latte | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2079,11 +2351,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CHL-1820",
               "name": "Chai Latte | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2109,11 +2385,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CHL-2224",
               "name": "Chai Latte | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2139,11 +2419,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-FRV-1416",
               "name": "French Vanilla | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2169,11 +2453,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-FRV-1820",
               "name": "French Vanilla | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2199,11 +2487,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-FRV-2224",
               "name": "French Vanilla | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2229,11 +2521,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CFL-1416",
               "name": "Cafe Latte | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2259,11 +2555,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CFL-1820",
               "name": "Cafe Latte | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2289,11 +2589,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CFL-2224",
               "name": "Cafe Latte | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2319,11 +2623,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-THZ-1416",
               "name": "Toasted Hazelnut | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2349,11 +2657,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-THZ-1820",
               "name": "Toasted Hazelnut | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2379,11 +2691,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-THZ-2224",
               "name": "Toasted Hazelnut | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2409,11 +2725,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CAP-1416",
               "name": "Cappuccino | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2439,11 +2759,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CAP-1820",
               "name": "Cappuccino | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2469,11 +2793,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CAP-2224",
               "name": "Cappuccino | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2499,11 +2827,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CRM-1416",
               "name": "Caramel Macchiato | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2529,11 +2861,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CRM-1820",
               "name": "Caramel Macchiato | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2559,11 +2895,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-CRM-2224",
               "name": "Caramel Macchiato | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2589,11 +2929,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-PSP-1416",
               "name": "Pumpkin Spice | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2619,11 +2963,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-PSP-1820",
               "name": "Pumpkin Spice | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2649,11 +2997,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-PSP-2224",
               "name": "Pumpkin Spice | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2679,11 +3031,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-PPM-1416",
               "name": "Peppermint Mocha | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2709,11 +3065,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-PPM-1820",
               "name": "Peppermint Mocha | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2739,11 +3099,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-PPM-2224",
               "name": "Peppermint Mocha | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2769,11 +3133,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-ESP-1416",
               "name": "Espresso Bean | 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 32500,
+                    "amount": 60000,
                     "currency": "USD"
                   }
                 }
@@ -2799,11 +3167,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-ESP-1820",
               "name": "Espresso Bean | 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 37500,
+                    "amount": 72500,
                     "currency": "USD"
                   }
                 }
@@ -2829,11 +3201,15 @@
             "item_variation_data": {
               "sku": "PCE-VOL-ESP-2224",
               "name": "Espresso Bean | 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 45000,
+                    "amount": 90000,
                     "currency": "USD"
                   }
                 }
@@ -2868,11 +3244,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CHL-1416",
               "name": "Chai Latte | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -2898,11 +3278,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CHL-1820",
               "name": "Chai Latte | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -2928,11 +3312,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CHL-2224",
               "name": "Chai Latte | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
@@ -2958,11 +3346,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-FRV-1416",
               "name": "French Vanilla | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -2988,11 +3380,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-FRV-1820",
               "name": "French Vanilla | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -3018,11 +3414,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-FRV-2224",
               "name": "French Vanilla | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
@@ -3048,11 +3448,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CFL-1416",
               "name": "Cafe Latte | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -3078,11 +3482,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CFL-1820",
               "name": "Cafe Latte | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -3108,11 +3516,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CFL-2224",
               "name": "Cafe Latte | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
@@ -3138,11 +3550,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-THZ-1416",
               "name": "Toasted Hazelnut | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -3168,11 +3584,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-THZ-1820",
               "name": "Toasted Hazelnut | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -3198,11 +3618,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-THZ-2224",
               "name": "Toasted Hazelnut | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
@@ -3228,11 +3652,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CAP-1416",
               "name": "Cappuccino | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -3258,11 +3686,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CAP-1820",
               "name": "Cappuccino | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -3288,11 +3720,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CAP-2224",
               "name": "Cappuccino | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
@@ -3318,11 +3754,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CRM-1416",
               "name": "Caramel Macchiato | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -3348,11 +3788,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CRM-1820",
               "name": "Caramel Macchiato | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -3378,11 +3822,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-CRM-2224",
               "name": "Caramel Macchiato | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
@@ -3408,11 +3856,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-PSP-1416",
               "name": "Pumpkin Spice | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -3438,11 +3890,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-PSP-1820",
               "name": "Pumpkin Spice | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -3468,11 +3924,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-PSP-2224",
               "name": "Pumpkin Spice | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
@@ -3498,11 +3958,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-PPM-1416",
               "name": "Peppermint Mocha | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -3528,11 +3992,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-PPM-1820",
               "name": "Peppermint Mocha | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -3558,11 +4026,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-PPM-2224",
               "name": "Peppermint Mocha | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
@@ -3588,11 +4060,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-ESP-1416",
               "name": "Espresso Bean | 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 59250,
+                    "amount": 118500,
                     "currency": "USD"
                   }
                 }
@@ -3618,11 +4094,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-ESP-1820",
               "name": "Espresso Bean | 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 67500,
+                    "amount": 135000,
                     "currency": "USD"
                   }
                 }
@@ -3648,11 +4128,15 @@
             "item_variation_data": {
               "sku": "PCE-PLS-ESP-2224",
               "name": "Espresso Bean | 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
               "location_overrides": [
                 {
-                  "location_id": "L0MRDCWWBFR3Z",
+                  "location_id": "L1RH8QK7VWXYZ",
                   "price_money": {
-                    "amount": 78750,
+                    "amount": 157500,
                     "currency": "USD"
                   }
                 }
