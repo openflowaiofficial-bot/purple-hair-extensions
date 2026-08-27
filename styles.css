@@ -1425,3 +1425,271 @@ html.js-reveal .reveal[data-shown="true"] {
     transform: none;
   }
 }
+
+/* --------------------------------------------------------------------------
+   20. The wholesale shop — configurator, chips, order drawer
+
+   Appended for the Square-backed trade shop. Same rules as the rest of the
+   house: flat, no radius, no gradient, hierarchy from space and scale. The
+   amethyst appears once per state — the pressed chip and the drawer's edge —
+   so it stays a mark rather than a decoration.
+   -------------------------------------------------------------------------- */
+.shop-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.4rem, 3vw, 2.6rem);
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--fg-rule);
+  margin-bottom: clamp(2.6rem, 5vw, 4rem);
+}
+
+.shop-switch-link {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg-faint);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.28s var(--ease), border-color 0.28s var(--ease);
+}
+
+.shop-switch-link:hover {
+  color: var(--fg);
+}
+
+.shop-switch-link[aria-current="page"] {
+  color: var(--fg);
+  border-bottom-color: var(--amethyst);
+}
+
+.shop-loading,
+.shop-down {
+  color: var(--fg-soft);
+  max-width: var(--wrap-text);
+}
+
+.shop-down {
+  padding-left: 1.4rem;
+  border-left: 2px solid var(--amethyst);
+}
+
+.shop-loading[hidden],
+.shop-down[hidden],
+.shop-picker[hidden],
+.shop-result[hidden] {
+  display: none;
+}
+
+/* A fieldset is the honest element for a set of exclusive choices, but its
+   default frame is exactly the kind of box this site does not use. */
+.pick {
+  border: 0;
+  padding: 0;
+  margin: 0 0 clamp(2.2rem, 4vw, 3.2rem);
+}
+
+.pick .eyebrow {
+  padding: 0;
+  margin-bottom: 1.1rem;
+}
+
+.pick-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+/* Square, like everything else here. */
+.chip {
+  font-family: var(--body);
+  font-size: 0.92rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--fg-soft);
+  background: transparent;
+  border: 1px solid var(--fg-rule);
+  border-radius: 0;
+  padding: 0.72rem 1.2rem;
+  min-height: 44px;
+  cursor: pointer;
+  transition: color 0.24s var(--ease), border-color 0.24s var(--ease),
+    background 0.24s var(--ease);
+}
+
+.chip:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+.chip[aria-pressed="true"] {
+  color: var(--ivory);
+  background: var(--amethyst);
+  border-color: var(--amethyst);
+}
+
+.shop-result {
+  margin-top: clamp(2.4rem, 5vw, 3.6rem);
+  padding-top: clamp(2.2rem, 4vw, 3rem);
+  border-top: 1px solid var(--fg-rule);
+}
+
+.shop-chosen {
+  font-family: var(--display);
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 24;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--fg);
+}
+
+.shop-price {
+  font-family: var(--display);
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 16;
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  color: var(--amethyst);
+  margin-top: 0.7rem;
+}
+
+.shop-sku {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-top: 0.8rem;
+}
+
+.shop-result .btn {
+  margin-top: 2.2rem;
+}
+
+.shop-result .btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* The order drawer. Fixed bottom-right on desktop, a full-width shelf on a
+   phone, and absent entirely until something is in it. */
+.drawer {
+  position: fixed;
+  right: var(--gutter);
+  bottom: 0;
+  z-index: 60;
+  width: min(360px, calc(100vw - (var(--gutter) * 2)));
+  background: var(--ivory);
+  border: 1px solid var(--fg-rule);
+  border-bottom: 0;
+  border-top: 2px solid var(--amethyst);
+}
+
+.drawer[hidden] {
+  display: none;
+}
+
+.drawer-toggle {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 1.1rem 1.4rem;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.drawer-body {
+  padding: 0 1.4rem 1.4rem;
+  border-top: 1px solid var(--fg-rule);
+  max-height: min(60vh, 520px);
+  overflow-y: auto;
+}
+
+.drawer-body[hidden] {
+  display: none;
+}
+
+.drawer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.drawer-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--fg-rule);
+}
+
+.drawer-item {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--fg);
+}
+
+.drawer-list .chip {
+  flex: none;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.8rem;
+  min-height: 36px;
+}
+
+.drawer-total {
+  font-size: 0.85rem;
+  color: var(--fg-faint);
+  margin-top: 1.2rem;
+}
+
+.drawer-body .btn {
+  width: 100%;
+  margin-top: 1.2rem;
+  padding-inline: 1rem;
+}
+
+.drawer-body .form-note[hidden] {
+  display: none;
+}
+
+/* The sign-in refusal. One message for a wrong email and a wrong password, so
+   the page never tells an outsider which half they got right. */
+.login-error {
+  font-size: 0.85rem;
+  color: #9c2f28;
+  margin-top: 0.2rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid #9c2f28;
+}
+
+.login-error[hidden] {
+  display: none;
+}
+
+form[data-busy="true"] {
+  opacity: 0.6;
+}
+
+@media (max-width: 620px) {
+  .drawer {
+    right: 0;
+    left: 0;
+    width: auto;
+    border-left: 0;
+    border-right: 0;
+  }
+}

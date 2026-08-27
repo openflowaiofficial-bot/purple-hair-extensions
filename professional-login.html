@@ -61,15 +61,31 @@
           Sign in to shop wholesale, place and repeat orders, view your account, and track
           what is on its way to you.
         </p>
-        <div class="btn-row">
-          <!-- Points at the Square store once STORE_URL is set in main.js.
-               Until then it falls back to the support address below. -->
-          <a class="btn btn-solid" data-store="login"
-             href="mailto:support@purplecrownextensions.com?subject=Professional%20account%20access">Sign in</a>
-        </div>
+        <!-- method="post" is the honest fallback shape; login.js cancels the
+             native submit so the password is never put in a query string. -->
+        <form method="post" action="/api/login" data-login-form novalidate>
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password"
+                   autocomplete="current-password" required />
+          </div>
+          <p class="login-error" data-login-error hidden aria-live="polite"></p>
+          <div class="btn-row">
+            <button type="submit" class="btn btn-solid" data-login-submit>Sign in</button>
+          </div>
+        </form>
         <p class="form-note">
           Trouble signing in? Email
           <a href="mailto:support@purplecrownextensions.com">support@purplecrownextensions.com</a>.
+        </p>
+        <p class="form-note">
+          Shop wholesale: <a href="wefts.html">Wefts</a> &middot;
+          <a href="volume-wefts.html">Volume Wefts</a> &middot;
+          <a href="plus-lace-wefts.html">Plus Lace Wefts</a>
         </p>
       </div>
 
@@ -181,6 +197,7 @@
   </div>
 </footer>
 
+<script src="login.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wefts — The Purple Crown Extensions</title>
+  <meta name="description" content="Wholesale wefts for approved professionals. Choose a collection, a colour and a length." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="rail">Trade only &middot; <strong>Never sold to the public</strong> &middot; Wholesale access by approval</div>
+<header class="masthead">
+  <div class="wrap masthead-bar">
+    <a class="crest" href="index.html">
+      <img src="img/logo-mark.png" alt="" width="400" height="216" />
+      <span class="crest-name">The Purple Crown<em>Extensions</em></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="who-we-are.html">Who We Are</a>
+      <a class="nav-link" href="become-certified.html">Become Certified</a>
+      <a class="nav-link nav-key" href="professional-login.html">Professional Login</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="opener">
+    <div class="wrap opener-grid">
+      <div>
+        <hr class="mark" />
+        <span class="eyebrow">Wholesale</span>
+        <h1 class="d1">Wefts.</h1>
+      </div>
+      <p class="lede">
+        Single-direction Indian Temple hair, one donor to a bundle, never
+        silicone-coated. Choose a collection, a colour and a length.
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <nav class="shop-switch" aria-label="Wholesale methods">
+        <a class="shop-switch-link" href="wefts.html" aria-current="page">Wefts</a>
+        <a class="shop-switch-link" href="volume-wefts.html">Volume Wefts</a>
+        <a class="shop-switch-link" href="plus-lace-wefts.html">Plus Lace Wefts</a>
+      </nav>
+
+      <div class="shop" data-method="WFT" data-shop>
+        <div class="shop-loading" data-shop-loading>Loading the catalogue&hellip;</div>
+        <div class="shop-down" data-shop-down hidden>
+          <p class="prose">The catalogue is temporarily unavailable. Email
+            <a href="mailto:support@purplecrownextensions.com">support@purplecrownextensions.com</a>
+            and we will place your order by hand.</p>
+        </div>
+        <div class="shop-picker" data-shop-picker hidden>
+          <fieldset class="pick"><legend class="eyebrow">Collection</legend>
+            <div class="pick-row" data-pick="collection"></div></fieldset>
+          <fieldset class="pick"><legend class="eyebrow">Colour</legend>
+            <div class="pick-row" data-pick="color"></div></fieldset>
+          <fieldset class="pick"><legend class="eyebrow">Length</legend>
+            <div class="pick-row" data-pick="length"></div></fieldset>
+          <div class="shop-result" data-shop-result hidden>
+            <p class="shop-chosen" data-shop-chosen></p>
+            <p class="shop-price" data-shop-price></p>
+            <p class="shop-sku" data-shop-sku></p>
+            <button class="btn btn-solid" type="button" data-shop-add>Add to order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="drawer" data-drawer hidden aria-label="Your order">
+    <button class="drawer-toggle" type="button" data-drawer-toggle>
+      Your order (<span data-drawer-count>0</span>)
+    </button>
+    <div class="drawer-body" data-drawer-body hidden>
+      <ul class="drawer-list" data-drawer-list></ul>
+      <p class="drawer-total" data-drawer-total></p>
+      <button class="btn btn-solid" type="button" data-drawer-checkout>Check out with Square</button>
+      <p class="form-note" data-drawer-note hidden></p>
+    </div>
+  </aside>
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <div class="colophon-grid">
+      <div>
+        <a class="crest crest-foot" href="index.html">
+          <img src="img/logo-light.png" alt="The Purple Crown Extensions" width="680" height="544" />
+        </a>
+        <p class="colophon-blurb">
+          A professional-only hair extension house. Premium Indian Temple hair, education,
+          and wholesale access for licensed stylists and salons.
+        </p>
+      </div>
+      <div>
+        <h2>The house</h2>
+        <ul>
+          <li><a href="who-we-are.html">Who we are</a></li>
+          <li><a href="become-certified.html">Become certified</a></li>
+          <li><a href="become-certified.html#salon-partner">Salon partnership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Professionals</h2>
+        <ul>
+          <li><a href="professional-login.html">Professional login</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:support@purplecrownextensions.com">support@purplecrownextensions.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon-base">
+      <span>&copy; 2026 The Purple Crown Extensions</span>
+      <span>Professional only &middot; not sold to the public</span>
+    </div>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+<script src="shop.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
