@@ -26,8 +26,62 @@ test('drops anything without a PCE- SKU', () => {
 
 test('drops a variation with no price at our location', () => {
   const clone = JSON.parse(JSON.stringify(body));
-  clone.objects[0].item_data.variations[0].item_variation_data.location_overrides = [];
+  const d = clone.objects[0].item_data.variations[0].item_variation_data;
+  delete d.price_money;
+  d.location_overrides = [];
   assert.equal(shape(clone, 'L0MRDCWWBFR3Z').length, 120);
+});
+
+test('resolves the base price when a variation has no overrides at all', () => {
+  const singleVariationBody = { objects: [{
+    type: 'ITEM', id: 'ITEM_TEST', item_data: { name: 'Test Item', variations: [
+      { type: 'ITEM_VARIATION', id: 'VAR_TEST_1', item_variation_data: {
+        sku: 'PCE-WFT-TST-1416', name: 'Brittany | 14"-16"',
+        price_money: { amount: 20800, currency: 'USD' } } }
+    ] } }] };
+  const v = shape(singleVariationBody, 'L0MRDCWWBFR3Z').find(x => x.sku === 'PCE-WFT-TST-1416');
+  assert.ok(v, 'expected the variation to survive shape()');
+  assert.equal(v.price, 20800);
+});
+
+test('falls back to the base price when the only override belongs to another location', () => {
+  const singleVariationBody = { objects: [{
+    type: 'ITEM', id: 'ITEM_TEST', item_data: { name: 'Test Item', variations: [
+      { type: 'ITEM_VARIATION', id: 'VAR_TEST_2', item_variation_data: {
+        sku: 'PCE-WFT-TST-1820', name: 'Brittany | 18"-20"',
+        price_money: { amount: 20800, currency: 'USD' },
+        location_overrides: [{ location_id: 'L1RH8QK7VWXYZ',
+          price_money: { amount: 55000, currency: 'USD' } }] } }
+    ] } }] };
+  const v = shape(singleVariationBody, 'L0MRDCWWBFR3Z').find(x => x.sku === 'PCE-WFT-TST-1820');
+  assert.ok(v, 'expected the variation to survive shape()');
+  assert.equal(v.price, 20800);
+  assert.notEqual(v.price, 55000);
+});
+
+test('an override for our location wins over a different base price', () => {
+  const singleVariationBody = { objects: [{
+    type: 'ITEM', id: 'ITEM_TEST', item_data: { name: 'Test Item', variations: [
+      { type: 'ITEM_VARIATION', id: 'VAR_TEST_3', item_variation_data: {
+        sku: 'PCE-WFT-TST-2224', name: 'Brittany | 22"-24"',
+        price_money: { amount: 20800, currency: 'USD' },
+        location_overrides: [{ location_id: 'L0MRDCWWBFR3Z',
+          price_money: { amount: 19900, currency: 'USD' } }] } }
+    ] } }] };
+  const v = shape(singleVariationBody, 'L0MRDCWWBFR3Z').find(x => x.sku === 'PCE-WFT-TST-2224');
+  assert.ok(v, 'expected the variation to survive shape()');
+  assert.equal(v.price, 19900);
+});
+
+test('drops a variation with neither a usable override nor a base price', () => {
+  const singleVariationBody = { objects: [{
+    type: 'ITEM', id: 'ITEM_TEST', item_data: { name: 'Test Item', variations: [
+      { type: 'ITEM_VARIATION', id: 'VAR_TEST_4', item_variation_data: {
+        sku: 'PCE-WFT-TST-2729', name: 'Brittany | 27"-29"',
+        location_overrides: [{ location_id: 'L1RH8QK7VWXYZ',
+          price_money: { amount: 55000, currency: 'USD' } }] } }
+    ] } }] };
+  assert.equal(shape(singleVariationBody, 'L0MRDCWWBFR3Z').length, 0);
 });
 
 test('derives collection, color and length for a Coffee Collection variation', () => {

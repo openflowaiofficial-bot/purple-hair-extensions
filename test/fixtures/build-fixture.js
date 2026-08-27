@@ -32,7 +32,7 @@ const rows = fs.readFileSync(process.argv[2], 'utf8').trim().split('\n').slice(1
 
 const items = new Map();
 for (const r of rows) {
-  const [sku, itemName, , , , collection, color, , length, , wholesale] = r;
+  const [sku, itemName, , , , collection, color, , length, , wholesale, retail] = r;
   if (!items.has(itemName)) items.set(itemName, []);
   items.get(itemName).push({
     type: 'ITEM_VARIATION',
@@ -40,9 +40,14 @@ for (const r of rows) {
     item_variation_data: {
       sku,
       name: `${color} | ${length}`,
+      // Mirrors how Square actually stores this import: the wholesale price
+      // is the base price for every variation, and a location_overrides
+      // entry exists only for the retail location, since Square only stores
+      // an override where that location's price differs from the base.
+      price_money: { amount: Math.round(parseFloat(wholesale) * 100), currency: 'USD' },
       location_overrides: [{
-        location_id: 'L0MRDCWWBFR3Z',
-        price_money: { amount: Math.round(parseFloat(wholesale) * 100), currency: 'USD' }
+        location_id: 'L1RH8QK7VWXYZ',
+        price_money: { amount: Math.round(parseFloat(retail) * 100), currency: 'USD' }
       }],
       item_option_values: [
         { item_option_id: 'OPT_COLOR', item_option_value_id: 'VAL_' + color },
