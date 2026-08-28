@@ -4,8 +4,8 @@ const { shape } = require('../api/_shape.js');
 const { validate } = require('../api/_contract.js');
 const body = require('./fixtures/square-catalog.json');
 
-test('shapes all 121 of ours', () => {
-  assert.equal(shape(body, 'L0MRDCWWBFR3Z').length, 121);
+test('shapes all 130 of ours', () => {
+  assert.equal(shape(body, 'L0MRDCWWBFR3Z').length, 130);
 });
 
 test('takes the wholesale location price', () => {
@@ -21,7 +21,7 @@ test('drops anything without a PCE- SKU', () => {
         sku: '1178054', name: '16" / Beth',
         location_overrides: [{ location_id: 'L0MRDCWWBFR3Z',
           price_money: { amount: 39900, currency: 'USD' } }] } }] } }]) };
-  assert.equal(shape(dirty, 'L0MRDCWWBFR3Z').length, 121);
+  assert.equal(shape(dirty, 'L0MRDCWWBFR3Z').length, 130);
 });
 
 test('drops a variation with no price at our location', () => {
@@ -29,7 +29,7 @@ test('drops a variation with no price at our location', () => {
   const d = clone.objects[0].item_data.variations[0].item_variation_data;
   delete d.price_money;
   d.location_overrides = [];
-  assert.equal(shape(clone, 'L0MRDCWWBFR3Z').length, 120);
+  assert.equal(shape(clone, 'L0MRDCWWBFR3Z').length, 129);
 });
 
 test('resolves the base price when a variation has no overrides at all', () => {

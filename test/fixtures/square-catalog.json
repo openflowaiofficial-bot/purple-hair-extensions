@@ -1612,6 +1612,108 @@
             "_collection": "Coffee Collection",
             "_color": "Espresso Bean",
             "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CHT-1416",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CHT-1416",
+              "name": "Chocolate Truffle, 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 60000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CHT-1820",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CHT-1820",
+              "name": "Chocolate Truffle, 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 72500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-WFT-CHT-2224",
+            "item_variation_data": {
+              "sku": "PCE-WFT-CHT-2224",
+              "name": "Chocolate Truffle, 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 90000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
+            "_length": "22\"-24\""
           }
         ]
       }
@@ -3228,6 +3330,108 @@
             "_collection": "Coffee Collection",
             "_color": "Espresso Bean",
             "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CHT-1416",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CHT-1416",
+              "name": "Chocolate Truffle, 14\"-16\"",
+              "price_money": {
+                "amount": 32500,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 60000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CHT-1820",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CHT-1820",
+              "name": "Chocolate Truffle, 18\"-20\"",
+              "price_money": {
+                "amount": 37500,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 72500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-VOL-CHT-2224",
+            "item_variation_data": {
+              "sku": "PCE-VOL-CHT-2224",
+              "name": "Chocolate Truffle, 22\"-24\"",
+              "price_money": {
+                "amount": 45000,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 90000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
+            "_length": "22\"-24\""
           }
         ]
       }
@@ -4154,6 +4358,108 @@
             },
             "_collection": "Coffee Collection",
             "_color": "Espresso Bean",
+            "_length": "22\"-24\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CHT-1416",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CHT-1416",
+              "name": "Chocolate Truffle, 14\"-16\"",
+              "price_money": {
+                "amount": 59250,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 118500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_14\"-16\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
+            "_length": "14\"-16\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CHT-1820",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CHT-1820",
+              "name": "Chocolate Truffle, 18\"-20\"",
+              "price_money": {
+                "amount": 67500,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 135000,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_18\"-20\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
+            "_length": "18\"-20\""
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "id": "VAR_PCE-PLS-CHT-2224",
+            "item_variation_data": {
+              "sku": "PCE-PLS-CHT-2224",
+              "name": "Chocolate Truffle, 22\"-24\"",
+              "price_money": {
+                "amount": 78750,
+                "currency": "USD"
+              },
+              "location_overrides": [
+                {
+                  "location_id": "L1RH8QK7VWXYZ",
+                  "price_money": {
+                    "amount": 157500,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "item_option_values": [
+                {
+                  "item_option_id": "OPT_COLOR",
+                  "item_option_value_id": "VAL_Chocolate Truffle"
+                },
+                {
+                  "item_option_id": "OPT_LENGTH",
+                  "item_option_value_id": "VAL_22\"-24\""
+                }
+              ]
+            },
+            "_collection": "Coffee Collection",
+            "_color": "Chocolate Truffle",
             "_length": "22\"-24\""
           }
         ]

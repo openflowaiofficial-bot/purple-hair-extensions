@@ -192,7 +192,7 @@ test('a catalog too short to be the whole library -> 503 contract', async () => 
 
 // -------------------------------------------------------------- 6: success
 
-test('valid session + good catalog -> 200 with all 121 shaped variations', async () => {
+test('valid session + good catalog -> 200 with all 130 shaped variations', async () => {
   await withEnv(FULL_ENV, async () => {
     const { sign } = freshRequire('../api/_session.js');
     const handler = freshCatalog();
@@ -200,7 +200,7 @@ test('valid session + good catalog -> 200 with all 121 shaped variations', async
     const res = fakeRes();
     await handler(cookieReq(token), res, async () => goodBody);
     assert.equal(res.code, 200);
-    assert.equal(res.body.variations.length, 121);
+    assert.equal(res.body.variations.length, 130);
   });
 });
 

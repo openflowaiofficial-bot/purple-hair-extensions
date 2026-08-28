@@ -16,9 +16,9 @@ test('the real catalog passes', () => {
 });
 
 test('a missing variation fails on count', () => {
-  const r = validate(good.slice(0, 120));
+  const r = validate(good.slice(0, 129));
   assert.equal(r.ok, false);
-  assert.match(r.problems.join(' '), /121/);
+  assert.match(r.problems.join(' '), /130/);
 });
 
 test('Plus Lace in a single colour fails', () => {
@@ -33,38 +33,28 @@ test('a Coffee 27"-29" fails', () => {
   assert.match(validate(bad).problems.join(' '), /27/);
 });
 
-/* The Chocolate Truffle migration. The colour is in COFFEE and its swatch is
-   committed before Square has it, so the contract has to accept the catalogue
-   on both sides of that change — and nothing in between, or a catalogue that
-   had quietly lost variations would sail through. */
-const truffle = ['WFT', 'VOL', 'PLS'].flatMap(method =>
-  ['14"-16"', '18"-20"', '22"-24"'].map(length => ({
-    sku: `PCE-${method}-CHT-${length.replace(/\D/g, '').slice(0, 4)}`,
-    method,
-    collection: 'Coffee Collection',
-    color: 'Chocolate Truffle',
-    length,
-    price: 33500
-  })));
+/* The Chocolate Truffle migration completed on 2026-08-28: the colour exists
+   in Square on all three methods and the fixture includes it. The transitional
+   [121, 130] window is closed — the old pre-migration count must now FAIL, or
+   a catalogue that quietly lost the nine new variations would sail through. */
+const truffle = good.filter(v => v.color === 'Chocolate Truffle');
 
-test('Chocolate Truffle is nine variations, not some other number', () => {
+test('Chocolate Truffle is nine variations across the three methods', () => {
   assert.equal(truffle.length, 9);
-  assert.equal(good.length + truffle.length, 130);
+  assert.deepEqual(
+    [...new Set(truffle.map(v => v.method))].sort(), ['PLS', 'VOL', 'WFT']);
+  assert.equal(good.length, 130);
 });
 
-test('Square with Chocolate Truffle added passes', () => {
-  assert.deepEqual(validate(good.concat(truffle)), { ok: true, problems: [] });
-});
-
-test('a count between the two ends still fails', () => {
-  const half = good.concat(truffle.slice(0, 4)); // 125
-  const r = validate(half);
+test('the pre-migration count of 121 now fails', () => {
+  const withoutTruffle = good.filter(v => v.color !== 'Chocolate Truffle');
+  const r = validate(withoutTruffle);
   assert.equal(r.ok, false);
-  assert.match(r.problems.join(' '), /125/);
+  assert.match(r.problems.join(' '), /121/);
 });
 
 test('Chocolate Truffle on Plus Lace is allowed, being a Coffee colour', () => {
   const pls = truffle.filter(v => v.method === 'PLS');
   assert.equal(pls.length, 3);
-  assert.equal(validate(good.concat(truffle)).problems.length, 0);
+  assert.deepEqual(validate(good), { ok: true, problems: [] });
 });

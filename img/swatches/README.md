@@ -30,7 +30,7 @@ Coffee Collection
 | Pumpkin Spice | `pumpkin-spice.jpg` |
 | Peppermint Mocha | `peppermint-mocha.jpg` |
 | Espresso Bean | `espresso-bean.jpg` |
-| Chocolate Truffle | `chocolate-truffle.jpg` — **not in Square yet**, see `api/_contract.js` |
+| Chocolate Truffle | `chocolate-truffle.jpg` |
 
 Single Colors
 
