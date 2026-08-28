@@ -650,23 +650,6 @@ a {
   aspect-ratio: 1 / 1;
 }
 
-/* The motion shot, given the whole column.
-
-   It is 1500x640, and the subject is hair thrown clean to the edges of the
-   frame. Held at 16/9 beside a column of text it lost both ends of that throw
-   to object-fit: cover — the picture's entire point, cropped off to fit a
-   shape the photograph never had. So the frame takes the photograph's own
-   proportion and crops nothing, and takes the full width to do it. */
-.frame-motion {
-  aspect-ratio: 1500 / 640;
-  margin-top: clamp(2.8rem, 5vw, 4.4rem);
-}
-
-/* The prose keeps a readable measure even though the picture below it does not. */
-.hair-intro {
-  max-width: var(--wrap-text);
-}
-
 /* --------------------------------------------------------------------------
    8. Hero — full-bleed image with the headline held inside it
    -------------------------------------------------------------------------- */
