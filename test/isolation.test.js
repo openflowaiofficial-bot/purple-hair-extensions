@@ -100,13 +100,44 @@ test('the portal bar is on every signed-in page and no public one', () => {
 
 test('the portal bar marks exactly one destination as current', () => {
   for (const page of SIGNED_IN) {
-    const here = (read(page).match(/class="portal-link portal-here"/g) || []).length;
+    // Matched on the class itself rather than the whole attribute: the
+    // current item also carries portal-account on the Your Account entry.
+    const here = (read(page).match(/portal-here/g) || []).length;
     assert.equal(here, 1, `${page} must mark exactly one portal link current`);
   }
 });
 
 // It sits inside <main>, above the page's own content, so it is the first
 // thing after the masthead rather than something to scroll for.
+test('portal.js is loaded by exactly the signed-in pages', () => {
+  // Sorted: ALL_PAGES lists the shop before the portal and SIGNED_IN the
+  // other way round. The set is what matters, not the order.
+  assert.deepEqual(
+    ALL_PAGES.filter((p) => read(p).includes('portal.js')).sort(),
+    SIGNED_IN.slice().sort());
+});
+
+// The avatar is decorative: the label beside it already says "Your Account".
+// Announcing it again would only make a screen reader repeat itself.
+test('the bar avatar is present, decorative, and drawn by CSS', () => {
+  for (const page of SIGNED_IN) {
+    const html = read(page);
+    assert.ok(html.includes('data-portal-avatar'), page + ' needs an avatar slot');
+    assert.match(html, /<span class="portal-avatar" data-portal-avatar aria-hidden="true">/,
+      page + ': the avatar must be aria-hidden');
+    assert.ok(!/<img[^>]*data-portal-avatar/.test(html),
+      page + ': the bar avatar is a background image, so an unset one cannot fail to load');
+  }
+});
+
+// One request per page for a 26px picture, and never a Square order search.
+test('the bar asks for the brief account, not the full one', () => {
+  const js = read('portal.js');
+  assert.ok(js.includes('/api/account?brief=1'), 'portal.js must use the brief form');
+  assert.ok(js.includes("querySelector('[data-account]')"),
+    'portal.js must stand down on the account page, which already has the data');
+});
+
 test('the portal bar is the first thing inside main', () => {
   for (const page of SIGNED_IN) {
     const html = read(page);

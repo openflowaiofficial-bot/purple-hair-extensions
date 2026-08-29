@@ -116,6 +116,14 @@ module.exports = async function handler(req, res, deps) {
 
   const view = dir.publicView(account);
 
+  // ?brief=1 is what the portal bar asks for on every signed-in page: the
+  // account itself and nothing else. It deliberately skips the Square call —
+  // searching a stylist's orders on every page load, to draw a 26px avatar,
+  // would be an absurd amount of work for a picture.
+  if (req.query && (req.query.brief === '1' || req.query.brief === 'true')) {
+    return res.status(200).json({ account: view, brief: true });
+  }
+
   // No Square customer linked: report that plainly rather than inventing a
   // zero balance and an empty order list that look like facts.
   if (!account.squareCustomerId || !token()) {

@@ -2191,3 +2191,44 @@ a.portal-link:hover {
     padding-block: 0.12rem;
   }
 }
+
+
+/* The signed-in professional, in the bar. A background image rather than an
+   <img>: with no picture set there is nothing to load and nothing to fail, so
+   the empty circle is the resting state rather than a broken image. */
+.portal-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+}
+
+.portal-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  flex: none;
+  border: 1px solid var(--fg-rule);
+  background-color: var(--linen);
+  background-image:
+    radial-gradient(120% 90% at 22% 16%, rgba(138, 92, 160, 0.22), transparent 62%);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Once a picture is set it replaces the tonal field rather than sitting over
+   it — the same rule the colour swatches follow. */
+.portal-avatar[data-has-avatar] {
+  background-color: transparent;
+  border-color: var(--amethyst);
+}
+
+@media (max-width: 620px) {
+  .portal-avatar {
+    width: 22px;
+    height: 22px;
+  }
+
+  .portal-account {
+    gap: 0.5rem;
+  }
+}

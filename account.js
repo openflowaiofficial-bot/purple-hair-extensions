@@ -109,9 +109,24 @@
     }
   }
 
+  // The bar sits outside [data-account], so it is reached from the document
+  // rather than through el().
+  function renderBarAvatar(url) {
+    var slot = document.querySelector('[data-portal-avatar]');
+    if (!slot) return;
+    if (url) {
+      slot.style.backgroundImage = "url('" + url.replace(/'/g, '%27') + "')";
+      slot.setAttribute('data-has-avatar', 'true');
+    } else {
+      slot.style.backgroundImage = '';
+      slot.removeAttribute('data-has-avatar');
+    }
+  }
+
   function render(data) {
     el('[data-account-email]').textContent = data.account.email;
     renderAvatar(data.account.avatarUrl);
+    renderBarAvatar(data.account.avatarUrl);
     fillProfile(data.account.profile);
 
     var spend = el('[data-ytd]');
@@ -249,6 +264,7 @@
           fileInput.value = '';
           if (out.status === 200) {
             renderAvatar(out.body.avatarUrl);
+            renderBarAvatar(out.body.avatarUrl);
             avatarNote('Updated.');
             return;
           }
@@ -274,7 +290,7 @@
       fetch('/api/avatar', { method: 'DELETE', credentials: 'same-origin' })
         .then(function (r) { return r.ok; })
         .then(function (ok) {
-          if (ok) { renderAvatar(null); avatarNote('Removed.'); }
+          if (ok) { renderAvatar(null); renderBarAvatar(null); avatarNote('Removed.'); }
           else { avatarNote('We could not remove your picture just now.'); }
         })
         .catch(function () { avatarNote('We could not remove your picture just now.'); });
