@@ -83,6 +83,57 @@ test('gate.js is loaded by exactly the portal resource pages', () => {
   assert.deepEqual(ALL_PAGES.filter((p) => read(p).includes('gate.js')), PORTAL);
 });
 
+// Every page behind the login carries the portal bar, and no page in front of
+// it does. A public visitor must never be shown the way into a portal they
+// cannot enter.
+const SIGNED_IN = PORTAL.concat(SHOP, ACCOUNT);
+
+test('the portal bar is on every signed-in page and no public one', () => {
+  for (const page of SIGNED_IN) {
+    assert.ok(read(page).includes('class="portal-bar"'), `${page} needs the portal bar`);
+  }
+  for (const page of BROCHURE.concat(['professional-login.html'])) {
+    assert.ok(!read(page).includes('class="portal-bar"'),
+      `${page} is public and must not carry the portal bar`);
+  }
+});
+
+test('the portal bar marks exactly one destination as current', () => {
+  for (const page of SIGNED_IN) {
+    const here = (read(page).match(/class="portal-link portal-here"/g) || []).length;
+    assert.equal(here, 1, `${page} must mark exactly one portal link current`);
+  }
+});
+
+// It sits inside <main>, above the page's own content, so it is the first
+// thing after the masthead rather than something to scroll for.
+test('the portal bar is the first thing inside main', () => {
+  for (const page of SIGNED_IN) {
+    const html = read(page);
+    const main = html.indexOf('<main id="main"');
+    const bar = html.indexOf('class="portal-bar"');
+    const opener = html.indexOf('<section');
+    assert.ok(bar > main, `${page}: the bar must be inside main`);
+    assert.ok(bar < opener, `${page}: the bar must come before the first section`);
+  }
+});
+
+// The bar must not become a second thing that answers to "the navigation" —
+// see the masthead nav assertions above.
+test('the portal bar is not a nav element', () => {
+  for (const page of SIGNED_IN) {
+    assert.equal((read(page).match(/<nav\b/g) || []).length, 1,
+      `${page} must carry exactly one <nav>, the masthead`);
+  }
+});
+
+test('both sign-in paths land on the account page', () => {
+  assert.match(read('login.js'), /location\.href = 'account\.html'/,
+    'the password form must land on the account');
+  assert.match(read('api/auth-verify.js'), /'Location', '\/account\.html'/,
+    'the emailed link must land on the account');
+});
+
 test('account.js is loaded by exactly the account page', () => {
   assert.deepEqual(ALL_PAGES.filter((p) => read(p).includes('account.js')), ACCOUNT);
 });

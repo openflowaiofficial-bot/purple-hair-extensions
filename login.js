@@ -110,7 +110,7 @@
           // Clear the field before leaving, so a back-navigation restore has
           // nothing to put back.
           password.value = '';
-          window.location.href = 'wefts.html';
+          window.location.href = 'account.html';
           return;
         }
         busy(false);

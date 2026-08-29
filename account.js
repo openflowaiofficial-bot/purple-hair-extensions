@@ -161,8 +161,12 @@
           // Signed in, but on the shared wholesale login rather than a
           // professional account. Not an error, and not a reason to throw
           // anyone out of a session that still works for ordering.
+          // Signed in on the shared wholesale login. Say so, and offer the
+          // way on — bouncing them somewhere automatically would be more
+          // confusing than telling them where they are.
           fail('This sign-in is not linked to a professional account, so there is no profile to show. '
-             + 'If you should have one, contact support@purplecrownextensions.com.');
+             + 'You can still order wholesale using the links above. If you should have an '
+             + 'account, contact support@purplecrownextensions.com.');
           return;
         }
         if (result.status !== 200) { fail('Your account is unavailable right now. Please try again shortly.'); return; }
