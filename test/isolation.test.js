@@ -14,9 +14,9 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const read = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
 
-// The four pages that must stay pure brochure: no shop code, no API at all.
+// The five pages that must stay pure brochure: no shop code, no API at all.
 const BROCHURE = ['index.html', 'who-we-are.html', 'become-certified.html',
-  'contact.html'];
+  'contact.html', 'faq.html'];
 
 const SHOP = ['wefts.html', 'volume-wefts.html', 'plus-lace-wefts.html'];
 
@@ -79,9 +79,9 @@ function primaryNav(page) {
   return match[1];
 }
 
-test('the nav is still exactly five links on every page', () => {
+test('the nav is still exactly six links on every page', () => {
   for (const page of ALL_PAGES) {
-    assert.equal((primaryNav(page).match(/class="nav-link/g) || []).length, 5, page);
+    assert.equal((primaryNav(page).match(/class="nav-link/g) || []).length, 6, page);
   }
 });
 

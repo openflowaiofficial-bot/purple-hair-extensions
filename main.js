@@ -202,24 +202,25 @@
 
   /* ------------------------------------------------------------------------
      The cuticle bench
-     Draws the house's actual claim instead of asserting it. Strands are the
-     same in both states — only the direction of their cuticle scales changes,
-     and everything that follows from that.
+     Shows what cuticle alignment means rather than asserting it. Strands are
+     the same in both states — only the direction of their cuticle scales
+     changes, and the friction that follows from that.
      ------------------------------------------------------------------------ */
   var BENCH_COPY = {
     aligned: {
-      title: "Single direction, one donor",
+      title: "Aligned from root to end.",
       body:
-        "Every cuticle runs the way it grew, so the strands lie against each " +
-        "other rather than catching. Light travels the length of the hair " +
-        "instead of scattering — which is where the shine comes from, not a coating."
+        "Cuticle alignment matters. When the cuticles run in the same direction, " +
+        "the strands move together more naturally and experience less friction. " +
+        "This supports smoother movement, easier maintenance, and the luminous " +
+        "finish professionals expect from exceptional hair."
     },
     mixed: {
-      title: "Mixed direction — what we will not sell",
+      title: "Mixed direction",
       body:
-        "Hair collected from several heads runs in opposing directions. The " +
-        "scales lock against each other, and it mats at the nape within weeks. " +
-        "Silicone hides it in the box, then washes out and takes your client's trust with it."
+        "When cuticles run in opposing directions, the scales meet against one " +
+        "another and the strands catch rather than sliding together. That is the " +
+        "friction cuticle alignment is there to reduce."
     }
   };
 
@@ -270,7 +271,7 @@
       var g = document.createElementNS(ns, "g");
       g.setAttribute("class", "cut-strand");
 
-      // Half the strands are the offenders once the cuticle is mixed.
+      // Half the strands run the other way once the cuticle is mixed.
       var opposed = r % 2 === 1;
       if (opposed) g.setAttribute("data-opposed", "true");
 
