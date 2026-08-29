@@ -92,8 +92,26 @@
     return out;
   }
 
+  function renderAvatar(url) {
+    var img = el('[data-avatar-img]');
+    var placeholder = el('[data-avatar-placeholder]');
+    var remove = el('[data-avatar-remove]');
+    if (url) {
+      img.src = url;
+      show(img, true);
+      show(placeholder, false);
+      show(remove, true);
+    } else {
+      img.removeAttribute('src');
+      show(img, false);
+      show(placeholder, true);
+      show(remove, false);
+    }
+  }
+
   function render(data) {
     el('[data-account-email]').textContent = data.account.email;
+    renderAvatar(data.account.avatarUrl);
     fillProfile(data.account.profile);
 
     var spend = el('[data-ytd]');
@@ -151,6 +169,112 @@
         render(result.body);
       })
       .catch(function () { fail('Your account is unavailable right now. Please try again shortly.'); });
+  }
+
+  /* ------------------------------------------------------------------------
+     The profile picture.
+
+     The file is drawn to a square canvas and re-encoded as JPEG before it is
+     sent. That caps the upload, guarantees a square, and — the part worth
+     saying out loud — drops the EXIF block, which on a photograph taken with a
+     phone routinely carries the GPS coordinates of where it was taken. A
+     stylist uploading a headshot should not be publishing their home address.
+
+     None of this is a security measure. The browser can be bypassed, so
+     api/_image.js checks the bytes again on arrival and believes nothing the
+     client claimed.
+     ------------------------------------------------------------------------ */
+  var AVATAR_PX = 512;
+
+  function squareJpeg(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        URL.revokeObjectURL(url);
+        var side = Math.min(img.width, img.height);
+        var canvas = document.createElement('canvas');
+        canvas.width = AVATAR_PX;
+        canvas.height = AVATAR_PX;
+        var ctx = canvas.getContext('2d');
+        ctx.imageSmoothingQuality = 'high';
+        // Centre crop, then scale.
+        ctx.drawImage(img,
+          (img.width - side) / 2, (img.height - side) / 2, side, side,
+          0, 0, AVATAR_PX, AVATAR_PX);
+        canvas.toBlob(function (blob) {
+          if (blob) resolve(blob); else reject(new Error('encode_failed'));
+        }, 'image/jpeg', 0.85);
+      };
+      img.onerror = function () {
+        URL.revokeObjectURL(url);
+        reject(new Error('not_an_image'));
+      };
+      img.src = url;
+    });
+  }
+
+  function avatarNote(message) {
+    var note = el('[data-avatar-note]');
+    note.textContent = message || '';
+    note.hidden = !message;
+  }
+
+  var fileInput = el('[data-avatar-file]');
+  if (fileInput) {
+    fileInput.addEventListener('change', function () {
+      var file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+      avatarNote('Preparing your picture\u2026');
+
+      squareJpeg(file)
+        .then(function (blob) {
+          avatarNote('Uploading\u2026');
+          return fetch('/api/avatar', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'image/jpeg' },
+            body: blob
+          });
+        })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; })
+            .then(function (b) { return { status: r.status, body: b }; });
+        })
+        .then(function (out) {
+          fileInput.value = '';
+          if (out.status === 200) {
+            renderAvatar(out.body.avatarUrl);
+            avatarNote('Updated.');
+            return;
+          }
+          // The server's message is written for a person and says which rule
+          // was broken, so it is shown rather than replaced with a generic one.
+          avatarNote(out.body && out.body.error
+            ? out.body.error
+            : 'We could not update your picture just now. Please try again shortly.');
+        })
+        .catch(function (err) {
+          fileInput.value = '';
+          avatarNote(err && err.message === 'not_an_image'
+            ? 'That file could not be read as an image.'
+            : 'We could not update your picture just now. Please try again shortly.');
+        });
+    });
+  }
+
+  var removeButton = el('[data-avatar-remove]');
+  if (removeButton) {
+    removeButton.addEventListener('click', function () {
+      avatarNote('Removing\u2026');
+      fetch('/api/avatar', { method: 'DELETE', credentials: 'same-origin' })
+        .then(function (r) { return r.ok; })
+        .then(function (ok) {
+          if (ok) { renderAvatar(null); avatarNote('Removed.'); }
+          else { avatarNote('We could not remove your picture just now.'); }
+        })
+        .catch(function () { avatarNote('We could not remove your picture just now.'); });
+    });
   }
 
   var form = el('[data-profile-form]');

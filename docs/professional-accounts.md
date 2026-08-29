@@ -34,6 +34,7 @@ KV_REST_API_URL        from the Vercel KV integration
 KV_REST_API_TOKEN      from the Vercel KV integration
 RESEND_API_KEY         from resend.com
 MAIL_FROM              e.g. "The Purple Crown <no-reply@purplecrownextensions.com>"
+BLOB_READ_WRITE_TOKEN  from the Vercel Blob integration (profile pictures)
 SITE_ORIGIN            https://www.purplecrownextensions.com  (optional; falls
                        back to the request Host header)
 ```
@@ -110,3 +111,40 @@ twice.
 `$0.00` is a claim about someone's year. The page only makes it when Square
 actually said so. Two tests hold that line: `account.html` must contain no
 money figure at all, and `account.js` must never coerce a null total to zero.
+
+## Profile pictures
+
+A professional uploads their own picture from the account page. `POST
+/api/avatar` replaces it, `DELETE /api/avatar` removes it, and both take the
+account from the signed session — never from the request. Nothing the browser
+sends can name another account, choose a storage path, or set the stored URL.
+
+**The browser resizes before uploading.** The file is drawn to a 512×512 canvas
+and re-encoded as JPEG. That caps the upload and guarantees a square, but the
+reason worth stating is different: re-encoding drops the EXIF block, which on a
+phone photograph routinely carries the **GPS coordinates of where it was
+taken**. A stylist uploading a headshot should not be publishing their home
+address.
+
+**The server believes none of that.** A request can be made by anything, and a
+declared Content-Type is a string the client chose, so `api/_image.js` reads
+the first bytes and accepts only a real JPEG, PNG or WebP header. SVG is
+refused deliberately — an SVG is a document that can carry script, and a
+profile picture has no business being one.
+
+Replacing a picture deletes the previous file, and only after the new URL is
+safely recorded, so a failed upload cannot leave an account pointing at
+something that was just deleted.
+
+### One thing to be clear with professionals about
+
+**Vercel Blob URLs are public.** The address is long and unguessable, and it is
+never shown to anyone but the account owner — but it is not access-controlled.
+Anyone who obtains the URL can view the image, and it stays reachable until the
+picture is replaced or removed.
+
+For a professional headshot that is normally the expected trade-off, and it is
+how most avatar hosting works. It is written down here so the decision is a
+decision. **TODO (owner): if profile pictures should be genuinely private,
+they need to be served through an authenticated endpoint rather than straight
+from Blob** — a larger change, and worth doing only if the requirement is real.

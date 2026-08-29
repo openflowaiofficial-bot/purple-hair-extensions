@@ -13,6 +13,11 @@ const store = require('./_store.js');
 // Fields a professional may change about themselves. Anything not on this list
 // is ignored, so a crafted request cannot promote an account, point it at
 // another Square customer, or edit its own approval state.
+//
+// avatarUrl is deliberately NOT here. It lives on the account rather than in
+// the profile, and is only ever written by api/avatar.js from a URL that
+// storage just returned. If it were editable a professional could point their
+// picture at any address on the internet.
 const EDITABLE = ['salonName', 'contactName', 'phone', 'licenseNumber',
   'addressLine1', 'addressLine2', 'city', 'state', 'postalCode'];
 
@@ -44,6 +49,7 @@ async function create({ id, email, squareCustomerId, profile }) {
     id,
     email: normaliseEmail(email),
     squareCustomerId: squareCustomerId || null,
+    avatarUrl: null,
     approved: false,
     createdAt: new Date().toISOString(),
     profile: sanitiseProfile(profile || {})
@@ -66,6 +72,20 @@ function sanitiseProfile(input) {
   return out;
 }
 
+// Written only by api/avatar.js, and only with a URL that storage returned a
+// moment earlier. Passing null removes the picture.
+async function setAvatar(id, url) {
+  const account = await byId(id);
+  if (!account) return null;
+  const next = {
+    ...account,
+    avatarUrl: url || null,
+    updatedAt: new Date().toISOString()
+  };
+  await store.set(accountKey(id), next);
+  return next;
+}
+
 async function updateProfile(id, input) {
   const account = await byId(id);
   if (!account) return null;
@@ -86,11 +106,12 @@ function publicView(account) {
     id: account.id,
     email: account.email,
     approved: !!account.approved,
+    avatarUrl: account.avatarUrl || null,
     profile: account.profile || {}
   };
 }
 
 module.exports = {
-  EDITABLE, normaliseEmail, byId, byEmail, create, updateProfile,
+  EDITABLE, normaliseEmail, byId, byEmail, create, updateProfile, setAvatar,
   sanitiseProfile, publicView, accountKey, emailKey
 };

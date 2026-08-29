@@ -115,6 +115,29 @@
           </p>
         </div>
 
+        <div class="avatar-row">
+          <div class="avatar">
+            <!-- src is set by account.js once the account loads; an <img> with
+                 no src would otherwise render as a broken image. -->
+            <img class="avatar-img" data-avatar-img alt="Your profile picture" hidden />
+            <span class="avatar-placeholder" data-avatar-placeholder aria-hidden="true"></span>
+          </div>
+          <div class="avatar-controls">
+            <span class="eyebrow">Profile picture</span>
+            <p class="prose avatar-hint">
+              A square JPEG, PNG or WebP, up to 4&nbsp;MB. It is cropped square and
+              resized in your browser before it is sent.
+            </p>
+            <div class="btn-row">
+              <label class="btn btn-line avatar-choose" for="avatar-file">Choose a picture</label>
+              <input type="file" id="avatar-file" data-avatar-file
+                     accept="image/jpeg,image/png,image/webp" class="vh" />
+              <button type="button" class="btn btn-line" data-avatar-remove hidden>Remove</button>
+            </div>
+            <p class="form-note" data-avatar-note hidden aria-live="polite"></p>
+          </div>
+        </div>
+
         <form data-profile-form novalidate style="max-width: 820px; margin-inline: auto">
           <div class="field-row">
             <div class="field">
