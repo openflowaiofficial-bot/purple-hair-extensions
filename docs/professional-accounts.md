@@ -34,6 +34,7 @@ KV_REST_API_URL        from the Vercel KV integration
 KV_REST_API_TOKEN      from the Vercel KV integration
 RESEND_API_KEY         from resend.com
 MAIL_FROM              e.g. "The Purple Crown <no-reply@purplecrownextensions.com>"
+SQUARE_PROFESSIONAL_GROUP  optional; defaults to "Certified Stylists/Salon Partners"
 BLOB_READ_WRITE_TOKEN  from the Vercel Blob integration (profile pictures)
 SITE_ORIGIN            https://www.purplecrownextensions.com  (optional; falls
                        back to the request Host header)
@@ -41,49 +42,53 @@ SITE_ORIGIN            https://www.purplecrownextensions.com  (optional; falls
 
 `SESSION_SECRET` and `SQUARE_ACCESS_TOKEN` are already in use and unchanged.
 
-## Creating an account
+## Approving a professional
 
-Accounts are an **approval decision, not a signup**. There is deliberately no
-public endpoint that creates one — a professional cannot self-register, which
-is the whole point of invitation-only access.
+**Add their Square customer to the customer group named "Certified
+Stylists/Salon Partners".** That is the whole process. There is no admin
+screen to build and no second list to keep in step, because Square is where
+the owner already manages customers.
 
-To approve someone, write two keys into KV:
+Removing someone from the group revokes their access on their **next request** —
+not whenever their session happens to expire.
 
-```
-acct:<id>              the record
-acct:email:<email>     lowercased email -> <id>
-```
+Two things must both hold for someone to be treated as a professional:
 
-The record:
+1. their Square customer is in the group — checked live, every request
+2. the local record is not switched off (`approved` in KV)
 
-```json
-{
-  "id": "acct_1",
-  "email": "stylist@salon.com",
-  "squareCustomerId": "SQUARE_CUSTOMER_ID",
-  "approved": true,
-  "createdAt": "2026-08-29T00:00:00.000Z",
-  "profile": {}
-}
-```
+Square is the live authority. The KV flag only ever takes access away, so it
+is a kill-switch for cutting someone off without touching Square.
 
-`api/_accounts.js` exports `create()` for this. **TODO (owner): decide how
-approvals are actually performed** — a small admin endpoint, a script, or by
-hand in the Vercel KV browser. Until that is chosen, accounts are created by
-hand.
+### First sign-in creates the record
 
-## Linking a professional to their orders
+A customer in the group who has never signed in has no KV record yet. When they
+ask for a link, `/api/auth-request` looks them up in Square by email, confirms
+they are in the group, and creates the account there and then — seeding salon
+name, contact name and phone from the Square customer.
 
-`squareCustomerId` is what makes history and spend possible. Two pieces:
+So nothing has to be written into KV by hand. Add to the group in Square,
+tell them to request a link, done.
 
-1. Each approved professional needs a **Square Customer** record, and its id on
-   their account.
-2. **TODO (owner): `/api/checkout` does not yet attach `customer_id` to the
-   order.** Until it does, orders placed through the site are not linked to
-   anyone, and a professional's history will be empty even with everything
-   above configured. This is a small change to `api/checkout.js` — the payload
-   takes `order.customer_id` — but it needs deciding first, because it changes
-   what Square records against every future order.
+### The group name
+
+Configured by `SQUARE_PROFESSIONAL_GROUP`, defaulting to
+`Certified Stylists/Salon Partners`. It is matched by name, case- and
+whitespace-insensitively, and the resolved id is cached for an hour.
+
+**If the group is renamed in Square without this being updated, nothing
+resolves and every sign-in fails.** That is deliberate — the alternative is
+granting access when the check could not be made — but it means the name has to
+be kept in step. The server log says `professionals group not found in Square`
+when this happens.
+
+### It fails closed
+
+If Square cannot be reached, or the group cannot be found, **nobody is
+approved.** A Square outage therefore locks professionals out of the portal.
+
+That is a deliberate trade. The alternative is granting wholesale access on the
+strength of a request that failed, which is worse than an hour of downtime.
 
 ## Signing in
 

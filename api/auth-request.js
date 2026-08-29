@@ -13,12 +13,16 @@
 //   2. store or mail not configured      -> 503 not_configured
 //   3. session signing not configured    -> 503 not_configured
 //   4. malformed email                   -> 200 (indistinguishable)
-//   5. no account, or not approved       -> 200, nothing sent
-//   6. approved account                  -> 200, link sent
+//   5. no account, and no Square customer in the professionals group
+//                                        -> 200, nothing sent
+//   6. in the group                      -> 200, link sent (account made on
+//                                           first sign-in if there was none)
 const crypto = require('node:crypto');
 const store = require('./_store.js');
 const mail = require('./_mail.js');
 const accounts = require('./_accounts.js');
+const groups = require('./_groups.js');
+const approval = require('./_approval.js');
 const { configured: sessionConfigured } = require('./_session.js');
 
 const TOKEN_TTL_SECONDS = 900; // 15 minutes
@@ -62,11 +66,26 @@ module.exports = async function handler(req, res, deps) {
     return res.status(503).json({ error: 'Sign-in is unavailable', reason: 'upstream' });
   }
 
-  // No account, or one that has not been approved yet: say nothing, send
-  // nothing, and look identical from the outside.
-  if (!account || !account.approved) {
-    return res.status(200).json(OK);
+  // Nobody here yet. Square is the register of who is a professional, so ask
+  // it: a customer with this email who is in the group gets an account made
+  // for them on the spot. That is the whole approval process — add someone to
+  // the group in Square and they can sign in. No second place to maintain.
+  if (!account) {
+    try {
+      account = await firstSignIn(email, dir, deps);
+    } catch (err) {
+      console.error('auth-request enrolment failed:', err.message);
+      // Still a 200. Whether an email belongs to a customer is exactly the
+      // thing this endpoint must not disclose.
+      return res.status(200).json(OK);
+    }
   }
+
+  // No account, switched off locally, or no longer in the group: say nothing,
+  // send nothing, and look identical from the outside.
+  if (!account) return res.status(200).json(OK);
+  const state = await approval.check(account, deps).catch(() => ({ ok: false }));
+  if (!state.ok) return res.status(200).json(OK);
 
   const token = crypto.randomBytes(32).toString('base64url');
   const link = siteOrigin(req) + '/api/auth-verify?token=' + encodeURIComponent(token);
@@ -95,4 +114,29 @@ module.exports = async function handler(req, res, deps) {
   return res.status(200).json(OK);
 };
 
+// Creates the local record for a Square customer who is already in the
+// professionals group. It never creates one for a customer who is not: the
+// group is the gate, and this is only the paperwork behind it.
+async function firstSignIn(email, dir, deps) {
+  const g = (deps && deps.groups) || groups;
+  const groupId = await g.resolveGroupId(deps);
+  if (!groupId) return null;
+
+  const customer = await g.customerByEmail(email, deps);
+  if (!customer || !g.inGroup(customer, groupId)) return null;
+
+  return dir.create({
+    id: 'acct_' + crypto.randomUUID(),
+    email,
+    squareCustomerId: customer.id,
+    approved: true,
+    profile: {
+      salonName: customer.company_name || '',
+      contactName: [customer.given_name, customer.family_name].filter(Boolean).join(' '),
+      phone: customer.phone_number || ''
+    }
+  });
+}
+
+module.exports.firstSignIn = firstSignIn;
 module.exports.TOKEN_TTL_SECONDS = TOKEN_TTL_SECONDS;

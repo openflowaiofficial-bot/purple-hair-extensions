@@ -20,8 +20,9 @@
 //      other -> 405
 const store = require('./_store.js');
 const accounts = require('./_accounts.js');
+const approval = require('./_approval.js');
 const { hasSession, sessionSubject, configured: sessionConfigured } = require('./_session.js');
-const { call, LOCATION_ID, token } = require('./_square.js');
+const { call, LOCATION_ID } = require('./_square.js');
 
 const MAX_ORDERS = 100;
 
@@ -94,8 +95,14 @@ module.exports = async function handler(req, res, deps) {
     return res.status(503).json({ error: 'Accounts are unavailable', reason: 'upstream' });
   }
 
-  if (!account || !account.approved) {
-    return res.status(403).json({ error: 'This account is not approved', reason: 'no_account' });
+  // Live, on every request. Removing someone from the Square group takes
+  // effect on their next page load rather than whenever a session expires.
+  const state = await approval.check(account, deps).catch(() => ({ ok: false, reason: 'upstream' }));
+  if (!state.ok) {
+    return res.status(403).json({
+      error: 'This account does not currently have professional access',
+      reason: 'no_account', detail: state.reason
+    });
   }
 
   if (req.method === 'PATCH' || req.method === 'POST') {
@@ -124,13 +131,9 @@ module.exports = async function handler(req, res, deps) {
     return res.status(200).json({ account: view, brief: true });
   }
 
-  // No Square customer linked: report that plainly rather than inventing a
-  // zero balance and an empty order list that look like facts.
-  if (!account.squareCustomerId || !token()) {
-    return res.status(200).json({
-      account: view, linked: false, ytdCents: null, open: [], history: []
-    });
-  }
+  // No unlinked branch here: approval already required a Square customer in
+  // the professionals group, so both the id and the token are present by now.
+  // An account without them never reaches this line — it is refused above.
 
   let orders;
   try {

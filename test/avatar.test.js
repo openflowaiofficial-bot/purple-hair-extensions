@@ -16,6 +16,25 @@ const { inspect, MAX_BYTES } = require('../api/_image.js');
 const accountsReal = require('../api/_accounts.js');
 const { sign, COOKIE_NAME } = require('../api/_session.js');
 
+// Approval asks Square whether the account's customer is in the professionals
+// group. _approval.js reads these off the module at call time, so overriding
+// them here stands in for Square across the whole file — rather than threading
+// a stub through every deps object.
+const groupsModule = require('../api/_groups.js');
+const GROUP = 'GRP_PROFESSIONALS';
+let membership = new Set([GROUP]);
+
+groupsModule.resolveGroupId = async () => GROUP;
+groupsModule.customerById = async (id) => ({ id, group_ids: [...membership] });
+groupsModule.customerByEmail = async () => null;
+
+// For the tests that need someone outside it.
+function outOfGroup(fn) {
+  membership = new Set();
+  return Promise.resolve(fn()).finally(() => { membership = new Set([GROUP]); });
+}
+
+
 function res() {
   const out = { code: null, body: null, headers: {} };
   return {
@@ -29,7 +48,8 @@ function res() {
 const CONFIGURED = {
   SHOP_EMAIL: 'pro@example.com',
   SHOP_PASSWORD: 'correct horse',
-  SESSION_SECRET: 'a-test-secret-value'
+  SESSION_SECRET: 'a-test-secret-value',
+  SQUARE_ACCESS_TOKEN: 'sq-test-token'
 };
 
 async function withEnv(vars, fn) {
@@ -51,7 +71,8 @@ const WEBP = Buffer.concat([Buffer.from('RIFF'), Buffer.alloc(4, 0), Buffer.from
 const SVG = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"><script>alert(1)</script></svg>');
 const HTML = Buffer.from('<!doctype html><script>alert(1)</script>');
 
-const ACCOUNT = { id: 'acct_1', email: 'a@b.com', approved: true, avatarUrl: null, profile: {} };
+const ACCOUNT = { id: 'acct_1', email: 'a@b.com', approved: true,
+  squareCustomerId: 'CUST_1', avatarUrl: null, profile: {} };
 
 function fakeAccounts(seed) {
   const a = { ...seed };
@@ -225,6 +246,17 @@ test('blob storage unconfigured is 503, not a silent success', async () => {
     });
     assert.equal(r.out.code, 503);
     assert.equal(r.out.body.reason, 'not_configured');
+  });
+});
+
+test('a professional removed from the group cannot change their picture', async () => {
+  await withEnv(CONFIGURED, async () => {
+    const blob = fakeBlob();
+    const r = res();
+    await outOfGroup(() => avatar(req({ headers: cookie('acct_1'), body: JPEG }), r,
+      { store, blob, accounts: fakeAccounts(ACCOUNT) }));
+    assert.equal(r.out.code, 403);
+    assert.equal(blob.puts.length, 0, 'nothing reaches storage');
   });
 });
 

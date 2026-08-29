@@ -16,6 +16,25 @@ const account = require('../api/account.js');
 const accountsReal = require('../api/_accounts.js');
 const { sign, readToken, COOKIE_NAME } = require('../api/_session.js');
 
+// Approval asks Square whether the account's customer is in the professionals
+// group. _approval.js reads these off the module at call time, so overriding
+// them here stands in for Square across the whole file — rather than threading
+// a stub through every deps object.
+const groupsModule = require('../api/_groups.js');
+const GROUP = 'GRP_PROFESSIONALS';
+let membership = new Set([GROUP]);
+
+groupsModule.resolveGroupId = async () => GROUP;
+groupsModule.customerById = async (id) => ({ id, group_ids: [...membership] });
+groupsModule.customerByEmail = async () => null;
+
+// For the tests that need someone outside it.
+function outOfGroup(fn) {
+  membership = new Set();
+  return Promise.resolve(fn()).finally(() => { membership = new Set([GROUP]); });
+}
+
+
 function res() {
   const out = { code: null, body: null, headers: {} };
   return {
@@ -260,14 +279,51 @@ test('a signed-in professional sees their own profile', async () => {
   });
 });
 
-test('an account with no Square customer reports linked:false, not a zero', async () => {
+test('an account with no Square customer cannot be approved', async () => {
   await withEnv(CONFIGURED, async () => {
     const unlinked = { ...APPROVED, squareCustomerId: null };
     const r = res();
     await account(req({ method: 'GET', headers: cookie(session(unlinked.id)) }), r,
       { store: fakeStore(), accounts: fakeAccounts({ [unlinked.email]: unlinked }) });
-    assert.equal(r.out.body.linked, false);
-    assert.equal(r.out.body.ytdCents, null, 'an unknown total is null, never 0');
+    // With no customer there is nothing to check the group against, so this
+    // fails closed rather than showing a page with nothing on it.
+    assert.equal(r.out.code, 403);
+    assert.equal(r.out.body.detail, 'unlinked');
+  });
+});
+
+test('a professional removed from the Square group loses access at once', async () => {
+  await withEnv(CONFIGURED, async () => {
+    const r = res();
+    await outOfGroup(() => account(
+      req({ method: 'GET', headers: cookie(session(APPROVED.id)) }), r,
+      { store: fakeStore(), accounts: fakeAccounts({ [APPROVED.email]: APPROVED }),
+        call: async () => ({ orders: [] }) }));
+    assert.equal(r.out.code, 403, 'the session is still valid; the access is not');
+    assert.equal(r.out.body.detail, 'not_in_group');
+  });
+});
+
+test('someone out of the group is sent no sign-in link, and cannot tell', async () => {
+  await withEnv(CONFIGURED, async () => {
+    const mail = fakeMail();
+    const r = res();
+    await outOfGroup(() => authRequest(req({ body: { email: APPROVED.email } }), r,
+      { store: fakeStore(), mail, accounts: fakeAccounts({ [APPROVED.email]: APPROVED }) }));
+    assert.equal(r.out.code, 200, 'still indistinguishable');
+    assert.equal(mail.sent.length, 0, 'but nothing is sent');
+  });
+});
+
+test('a link cannot be spent by someone removed from the group meanwhile', async () => {
+  await withEnv(CONFIGURED, async () => {
+    const store = fakeStore({ 'signin:tok': { accountId: APPROVED.id } });
+    const r = res();
+    await outOfGroup(() => authVerify(
+      req({ method: 'GET', query: { token: 'tok' } }), r,
+      { store, accounts: fakeAccounts({ [APPROVED.email]: APPROVED }) }));
+    assert.equal(r.out.code, 401);
+    assert.ok(!r.out.headers['Set-Cookie'], 'and no session is issued');
   });
 });
 

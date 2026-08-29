@@ -15,6 +15,7 @@
 //   6. valid                          -> 302 to the account page, cookie set
 const store = require('./_store.js');
 const accounts = require('./_accounts.js');
+const approval = require('./_approval.js');
 const { configured, sign, cookieHeader, TTL_SECONDS } = require('./_session.js');
 
 module.exports = async function handler(req, res, deps) {
@@ -63,9 +64,12 @@ module.exports = async function handler(req, res, deps) {
     return res.status(503).json({ error: 'Sign-in is unavailable', reason: 'upstream' });
   }
 
-  // Approval is re-checked here, not just when the link was sent. An account
-  // suspended in between must not be able to spend a link issued earlier.
-  if (!account || !account.approved) {
+  // Re-checked here, not just when the link was sent. Someone removed from the
+  // group in the fifteen minutes since must not be able to spend the link.
+  const state = account
+    ? await approval.check(account, deps).catch(() => ({ ok: false }))
+    : { ok: false };
+  if (!state.ok) {
     return res.status(401).json({ error: 'That sign-in link is not valid', reason: 'invalid_token' });
   }
 

@@ -17,6 +17,7 @@ const store = require('./_store.js');
 const blobStore = require('./_blob.js');
 const accounts = require('./_accounts.js');
 const { inspect, MAX_BYTES } = require('./_image.js');
+const approval = require('./_approval.js');
 const { hasSession, sessionSubject, configured: sessionConfigured } = require('./_session.js');
 
 async function readBody(req) {
@@ -63,8 +64,9 @@ module.exports = async function handler(req, res, deps) {
     console.error('avatar account lookup failed:', err.message);
     return res.status(503).json({ error: 'Profile pictures are unavailable', reason: 'upstream' });
   }
-  if (!account || !account.approved) {
-    return res.status(403).json({ error: 'This account is not approved', reason: 'no_account' });
+  const state = await approval.check(account, deps).catch(() => ({ ok: false }));
+  if (!state.ok) {
+    return res.status(403).json({ error: 'This account does not currently have professional access', reason: 'no_account' });
   }
 
   const previous = account.avatarUrl || null;

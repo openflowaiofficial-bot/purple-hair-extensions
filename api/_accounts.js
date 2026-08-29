@@ -44,13 +44,15 @@ async function byEmail(email) {
 
 // Only ever called by whoever approves a professional — never from a public
 // endpoint. Creating an account is an approval decision, not a signup.
-async function create({ id, email, squareCustomerId, profile }) {
+async function create({ id, email, squareCustomerId, profile, approved }) {
   const record = {
     id,
     email: normaliseEmail(email),
     squareCustomerId: squareCustomerId || null,
     avatarUrl: null,
-    approved: false,
+    // The local switch. Square's group is the live authority — see
+    // _approval.js — and this only ever takes access away, never grants it.
+    approved: approved !== false,
     createdAt: new Date().toISOString(),
     profile: sanitiseProfile(profile || {})
   };
