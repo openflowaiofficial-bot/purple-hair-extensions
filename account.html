@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Account | The Purple Crown Extensions</title>
+  <meta name="description" content="Your Purple Crown professional account: profile, orders, order history and spend so far this year." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="rail">For licensed beauty professionals &middot; <strong>Professional access by approval</strong></div>
+<header class="masthead">
+  <div class="wrap masthead-bar">
+    <a class="crest" href="index.html">
+      <img src="img/logo-mark.png" alt="" width="400" height="216" />
+      <span class="crest-name">The Purple Crown<em>Extensions</em></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="who-we-are.html">Who We Are</a>
+      <a class="nav-link" href="become-certified.html">Become Certified</a>
+      <a class="nav-link" href="faq.html">FAQ</a>
+      <a class="nav-link nav-key" href="professional-login.html">Professional Login</a>
+      <a class="nav-link" href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main" data-account>
+
+  <section class="opener">
+    <div class="wrap opener-grid">
+      <div>
+        <hr class="mark" />
+        <span class="eyebrow">Your account</span>
+        <h1 class="d1">The Crown, and your part in it.</h1>
+      </div>
+      <p class="lede">
+        Signed in as <strong data-account-email>&hellip;</strong>. Update your details,
+        follow what is on its way, and see what you have ordered this year.
+      </p>
+    </div>
+  </section>
+
+  <p class="shop-loading wrap" data-account-loading>Loading your account&hellip;</p>
+  <div class="shop-down wrap" data-account-down hidden></div>
+
+  <div data-account-body hidden>
+
+    <!-- YEAR TO DATE ------------------------------------------------------ -->
+    <section class="band">
+      <div class="wrap">
+        <div class="shop-switch">
+          <span class="shop-switch-link shop-switch-here">Account</span>
+          <a class="shop-switch-link" href="wefts.html">Wholesale Ordering</a>
+          <a class="shop-switch-link shop-switch-aside" href="product-selection.html">Professional Resources</a>
+        </div>
+
+        <div class="ytd">
+          <div>
+            <span class="eyebrow">Spend this year</span>
+            <p class="ytd-figure" data-ytd>&mdash;</p>
+            <p class="ytd-note" data-ytd-note></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDERS ------------------------------------------------------------ -->
+    <section class="band band-linen">
+      <div class="wrap">
+        <div class="center">
+          <hr class="mark" />
+          <span class="eyebrow">On its way</span>
+          <h2 class="d2">Orders in progress.</h2>
+        </div>
+        <div class="orders" data-open-list hidden></div>
+        <p class="form-note" data-open-empty hidden></p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="center">
+          <hr class="mark" />
+          <span class="eyebrow">Order history</span>
+          <h2 class="d2">Everything you have ordered.</h2>
+        </div>
+        <div class="orders" data-history-list hidden></div>
+        <p class="form-note" data-history-empty hidden></p>
+      </div>
+    </section>
+
+    <!-- PROFILE ----------------------------------------------------------- -->
+    <section class="band band-linen">
+      <div class="wrap">
+        <div class="center">
+          <hr class="mark" />
+          <span class="eyebrow">Your details</span>
+          <h2 class="d2">Profile.</h2>
+          <p class="lede">
+            Kept for your orders and our records. Your email is your sign-in and cannot be
+            changed here &mdash; contact us if it needs to move.
+          </p>
+        </div>
+
+        <form data-profile-form novalidate style="max-width: 820px; margin-inline: auto">
+          <div class="field-row">
+            <div class="field">
+              <label for="f-salonName">Salon or practice</label>
+              <input type="text" id="f-salonName" name="salonName" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="f-contactName">Your name</label>
+              <input type="text" id="f-contactName" name="contactName" autocomplete="name" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-phone">Phone</label>
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="f-licenseNumber">License number</label>
+              <input type="text" id="f-licenseNumber" name="licenseNumber" />
+            </div>
+          </div>
+            <div class="field">
+              <label for="f-addressLine1">Address</label>
+              <input type="text" id="f-addressLine1" name="addressLine1" autocomplete="address-line1" />
+            </div>
+            <div class="field">
+              <label for="f-addressLine2">Address line 2</label>
+              <input type="text" id="f-addressLine2" name="addressLine2" autocomplete="address-line2" />
+            </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-city">City</label>
+              <input type="text" id="f-city" name="city" autocomplete="address-level2" />
+            </div>
+            <div class="field">
+              <label for="f-state">State</label>
+              <input type="text" id="f-state" name="state" autocomplete="address-level1" />
+            </div>
+          </div>
+            <div class="field">
+              <label for="f-postalCode">Postal code</label>
+              <input type="text" id="f-postalCode" name="postalCode" autocomplete="postal-code" />
+            </div>
+          <div class="btn-row">
+            <button type="submit" class="btn btn-solid" data-profile-save>Save changes</button>
+          </div>
+          <p class="form-note" data-profile-note hidden aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <div class="colophon-grid">
+      <div>
+        <a class="crest crest-foot" href="index.html">
+          <img src="img/logo-light.png" alt="The Purple Crown Extensions" width="680" height="544" />
+        </a>
+        <p class="colophon-blurb">
+          The Purple Crown Extensions provides exceptional Indian Temple hair, elevated
+          education, and approved wholesale access for licensed beauty professionals and
+          Salon Partners.
+        </p>
+      </div>
+      <div>
+        <h2>The house</h2>
+        <ul>
+          <li><a href="who-we-are.html">Who we are</a></li>
+          <li><a href="become-certified.html">Become certified</a></li>
+          <li><a href="become-certified.html#salon-partner">Salon partnership</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Professionals</h2>
+        <ul>
+          <li><a href="professional-login.html">Professional login</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:support@purplecrownextensions.com">support@purplecrownextensions.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon-base">
+      <span>&copy; 2026 The Purple Crown Extensions</span>
+      <span>Not sold to the public</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="account.js"></script>
+</body>
+</html>

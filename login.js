@@ -29,6 +29,60 @@
     form.setAttribute('data-busy', String(on));
   }
 
+  /* ------------------------------------------------------------------------
+     The sign-in link. Separate from the password form above because it is a
+     different thing: the password is the shared wholesale login, while a link
+     signs a professional in as themselves.
+
+     The reply is always the same whether or not the email has an account, so
+     this must not report "sent" in a way that implies one exists. It says what
+     it can honestly say: if there is an account, a link is on its way.
+     ------------------------------------------------------------------------ */
+  var linkForm = document.querySelector('[data-link-form]');
+  if (linkForm) {
+    var linkEmail = linkForm.querySelector('#link-email');
+    var linkNote = linkForm.querySelector('[data-link-note]');
+    var linkButton = linkForm.querySelector('[data-link-submit]');
+
+    linkForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      linkNote.hidden = true;
+
+      if (!linkEmail.value.trim()) {
+        linkNote.hidden = false;
+        linkNote.textContent = 'Enter the email address on your account.';
+        return;
+      }
+
+      linkButton.disabled = true;
+      fetch('/api/auth-request', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: linkEmail.value.trim() })
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; })
+          .then(function (d) { return { status: r.status, data: d }; }); })
+        .then(function (result) {
+          linkButton.disabled = false;
+          linkNote.hidden = false;
+          if (result.status === 200) {
+            linkNote.textContent = 'If that address has a professional account, '
+              + 'a sign-in link is on its way. It can be used once and expires in 15 minutes.';
+          } else if (result.status === 503) {
+            linkNote.textContent = 'Sign-in links are not available yet.';
+          } else {
+            linkNote.textContent = 'We could not send a link just now. Please try again shortly.';
+          }
+        })
+        .catch(function () {
+          linkButton.disabled = false;
+          linkNote.hidden = false;
+          linkNote.textContent = 'We could not send a link just now. Please try again shortly.';
+        });
+    });
+  }
+
   form.addEventListener('submit', function (event) {
     // Without this the browser would GET this page with the password in the
     // query string. Everything below depends on it.

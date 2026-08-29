@@ -80,6 +80,23 @@
             <button type="submit" class="btn btn-solid" data-login-submit>Sign in</button>
           </div>
         </form>
+        <hr class="mark" style="margin-top: 2.6rem" />
+        <span class="eyebrow">Or sign in with a link</span>
+        <p class="prose" style="margin-top: 0.6rem">
+          Certified Stylists and Salon Partners with their own account can be sent a
+          single-use sign-in link instead of using a password.
+        </p>
+        <form data-link-form novalidate>
+          <div class="field">
+            <label for="link-email">Account email</label>
+            <input type="email" id="link-email" name="link-email" autocomplete="email" />
+          </div>
+          <div class="btn-row">
+            <button type="submit" class="btn btn-line" data-link-submit>Email me a link</button>
+          </div>
+          <p class="form-note" data-link-note hidden aria-live="polite"></p>
+        </form>
+
         <p class="form-note">
           Trouble signing in? Email
           <a href="mailto:support@purplecrownextensions.com">support@purplecrownextensions.com</a>.
@@ -163,6 +180,7 @@
         <h3 class="d3">Reference, once you are signed in.</h3>
       </div>
       <div class="shop-switch" style="justify-content: center; margin-top: 1.8rem; border-bottom: 0">
+        <a class="shop-switch-link" href="account.html">Your Account</a>
         <a class="shop-switch-link" href="product-selection.html">Product Selection</a>
         <a class="shop-switch-link" href="hair-care.html">Hair Care</a>
         <a class="shop-switch-link" href="performance.html">Performance</a>

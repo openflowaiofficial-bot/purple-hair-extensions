@@ -33,35 +33,49 @@ function hmac(body) {
   return crypto.createHmac('sha256', secret).update(body).digest();
 }
 
-function sign(expiresAtMs) {
-  const body = Buffer.from(JSON.stringify({ exp: expiresAtMs })).toString('base64url');
+// `subject` is the professional account id, when there is one. It is optional
+// on purpose: the shared wholesale login predates per-professional accounts and
+// still issues a subject-less session, which grants shop access and no account
+// identity. Nothing may infer an identity from its absence.
+function sign(expiresAtMs, subject) {
+  const payload = { exp: expiresAtMs };
+  if (typeof subject === 'string' && subject !== '') payload.sub = subject;
+  const body = Buffer.from(JSON.stringify(payload)).toString('base64url');
   const sig = hmac(body).toString('base64url');
   return body + '.' + sig;
 }
 
-function verify(token) {
+// The whole verified payload, or null. verify() is the boolean form of this;
+// both go through exactly the same checks, so a caller that wants the subject
+// cannot accidentally skip one.
+function readToken(token) {
   // Fail closed: with any of the three vars missing there is no safe key
   // to check a signature against, so no token can ever verify — this must
   // not depend on every caller remembering to check configured() first.
-  if (!configured()) return false;
+  if (!configured()) return null;
   try {
-    if (typeof token !== 'string' || token === '') return false;
+    if (typeof token !== 'string' || token === '') return null;
 
     const parts = token.split('.');
-    if (parts.length !== 2) return false;
+    if (parts.length !== 2) return null;
     const [body, sig] = parts;
-    if (!body || !sig) return false;
+    if (!body || !sig) return null;
 
     const expectedSig = hmac(body).toString('base64url');
-    if (!safeEqualStrings(sig, expectedSig)) return false;
+    if (!safeEqualStrings(sig, expectedSig)) return null;
 
     const payload = JSON.parse(Buffer.from(body, 'base64url').toString('utf8'));
-    if (!payload || typeof payload !== 'object' || typeof payload.exp !== 'number') return false;
+    if (!payload || typeof payload !== 'object' || typeof payload.exp !== 'number') return null;
+    if (payload.exp <= Date.now()) return null;
 
-    return payload.exp > Date.now();
+    return payload;
   } catch {
-    return false;
+    return null;
   }
+}
+
+function verify(token) {
+  return readToken(token) !== null;
 }
 
 function readCookie(req, name) {
@@ -85,6 +99,16 @@ function readCookie(req, name) {
 
 function hasSession(req) {
   return verify(readCookie(req, COOKIE_NAME));
+}
+
+// The account id this session belongs to, or null for the shared wholesale
+// login. A caller that needs an account MUST treat null as "no account", never
+// as "any account".
+function sessionSubject(req) {
+  const payload = readToken(readCookie(req, COOKIE_NAME));
+  return payload && typeof payload.sub === 'string' && payload.sub !== ''
+    ? payload.sub
+    : null;
 }
 
 function cookieHeader(token, maxAgeSeconds) {
@@ -111,6 +135,8 @@ module.exports = {
   configured,
   sign,
   verify,
+  readToken,
+  sessionSubject,
   readCookie,
   hasSession,
   cookieHeader,

@@ -26,7 +26,12 @@ const SHOP = ['wefts.html', 'volume-wefts.html', 'plus-lace-wefts.html'];
 const PORTAL = ['product-selection.html', 'hair-care.html', 'performance.html',
   'orders-policies.html'];
 
-const ALL_PAGES = BROCHURE.concat(['professional-login.html'], SHOP, PORTAL);
+// The account page gates itself: /api/account answers 401 without a session and
+// 403 for the shared wholesale login, and account.js acts on both. It does not
+// use gate.js, so it is its own category rather than a fifth PORTAL page.
+const ACCOUNT = ['account.html'];
+
+const ALL_PAGES = BROCHURE.concat(['professional-login.html'], SHOP, PORTAL, ACCOUNT);
 
 test('no brochure page loads shop code or calls the API', () => {
   for (const page of BROCHURE) {
@@ -76,6 +81,39 @@ test('shop.js and cart.js are loaded by exactly the three shop pages', () => {
 
 test('gate.js is loaded by exactly the portal resource pages', () => {
   assert.deepEqual(ALL_PAGES.filter((p) => read(p).includes('gate.js')), PORTAL);
+});
+
+test('account.js is loaded by exactly the account page', () => {
+  assert.deepEqual(ALL_PAGES.filter((p) => read(p).includes('account.js')), ACCOUNT);
+});
+
+test('the account page carries no shop code and asks not to be indexed', () => {
+  for (const page of ACCOUNT) {
+    const html = read(page);
+    assert.match(html, /<meta name="robots" content="noindex"/, `${page} needs noindex`);
+    assert.ok(!html.includes('shop.js'), `${page} must not load shop.js`);
+    assert.ok(!html.includes('cart.js'), `${page} must not load cart.js`);
+    assert.ok(!html.includes('gate.js'), `${page} gates itself via /api/account`);
+  }
+});
+
+// The page must never carry a figure of its own. Every number on it comes from
+// /api/account at request time, so a stale or invented total cannot be baked
+// into the markup and shipped.
+test('the account page hardcodes no money', () => {
+  const html = read('account.html');
+  const money = html.match(/\$[0-9][0-9,]*(\.[0-9]{2})?/g) || [];
+  assert.deepEqual(money, [], `account.html must not contain a money figure: ${money.join(', ')}`);
+});
+
+// An unknown total renders as an em dash. If this ever becomes "0" the page
+// starts making a claim about the year that nobody checked.
+test('account.js never prints a zero for an unknown total', () => {
+  const js = read('account.js');
+  assert.ok(js.includes("spend.textContent = '—'") || js.includes('spend.textContent = "—"'),
+    'an unknown year-to-date must render as an em dash');
+  assert.ok(!/ytdCents\s*\|\|\s*0/.test(js),
+    'null must not be coerced to 0 anywhere');
 });
 
 test('a portal page gates itself and carries no shop code', () => {
