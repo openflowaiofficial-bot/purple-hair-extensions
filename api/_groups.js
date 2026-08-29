@@ -13,11 +13,23 @@ const { call } = require('./_square.js');
 const store = require('./_store.js');
 
 const DEFAULT_GROUP = 'Certified Stylists/Salon Partners';
-const GROUP_CACHE_KEY = 'square:groupid';
+const DEFAULT_PENDING_GROUP = 'Class attendees/pending approval';
 const GROUP_CACHE_TTL = 3600; // 1 hour
 
 function groupName() {
   return (process.env.SQUARE_PROFESSIONAL_GROUP || DEFAULT_GROUP).trim();
+}
+
+// Where someone lands when they buy a class. Membership of THIS group grants
+// nothing: _approval.js only ever asks about the professionals group, so a
+// class attendee cannot sign in, order, or see wholesale pricing. It is a
+// waiting room, and being in it is not an approval.
+function pendingGroupName() {
+  return (process.env.SQUARE_PENDING_GROUP || DEFAULT_PENDING_GROUP).trim();
+}
+
+function cacheKey(name) {
+  return 'square:groupid:' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 }
 
 function sameName(a, b) {
@@ -26,13 +38,13 @@ function sameName(a, b) {
 
 // Cached for an hour: a group id does not change, and this would otherwise be
 // an extra Square call on every request that touches an account.
-async function resolveGroupId(deps) {
+async function resolveNamedGroupId(wanted, deps) {
   const caller = (deps && deps.call) || call;
   const kv = (deps && deps.store) || store;
-  const wanted = groupName();
+  const key = cacheKey(wanted);
 
   try {
-    const cached = await kv.get(GROUP_CACHE_KEY);
+    const cached = await kv.get(key);
     if (cached && cached.id && sameName(cached.name, wanted)) return cached.id;
   } catch {
     // A cache miss is not a failure; fall through and ask Square.
@@ -44,13 +56,67 @@ async function resolveGroupId(deps) {
     const result = await caller('/v2/customers/groups' + qs);
     const found = (result.groups || []).find((g) => sameName(g.name, wanted));
     if (found) {
-      try { await kv.setWithTtl(GROUP_CACHE_KEY, { id: found.id, name: wanted }, GROUP_CACHE_TTL); } catch {}
+      try { await kv.setWithTtl(key, { id: found.id, name: wanted }, GROUP_CACHE_TTL); } catch {}
       return found.id;
     }
     cursor = result.cursor;
     if (!cursor) break;
   }
   return null;
+}
+
+function resolveGroupId(deps) {
+  return resolveNamedGroupId(groupName(), deps);
+}
+
+function resolvePendingGroupId(deps) {
+  return resolveNamedGroupId(pendingGroupName(), deps);
+}
+
+// Square's own membership call. Idempotent: adding someone already in the
+// group is not an error, which matters because a webhook can arrive twice.
+async function addToGroup(customerId, groupId, deps) {
+  const caller = (deps && deps.call) || call;
+  return caller('/v2/customers/' + encodeURIComponent(customerId) +
+                '/groups/' + encodeURIComponent(groupId), { method: 'PUT' });
+}
+
+async function createCustomer(fields, deps) {
+  const caller = (deps && deps.call) || call;
+  const result = await caller('/v2/customers', {
+    method: 'POST',
+    body: {
+      idempotency_key: fields.idempotencyKey,
+      email_address: fields.email,
+      given_name: fields.givenName || undefined,
+      family_name: fields.familyName || undefined,
+      phone_number: fields.phone || undefined,
+      note: fields.note || undefined
+    }
+  });
+  return (result && result.customer) || null;
+}
+
+// Everyone in a group. Used by the invitation job, which has to notice people
+// the owner moved by hand.
+async function listGroupMembers(groupId, deps) {
+  const caller = (deps && deps.call) || call;
+  const out = [];
+  let cursor;
+  for (let page = 0; page < 20; page++) {
+    const result = await caller('/v2/customers/search', {
+      method: 'POST',
+      body: {
+        limit: 100,
+        cursor,
+        query: { filter: { group_ids: { any: [groupId] } } }
+      }
+    });
+    out.push(...((result && result.customers) || []));
+    cursor = result && result.cursor;
+    if (!cursor) break;
+  }
+  return out;
 }
 
 async function customerById(customerId, deps) {
@@ -82,6 +148,9 @@ function inGroup(customer, groupId) {
 }
 
 module.exports = {
-  DEFAULT_GROUP, GROUP_CACHE_KEY, GROUP_CACHE_TTL,
-  groupName, resolveGroupId, customerById, customerByEmail, inGroup
+  DEFAULT_GROUP, DEFAULT_PENDING_GROUP, GROUP_CACHE_TTL, cacheKey,
+  groupName, pendingGroupName,
+  resolveNamedGroupId, resolveGroupId, resolvePendingGroupId,
+  customerById, customerByEmail, inGroup,
+  addToGroup, createCustomer, listGroupMembers
 };

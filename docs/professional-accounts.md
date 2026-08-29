@@ -153,3 +153,96 @@ how most avatar hosting works. It is written down here so the decision is a
 decision. **TODO (owner): if profile pictures should be genuinely private,
 they need to be served through an authenticated endpoint rather than straight
 from Blob** — a larger change, and worth doing only if the requirement is real.
+
+---
+
+# From class purchase to professional account
+
+The whole path, and which parts are automatic.
+
+```
+buys a class on Square
+        |
+        v  /api/square-webhook            (automatic)
+Square customer, in "Class attendees/pending approval"
+        |                                  grants nothing
+        v  YOU move them, after they attend and certify
+"Certified Stylists/Salon Partners"
+        |
+        v  /api/invite-certified           (automatic, every 15 min)
+invitation email
+        |
+        v  they request a sign-in link
+account created on first sign-in           (automatic)
+```
+
+**The only manual step is the one that should be manual**: moving someone from
+pending to certified. That is the judgement — did they attend, did they pass —
+and nothing else in the chain can make it.
+
+## The pending group grants nothing
+
+Worth being explicit, because it is the security property that matters here:
+`_approval.js` only ever asks about the **professionals** group. Being in
+"Class attendees/pending approval" does not let anyone sign in, order, or see
+wholesale pricing. The webhook is incapable of adding anyone to the
+professionals group — there is a test asserting exactly that.
+
+So a stranger who buys a class gets a waiting-room entry and nothing more.
+
+## The webhook
+
+`/api/square-webhook` is a **public URL**. Anyone can POST to it, so the Square
+signature is checked before the body is even parsed, and a request that is
+unsigned, wrongly signed, or altered after signing is refused without touching
+Square. Four tests cover that.
+
+Square delivers at least once, so the payment id is recorded and a repeat
+delivery enrols nobody a second time.
+
+### What you need to set up
+
+1. In Square: **Developer → Webhooks → Add subscription**
+   - URL: `https://your-domain/api/square-webhook`
+   - Event: `payment.created`
+   - Copy the **signature key** into `SQUARE_WEBHOOK_SIGNATURE_KEY`
+2. Set `SQUARE_WEBHOOK_URL` to the exact URL you registered. Square signs the
+   URL together with the body, so it must match byte for byte.
+3. Set `SQUARE_CLASS_CATALOG_IDS` to the catalog object id of the class.
+
+**TODO (owner): the class catalog id.** Until `SQUARE_CLASS_CATALOG_IDS` is
+set the webhook enrols nobody and logs that it did nothing. That is deliberate:
+identifying a class purchase by its price or by a name pattern would sooner or
+later enrol someone who bought hair.
+
+If the class is sold through a bare payment link with no catalog item behind
+it, there is nothing to match on and one will need creating first.
+
+## The invitation
+
+`/api/invite-certified` runs every 15 minutes (see `vercel.json`), lists the
+professionals group, and emails anyone not yet invited.
+
+A schedule rather than a webhook, deliberately: Square's customer events do not
+reliably distinguish "added to a group" from any other edit, and an invitation
+that fires on the wrong event is worse than one that arrives a few minutes
+later.
+
+**Each person is invited once.** The flag is written *before* the email is
+sent, so a job that dies midway re-sends nothing. The cost of that ordering is
+that a failed send is not retried — the response reports `problems` and the
+address is logged, so it can be sent by hand. For a message nobody asked for
+twice, that is the right way round.
+
+Protected by `CRON_SECRET`, checked in constant time, because this endpoint can
+email every professional at once.
+
+## Environment variables this adds
+
+```
+SQUARE_WEBHOOK_SIGNATURE_KEY   from the Square webhook subscription
+SQUARE_WEBHOOK_URL             the exact URL registered in Square
+SQUARE_CLASS_CATALOG_IDS       catalog id(s) of the class, comma-separated
+SQUARE_PENDING_GROUP           optional; defaults to "Class attendees/pending approval"
+CRON_SECRET                    any long random string; Vercel sends it to the cron
+```
