@@ -20,7 +20,13 @@ const BROCHURE = ['index.html', 'who-we-are.html', 'become-certified.html',
 
 const SHOP = ['wefts.html', 'volume-wefts.html', 'plus-lace-wefts.html'];
 
-const ALL_PAGES = BROCHURE.concat(['professional-login.html'], SHOP);
+// The professional resource pages. They are not brochure — they ask
+// /api/session before revealing themselves — and they are not shop: no
+// configurator, no cart.
+const PORTAL = ['product-selection.html', 'hair-care.html', 'performance.html',
+  'orders-policies.html'];
+
+const ALL_PAGES = BROCHURE.concat(['professional-login.html'], SHOP, PORTAL);
 
 test('no brochure page loads shop code or calls the API', () => {
   for (const page of BROCHURE) {
@@ -66,6 +72,40 @@ test('login.js is loaded by exactly one page', () => {
 test('shop.js and cart.js are loaded by exactly the three shop pages', () => {
   assert.deepEqual(ALL_PAGES.filter((p) => read(p).includes('shop.js')), SHOP);
   assert.deepEqual(ALL_PAGES.filter((p) => read(p).includes('cart.js')), SHOP);
+});
+
+test('gate.js is loaded by exactly the portal resource pages', () => {
+  assert.deepEqual(ALL_PAGES.filter((p) => read(p).includes('gate.js')), PORTAL);
+});
+
+test('a portal page gates itself and carries no shop code', () => {
+  for (const page of PORTAL) {
+    const html = read(page);
+    assert.ok(html.includes('data-gated'), `${page} must mark its main [data-gated]`);
+    assert.match(html, /<main[^>]+data-gated[^>]*\bhidden\b/,
+      `${page} must start hidden so nothing flashes before the session check`);
+    assert.ok(!html.includes('shop.js'), `${page} must not load shop.js`);
+    assert.ok(!html.includes('cart.js'), `${page} must not load cart.js`);
+    assert.ok(!html.includes('login.js'), `${page} must not load login.js`);
+  }
+});
+
+// These pages are reachable by URL whether or not anyone is signed in, so they
+// must never be indexed. gate.js says the same thing in prose: the redirect
+// hides the page, it does not protect the markup.
+test('portal pages ask not to be indexed', () => {
+  for (const page of PORTAL) {
+    assert.match(read(page), /<meta name="robots" content="noindex"/,
+      `${page} needs a noindex robots meta`);
+  }
+});
+
+test('gate.js treats "cannot check" differently from "signed out"', () => {
+  const js = read('gate.js');
+  assert.ok(js.includes('replace('), 'it must replace() rather than href on 401');
+  assert.ok(js.includes('401'), 'it must branch on 401 specifically');
+  assert.ok(!/if\s*\(\s*!\s*r\.ok\s*\)[^]{0,80}replace/.test(js),
+    'a non-OK status must not be collapsed into the signed-out redirect');
 });
 
 // Pinned to the masthead's own element rather than "the first <nav> in the

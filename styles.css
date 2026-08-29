@@ -1460,6 +1460,17 @@ a.shop-switch-link:hover {
   color: var(--fg);
 }
 
+/* A sideways move rather than a sibling: the resources sit apart from the
+   three product rows, so the link is set apart from them too. */
+.shop-switch-aside {
+  margin-left: auto;
+  color: var(--fg-mark);
+}
+
+a.shop-switch-aside:hover {
+  color: var(--fg);
+}
+
 /* The page you are already on. Rendered as text rather than a link, so it is
    not offered as somewhere to go. */
 .shop-switch-here {
