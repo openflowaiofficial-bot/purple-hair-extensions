@@ -1889,6 +1889,24 @@ form[data-busy="true"] {
   background: var(--fg-mark);
 }
 
+/* The same marked list, set inside an answer: one column, and it inherits the
+   answer's measure rather than the section's. */
+.learn-list-tight {
+  columns: 1;
+  margin-top: 0.9rem;
+  margin-bottom: 0.2rem;
+  max-width: 68ch;
+}
+
+.learn-list-tight li {
+  padding-block: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.learn-list-tight li::before {
+  top: 1.08em;
+}
+
 .learn-close {
   max-width: var(--wrap-text);
   margin: clamp(2.4rem, 4vw, 3.2rem) auto 0;
