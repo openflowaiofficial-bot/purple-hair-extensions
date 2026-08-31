@@ -5,8 +5,13 @@
 //
 // Never embed credential values here — they come only from process.env at
 // request time.
-const BASE = () => process.env.KV_REST_API_URL || '';
-const TOKEN = () => process.env.KV_REST_API_TOKEN || '';
+//
+// Vercel KV injects KV_REST_API_URL / KV_REST_API_TOKEN. A database connected
+// through the newer Upstash integration instead injects UPSTASH_REDIS_REST_URL
+// / UPSTASH_REDIS_REST_TOKEN — the same Upstash REST endpoint under a different
+// name — so both are accepted and either connection works out of the box.
+const BASE = () => process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || '';
+const TOKEN = () => process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || '';
 
 function configured() {
   return !!(BASE() && TOKEN());
