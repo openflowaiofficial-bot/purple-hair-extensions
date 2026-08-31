@@ -17,11 +17,13 @@
 const { test } = require('node:test');
 const assert = require('node:assert');
 
-const { sign, COOKIE_NAME } = require('../api/_session.js');
+const { sign, readToken, COOKIE_NAME } = require('../api/_session.js');
+const accountsReal = require('../api/_accounts.js');
 const catalog = require('../api/catalog.js');
 const checkout = require('../api/checkout.js');
 const account = require('../api/account.js');
 const invite = require('../api/invite-certified.js');
+const authDirect = require('../api/auth-direct.js');
 
 const ENV = {
   SQUARE_ACCESS_TOKEN: 'sq-test-token',
@@ -71,6 +73,51 @@ function approvalDeps(inside) {
     inGroup: (customer, gid) => (customer.group_ids || []).includes(gid)
   };
 }
+
+function fakeAccounts(map) {
+  return {
+    normaliseEmail: accountsReal.normaliseEmail,
+    publicView: accountsReal.publicView,
+    async byEmail(e) { return map[accountsReal.normaliseEmail(e)] || null; },
+    async byId(id) { for (const a of Object.values(map)) if (a.id === id) return a; return null; },
+    async create(rec) { map[rec.email] = rec; return rec; }
+  };
+}
+
+/* -------------------------------------------------------------------------
+   Direct sign-in — email in, session out, no emailed link
+   ------------------------------------------------------------------------- */
+
+test('auth-direct: an approved professional is signed in directly', async () => {
+  await withEnv(ENV, async () => {
+    const r = res();
+    const dir = fakeAccounts({ [APPROVED.email]: APPROVED });
+    await authDirect({ method: 'POST', body: { email: APPROVED.email } }, r,
+      Object.assign(approvalDeps(true), { accounts: dir, store: { configured: () => true } }));
+    assert.equal(r.out.code, 200);
+    assert.equal(r.out.body.ok, true);
+    const setCookie = r.out.headers['Set-Cookie'];
+    assert.ok(setCookie, 'a session cookie is set');
+    const token = setCookie.split(';')[0].split('=')[1];
+    assert.equal(readToken(token).sub, APPROVED.id, 'the session names the professional');
+  });
+});
+
+test('auth-direct: an email not in the professionals group is refused', async () => {
+  await withEnv(ENV, async () => {
+    const r = res();
+    const dir = fakeAccounts({});
+    const deps = Object.assign(approvalDeps(false), {
+      accounts: dir,
+      store: { configured: () => true },
+      groups: { resolveGroupId: async () => 'GRP', customerByEmail: async () => null, inGroup: () => false }
+    });
+    await authDirect({ method: 'POST', body: { email: 'stranger@nowhere.com' } }, r, deps);
+    assert.equal(r.out.code, 401);
+    assert.equal(r.out.body.reason, 'not_professional');
+    assert.ok(!r.out.headers['Set-Cookie'], 'no session for a non-professional');
+  });
+});
 
 /* -------------------------------------------------------------------------
    Catalog — live revocation for account sessions

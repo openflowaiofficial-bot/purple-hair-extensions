@@ -30,13 +30,13 @@
   }
 
   /* ------------------------------------------------------------------------
-     The sign-in link. Separate from the password form above because it is a
-     different thing: the password is the shared wholesale login, while a link
+     Direct email sign-in. Separate from the password form above because it is a
+     different thing: the password is the shared wholesale login, while this
      signs a professional in as themselves.
 
-     The reply is always the same whether or not the email has an account, so
-     this must not report "sent" in a way that implies one exists. It says what
-     it can honestly say: if there is an account, a link is on its way.
+     Enter the email on the account; if it belongs to an approved professional
+     in Square, the server signs a session and we land on the account page. A
+     login form gives feedback, so an unrecognised email is told so plainly.
      ------------------------------------------------------------------------ */
   var linkForm = document.querySelector('[data-link-form]');
   if (linkForm) {
@@ -55,7 +55,7 @@
       }
 
       linkButton.disabled = true;
-      fetch('/api/auth-request', {
+      fetch('/api/auth-direct', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json' },
@@ -64,21 +64,25 @@
         .then(function (r) { return r.json().catch(function () { return {}; })
           .then(function (d) { return { status: r.status, data: d }; }); })
         .then(function (result) {
+          if (result.status === 200 && result.data.ok) {
+            window.location.href = 'account.html';
+            return;
+          }
           linkButton.disabled = false;
           linkNote.hidden = false;
-          if (result.status === 200) {
-            linkNote.textContent = 'If that address has a professional account, '
-              + 'a sign-in link is on its way. It can be used once and expires in 15 minutes.';
+          if (result.status === 401) {
+            linkNote.textContent = (result.data && result.data.error)
+              || 'That email is not recognised as an approved professional account.';
           } else if (result.status === 503) {
-            linkNote.textContent = 'Sign-in links are not available yet.';
+            linkNote.textContent = 'Sign-in is unavailable right now. Please try again shortly.';
           } else {
-            linkNote.textContent = 'We could not send a link just now. Please try again shortly.';
+            linkNote.textContent = 'We could not sign you in just now. Please try again shortly.';
           }
         })
         .catch(function () {
           linkButton.disabled = false;
           linkNote.hidden = false;
-          linkNote.textContent = 'We could not send a link just now. Please try again shortly.';
+          linkNote.textContent = 'We could not sign you in just now. Please try again shortly.';
         });
     });
   }
