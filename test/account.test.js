@@ -49,7 +49,10 @@ const CONFIGURED = {
   SHOP_EMAIL: 'pro@example.com',
   SHOP_PASSWORD: 'correct horse',
   SESSION_SECRET: 'a-test-secret-value',
-  SQUARE_ACCESS_TOKEN: 'sq-test-token'
+  SQUARE_ACCESS_TOKEN: 'sq-test-token',
+  // Required for building the emailed sign-in link. auth-request refuses to
+  // fall back to the request Host header, so this must be present.
+  SITE_ORIGIN: 'https://example.com'
 };
 
 async function withEnv(vars, fn) {
@@ -75,7 +78,13 @@ function fakeStore(seed) {
     async get(k) { log.push(['get', k]); return data.has(k) ? data.get(k) : null; },
     async set(k, v) { log.push(['set', k]); data.set(k, v); },
     async setWithTtl(k, v, ttl) { log.push(['setWithTtl', k, ttl]); data.set(k, v); },
-    async del(k) { log.push(['del', k]); data.delete(k); }
+    async del(k) { log.push(['del', k]); data.delete(k); },
+    async getdel(k) {
+      log.push(['getdel', k]);
+      const v = data.has(k) ? data.get(k) : null;
+      data.delete(k);
+      return v;
+    }
   };
 }
 

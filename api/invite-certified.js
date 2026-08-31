@@ -43,11 +43,12 @@ function authorised(req) {
   return crypto.timingSafeEqual(a, b);
 }
 
-function siteOrigin(req) {
+// Only ever the configured origin. The request Host header is attacker-
+// controllable and this builds links emailed to professionals, so a missing
+// SITE_ORIGIN is a configuration failure, not a cue to trust the header.
+function siteOrigin() {
   const configured = process.env.SITE_ORIGIN;
-  if (configured) return configured.replace(/\/+$/, '');
-  const host = req && req.headers && req.headers.host;
-  return host ? 'https://' + host : '';
+  return configured ? configured.replace(/\/+$/, '') : '';
 }
 
 module.exports = async function handler(req, res, deps) {
@@ -63,7 +64,7 @@ module.exports = async function handler(req, res, deps) {
     return res.status(401).json({ error: 'Not authorised', reason: 'unauthenticated' });
   }
 
-  if (!kv.configured() || !mail.configured() || !token()) {
+  if (!kv.configured() || !mail.configured() || !token() || !siteOrigin()) {
     return res.status(503).json({ error: 'Invitations unavailable', reason: 'not_configured' });
   }
 
@@ -87,12 +88,20 @@ module.exports = async function handler(req, res, deps) {
     return res.status(503).json({ error: 'Invitations unavailable', reason: 'upstream' });
   }
 
-  const origin = siteOrigin(req);
+  const origin = siteOrigin();
   let invited = 0;
   let skipped = 0;
+  let truncated = false;
   const problems = [];
 
-  for (const customer of members.slice(0, MAX_PER_RUN)) {
+  // MAX_PER_RUN caps emails SENT, not members examined. Slicing the member
+  // list up front would let already-invited members at the front of the group
+  // consume the whole budget, so a newly-added professional past that point
+  // would never be reached. Instead, walk the full group and stop only once
+  // this run has actually sent its cap of fresh invitations.
+  for (const customer of members) {
+    if (invited >= MAX_PER_RUN) { truncated = true; break; }
+
     const email = customer && customer.email_address;
     if (!email) { skipped++; continue; }
 
@@ -151,7 +160,10 @@ module.exports = async function handler(req, res, deps) {
     invited,
     skipped,
     total: members.length,
-    truncated: members.length > MAX_PER_RUN,
+    // True only when this run hit its send cap with members still unexamined,
+    // i.e. there is more to do on the next run — not merely that the group is
+    // larger than the cap.
+    truncated,
     problems: problems.length
   });
 };

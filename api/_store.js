@@ -55,4 +55,17 @@ async function del(key) {
   return command(['DEL', key]);
 }
 
-module.exports = { configured, get, set, setWithTtl, del, command };
+// Atomic read-and-delete. Returns the value the key held (parsed like get())
+// and removes it in the same round trip, so two callers racing the same key
+// cannot both observe it live. Used to consume single-use sign-in tokens.
+async function getdel(key) {
+  const raw = await command(['GETDEL', key]);
+  if (raw === null || raw === undefined) return null;
+  try {
+    return typeof raw === 'string' ? JSON.parse(raw) : raw;
+  } catch {
+    return null;
+  }
+}
+
+module.exports = { configured, get, set, setWithTtl, del, getdel, command };

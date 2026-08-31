@@ -135,12 +135,10 @@
       spend.textContent = money(data.ytdCents);
       spendNote.textContent = 'Completed orders in ' + data.year + ', from Square.';
     } else {
-      // linked:false or ordersAvailable:false. Either way the number is not
-      // known, and an unknown total is never drawn as $0.00.
+      // ordersAvailable:false — Square was unreachable. The number is not known,
+      // and an unknown total is never drawn as $0.00.
       spend.textContent = '—';
-      spendNote.textContent = data.linked === false
-        ? 'Your account is not linked to a Square customer record yet, so spend cannot be shown. Contact support and we will connect it.'
-        : 'We could not reach Square just now, so this year’s total is unavailable. Your orders are unaffected.';
+      spendNote.textContent = 'We could not reach Square just now, so this year’s total is unavailable. Your orders are unaffected.';
     }
 
     var openEmpty = data.ordersAvailable === false
@@ -173,15 +171,27 @@
       .then(function (result) {
         if (!result) return;
         if (result.status === 403) {
-          // Signed in, but on the shared wholesale login rather than a
-          // professional account. Not an error, and not a reason to throw
-          // anyone out of a session that still works for ordering.
-          // Signed in on the shared wholesale login. Say so, and offer the
-          // way on — bouncing them somewhere automatically would be more
-          // confusing than telling them where they are.
-          fail('This sign-in is not linked to a professional account, so there is no profile to show. '
-             + 'You can still order wholesale using the links above. If you should have an '
-             + 'account, contact support@purplecrownextensions.com.');
+          // A 403 has more than one cause, and the server tells them apart in
+          // `detail`. Collapsing them into one message sends a stylist whose
+          // access lapsed — or who hit a Square outage — the wrong instruction.
+          var detail = result.body && result.body.detail;
+          if (detail === 'upstream') {
+            // Approval could not be confirmed because Square was unreachable.
+            // This is not "you have no account"; it is "we could not check".
+            fail('We could not confirm your professional access just now — the connection to Square '
+               + 'failed. Please try again shortly.');
+          } else if (detail) {
+            // A known account whose professional access is not currently active
+            // (removed from the group, switched off, or not yet linked).
+            fail('This account does not currently have active professional access. If you believe this '
+               + 'is a mistake, contact support@purplecrownextensions.com.');
+          } else {
+            // No detail: the shared wholesale login, which carries no account.
+            // Not an error, and not a reason to end a session that still orders.
+            fail('This sign-in is not linked to a professional account, so there is no profile to show. '
+               + 'You can still order wholesale using the links above. If you should have an '
+               + 'account, contact support@purplecrownextensions.com.');
+          }
           return;
         }
         if (result.status !== 200) { fail('Your account is unavailable right now. Please try again shortly.'); return; }

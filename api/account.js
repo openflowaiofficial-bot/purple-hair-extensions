@@ -6,9 +6,11 @@
 // side, so nothing here can drift out of step with Square — the totals below
 // are computed from Square's own orders on every request.
 //
-// An account with no Square customer linked reports linked:false rather than a
-// zero. A zero would read as "you have spent nothing this year", which is a
-// different and possibly false statement.
+// Every account that reaches the money branch has a linked Square customer:
+// approval.check refuses an unlinked account (reason 'unlinked') before we get
+// there. When Square itself cannot be reached, ordersAvailable:false is sent
+// and the total is shown as unknown ("—"), never as a zero — a zero would read
+// as "you have spent nothing this year", a different and possibly false claim.
 //
 // Fail-closed, in this order:
 //   1. store not configured        -> 503 not_configured
@@ -24,7 +26,8 @@ const approval = require('./_approval.js');
 const { hasSession, sessionSubject, configured: sessionConfigured } = require('./_session.js');
 const { call, LOCATION_ID } = require('./_square.js');
 
-const MAX_ORDERS = 100;
+const MAX_ORDERS = 100;   // page size Square returns per request
+const MAX_PAGES = 20;     // safety bound: at most 2000 orders pulled per load
 
 function startOfYearIso() {
   return new Date(Date.UTC(new Date().getUTCFullYear(), 0, 1)).toISOString();
@@ -53,18 +56,29 @@ function shapeOrder(order) {
 }
 
 async function searchOrders(customerId, caller) {
-  const body = {
-    location_ids: [LOCATION_ID],
-    limit: MAX_ORDERS,
-    query: {
-      filter: { customer_filter: { customer_ids: [customerId] } },
-      // Sorted by creation so open orders — which have no closed_at — are
-      // included. Filtering on closed_at would silently drop them.
-      sort: { sort_field: 'CREATED_AT', sort_order: 'DESC' }
-    }
+  const c = caller || call;
+  const query = {
+    filter: { customer_filter: { customer_ids: [customerId] } },
+    // Sorted by creation so open orders — which have no closed_at — are
+    // included. Filtering on closed_at would silently drop them.
+    sort: { sort_field: 'CREATED_AT', sort_order: 'DESC' }
   };
-  const result = await (caller || call)('/v2/orders/search', { method: 'POST', body });
-  return (result && result.orders) || [];
+
+  // Page through the cursor. A single page caps at 100 orders, so a salon that
+  // orders more than that in a year would otherwise get a spend total that is
+  // silently short and presented as authoritative. Bounded by MAX_PAGES so a
+  // very large history cannot turn one page load into an unbounded fan-out.
+  const all = [];
+  let cursor;
+  for (let page = 0; page < MAX_PAGES; page++) {
+    const body = { location_ids: [LOCATION_ID], limit: MAX_ORDERS, query };
+    if (cursor) body.cursor = cursor;
+    const result = await c('/v2/orders/search', { method: 'POST', body });
+    if (result && Array.isArray(result.orders)) all.push(...result.orders);
+    cursor = result && result.cursor;
+    if (!cursor) break;
+  }
+  return all;
 }
 
 module.exports = async function handler(req, res, deps) {

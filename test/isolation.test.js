@@ -245,8 +245,11 @@ test('the nav is still exactly six links on every page', () => {
   }
 });
 
-test('no shop page marks a nav item as current', () => {
-  for (const page of SHOP) {
+test('no signed-in page marks a nav item as current', () => {
+  // None of the shop, portal, or account pages is a masthead destination, so
+  // none may mark one current. These pages are built by copying a brochure
+  // page, which is exactly how a stray aria-current gets carried in.
+  for (const page of SIGNED_IN) {
     assert.ok(!primaryNav(page).includes('aria-current'),
       `${page} must not mark a nav link current`);
   }

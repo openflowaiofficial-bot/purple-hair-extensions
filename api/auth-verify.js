@@ -2,9 +2,10 @@
 // Step two: the link is followed, the token is spent, and a session carrying
 // the account id is issued.
 //
-// The token is deleted BEFORE the session is signed, so a link that is
-// followed twice — by a mail scanner, a prefetcher, or a forwarded message —
-// cannot yield a second session. One use, then it is gone.
+// The token is consumed atomically (GETDEL) BEFORE the session is signed, so a
+// link that is followed twice — by a mail scanner, a prefetcher, a forwarded
+// message, or two requests racing at the same instant — cannot yield a second
+// session. The read and the delete are one step; one use, then it is gone.
 //
 // Fail-closed, in this order:
 //   1. not GET                        -> 405
@@ -43,10 +44,11 @@ module.exports = async function handler(req, res, deps) {
   const key = 'signin:' + token;
   let record;
   try {
-    record = await kv.get(key);
-    // Spend it first. If anything below fails the link is still consumed,
-    // which is the safe direction to fail in.
-    if (record) await kv.del(key);
+    // Read and delete in one atomic step. Two requests racing the same link
+    // cannot both come away with the record, so at most one session is issued.
+    // If anything below fails the link is still consumed, which is the safe
+    // direction to fail in.
+    record = await kv.getdel(key);
   } catch (err) {
     console.error('auth-verify lookup failed:', err.message);
     return res.status(503).json({ error: 'Sign-in is unavailable', reason: 'upstream' });
